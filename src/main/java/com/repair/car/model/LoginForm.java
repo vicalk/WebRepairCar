@@ -20,7 +20,6 @@ public class LoginForm {
     @Size(min = PASSWORD_MINSIZE, message = "{login.password.size}")
     private String password;
 
-
     public String getUsername() {
         return username;
     }
