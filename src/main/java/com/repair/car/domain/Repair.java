@@ -1,4 +1,5 @@
-package com.repair.car.Domain;
+/*
+package com.repair.car.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -111,3 +112,4 @@ public class Repair implements Serializable {
 
 
 
+*/

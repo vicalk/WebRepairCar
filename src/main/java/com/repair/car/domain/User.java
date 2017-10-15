@@ -1,4 +1,4 @@
-package com.repair.car.Domain;
+package com.repair.car.domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -34,8 +34,8 @@ public class User implements Serializable {
     @Column(name = "USER_TYPE",nullable = false)
     private int userType;
 
-    @OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
-    private List<Vehicle> vehicles;
+    /*@OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
+    private List<Vehicle> vehicles;*/
 
 
     public User(String afm, String lastname, String firstname, String address, String email, String password, int userType) {
@@ -48,8 +48,7 @@ public class User implements Serializable {
         this.userType = userType;
     }
 
-    public User() {
-    }
+    public User(){}
 
     public String getAfm() {
         return afm;

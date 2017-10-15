@@ -1,7 +1,7 @@
-package com.repair.car.Services;
+package com.repair.car.services;
 
-import com.repair.car.Domain.User;
-import com.repair.car.Repositories.UserRepository;
+import com.repair.car.repositories.UserRepository;
+import com.repair.car.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,6 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
         User user = userRepository.findByEmail(email);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();

@@ -1,4 +1,5 @@
-package com.repair.car.Domain;
+/*
+package com.repair.car.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,7 +24,7 @@ public class Part implements Serializable {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "REPAIR_ID", referencedColumnName = "REPAIR_ID")
-    private Vehicle vehicle;
+    private Repair repair;
 
     public Part(String partType, int partCost, Long repairId) {
         this.partType = partType;
@@ -76,3 +77,4 @@ public class Part implements Serializable {
 
 
 
+*/

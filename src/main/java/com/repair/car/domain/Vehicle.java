@@ -1,4 +1,5 @@
-package com.repair.car.Domain;
+/*
+package com.repair.car.domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,6 +26,9 @@ public class Vehicle implements Serializable {
     @Column(name = "COLOR")
     private String color;
 
+    @Column(name = "AFM")
+    private int afm;
+
     @Column(name = "USER_ID", nullable = false)
     private Long userId;
 
@@ -36,11 +40,12 @@ public class Vehicle implements Serializable {
     private List<Repair> repairs;
 
 
-    public Vehicle(String plateNo, String carModel, String year, String color, Long userId) {
+    public Vehicle(String plateNo, String carModel, String year, String color, int afm, Long userId) {
         this.plateNo = plateNo;
         this.carModel = carModel;
         this.year = year;
         this.color = color;
+        this.afm = afm;
         this.userId = userId;
     }
 
@@ -76,6 +81,14 @@ public class Vehicle implements Serializable {
         this.color = color;
     }
 
+    public int getAfm() {
+        return afm;
+    }
+
+    public void setAfm(int afm) {
+        this.afm = afm;
+    }
+
     public Long getUserId() {
         return userId;
     }
@@ -91,7 +104,9 @@ public class Vehicle implements Serializable {
                 ", carModel='" + carModel + '\'' +
                 ", year='" + year + '\'' +
                 ", color='" + color + '\'' +
+                ", afm=" + afm +
                 ", userId=" + userId +
                 '}';
     }
 }
+*/
