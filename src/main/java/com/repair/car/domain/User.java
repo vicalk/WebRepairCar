@@ -14,7 +14,7 @@ public class User implements Serializable {
     private Long userId;
 
     @Column(name = "AFM")
-    private int afm;
+    private String afm;
 
     @Column (name = "LASTNAME")
     private String lastname;
@@ -38,7 +38,7 @@ public class User implements Serializable {
     private List<Vehicle> vehicles;*/
 
 
-    public User(int afm, String lastname, String firstname, String address, String email, String password, int userType) {
+    public User(String afm, String lastname, String firstname, String address, String email, String password, int userType) {
         this.afm = afm;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -48,13 +48,14 @@ public class User implements Serializable {
         this.userType = userType;
     }
 
-    //public User(){};
+    public User() {
+    }
 
-    public int getAfm() {
+    public String getAfm() {
         return afm;
     }
 
-    public void setAfm(int afm) {
+    public void setAfm(String afm) {
         this.afm = afm;
     }
 

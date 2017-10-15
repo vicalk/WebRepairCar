@@ -24,7 +24,7 @@ public class Part implements Serializable {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "REPAIR_ID", referencedColumnName = "REPAIR_ID")
-    private Repair repair;
+    private Vehicle vehicle;
 
     public Part(String partType, int partCost, Long repairId) {
         this.partType = partType;
