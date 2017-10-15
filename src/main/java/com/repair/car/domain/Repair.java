@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 
-@Entity(name = "VEHICLES")
+@Entity(name = "REPAIR")
 
 public class Repair implements Serializable {
     @Id
@@ -18,14 +18,14 @@ public class Repair implements Serializable {
     @Column(name = "DATE", nullable = false)
     private Date date;
 
-    @Column(name = "REPAIR_STATUS")
-    private String repairStatus;
+    @Column(name = "STATUS_REPAIR")
+    private String statusRepair;
 
-    @Column(name = "REPAIR_TYPE")
-    private String repairType;
+    @Column(name = "TYPE_REPAIR")
+    private String typeRepair;
 
-    @Column(name = "REPAIR_COST")
-    private int repairCost;
+    @Column(name = "COST_REPAIR")
+    private int costRepair;
 
     @Column(name = "REPAIR_DESCRIPTION", nullable = false)
     private String repairDescription;

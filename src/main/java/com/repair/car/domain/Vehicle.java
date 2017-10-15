@@ -7,7 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 
 
-@Entity (name = "VEHICLES")
+@Entity (name = "VEHICLE")
 public class Vehicle implements Serializable {
     @Id
     @Column(name = "VEHICLE_ID",nullable = false)
@@ -20,7 +20,7 @@ public class Vehicle implements Serializable {
     @Column(name = "CAR_MODEL")
     private String carModel;
 
-    @Column(name = "YEAR")
+    @Column(name = "YEAR_MAKE")
     private String year;
 
     @Column(name = "COLOR")
