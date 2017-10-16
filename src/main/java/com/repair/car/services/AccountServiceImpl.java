@@ -30,17 +30,17 @@ public class AccountServiceImpl implements AccountService{
     }
     @Override
     public void logout(String username) {
-        /*try {
+        try {
             userRepository.logout(username);
         } catch (Exception e) {
             //throw new LogoutException("User not logged in!");
-        }*/
+        }
     }
 
     @Override
     public void register(User user) throws Exception {
-        /*userRepository.register(user);
-        LOG.debug("User has been registered!");*/
+        userRepository.register(user);
+        LOG.debug("User has been registered!");
     }
 
 }

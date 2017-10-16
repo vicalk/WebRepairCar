@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    Page<User> findAll(Pageable pageable);
+    //Page<User> findAll(Pageable pageable);
 
     User findByEmail(String email);
 

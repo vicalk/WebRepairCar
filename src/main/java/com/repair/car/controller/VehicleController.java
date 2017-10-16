@@ -6,7 +6,6 @@ import com.repair.car.model.RegistrationForm;
 import com.repair.car.services.AccountService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,24 +16,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+public class VehicleController {
 
-@Controller
-public class RegistrationController {
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(RegistrationController.class);
-    private static final String REGISTER_FORM = "registrationForm";
+    private static final String VEHICLE_FORM = "vehicleForm";
 
     @Autowired
-    private AccountService accountService;
+    private VehicleService vehicleService;
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register(Model model) {
-        model.addAttribute(REGISTER_FORM, new RegistrationForm());
-        return "register";
+    @RequestMapping(value = "/vehicleRegister", method = RequestMethod.GET)
+    public String vehicleService(Model model) {
+        model.addAttribute(VEHICLE_FORM, new RegistrationForm());
+        return "vehicleRegister";
     }
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@Valid @ModelAttribute(REGISTER_FORM)
+    @RequestMapping(value = "/vehicleRegister", method = RequestMethod.POST)
+    public String register(@Valid @ModelAttribute(VEHICLE_FORM)
                                    RegistrationForm registrationForm,
                            BindingResult bindingResult, HttpSession session,
                            RedirectAttributes redirectAttributes) {
@@ -42,12 +40,12 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
 
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
-            return "register";
+            return "vehicleRegister";
         }
 
         try {
             User user = UserConverter.buildUserObject(registrationForm);
-            accountService.register(user);
+            vehicleService.vehicleRegister(vehicle);
             session.setAttribute("username", registrationForm.getEmail());
 
         } catch (Exception exception) {
@@ -63,6 +61,33 @@ public class RegistrationController {
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -1,4 +1,4 @@
-/*
+
 package com.repair.car.domain;
 
 import javax.persistence.*;
@@ -7,7 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 
-@Entity(name = "VEHICLES")
+@Entity
+@Table (name = "REPAIRS")
 
 public class Repair implements Serializable {
     @Id
@@ -15,8 +16,8 @@ public class Repair implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long repairId;
 
-    @Column(name = "DATE", nullable = false)
-    private Date date;
+    @Column(name = "REPAIR_DATE", nullable = false)
+    private Date repairdate;
 
     @Column(name = "REPAIR_STATUS")
     private String repairStatus;
@@ -41,7 +42,7 @@ public class Repair implements Serializable {
     private List<Part> parts;
 
     public Repair(Date date, String repairStatus, String repairType, int repairCost, String repairDescription, Long vehicleId) {
-        this.date = date;
+        this.repairdate = date;
         this.repairStatus = repairStatus;
         this.repairType = repairType;
         this.repairCost = repairCost;
@@ -50,11 +51,11 @@ public class Repair implements Serializable {
     }
 
     public Date getDate() {
-        return date;
+        return repairdate;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.repairdate = date;
     }
 
     public String getRepairStatus() {
@@ -100,7 +101,7 @@ public class Repair implements Serializable {
     @Override
     public String toString() {
         return "Repair{" +
-                "date='" + date + '\'' +
+                "date='" + repairdate + '\'' +
                 ", repairStatus='" + repairStatus + '\'' +
                 ", repairType='" + repairType + '\'' +
                 ", repairCost='" + repairCost + '\'' +
@@ -112,4 +113,3 @@ public class Repair implements Serializable {
 
 
 
-*/

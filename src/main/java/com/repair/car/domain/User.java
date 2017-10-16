@@ -6,7 +6,8 @@ import java.util.List;
 import javax.persistence.*;
 
 
-@Entity (name = "USER")
+@Entity
+@Table (name = "USERS")
 public class User implements Serializable {
     @Id
     @Column(name = "USER_ID",nullable = false)
@@ -33,9 +34,9 @@ public class User implements Serializable {
 
     @Column(name = "USER_TYPE",nullable = false)
     private int userType;
-
-    /*@OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
-    private List<Vehicle> vehicles;*/
+//
+//    @OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
+//    private List<Vehicle> vehicles;
 
 
     public User(String afm, String lastname, String firstname, String address, String email, String password, int userType) {

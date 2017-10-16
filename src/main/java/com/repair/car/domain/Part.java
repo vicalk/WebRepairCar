@@ -1,12 +1,12 @@
-/*
+
 package com.repair.car.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 
-@Entity(name = "PARTS")
-
+@Entity
+@Table (name = "PARTS")
 public class Part implements Serializable {
     @Id
     @Column(name = "PART_ID",nullable = false)
@@ -77,4 +77,3 @@ public class Part implements Serializable {
 
 
 
-*/

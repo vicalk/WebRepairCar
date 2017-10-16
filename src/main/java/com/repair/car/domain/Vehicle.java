@@ -1,4 +1,4 @@
-/*
+
 package com.repair.car.domain;
 
 import java.io.Serializable;
@@ -7,7 +7,8 @@ import java.util.List;
 import javax.persistence.*;
 
 
-@Entity (name = "VEHICLES")
+@Entity
+@Table (name = "VEHICLES")
 public class Vehicle implements Serializable {
     @Id
     @Column(name = "VEHICLE_ID",nullable = false)
@@ -27,7 +28,7 @@ public class Vehicle implements Serializable {
     private String color;
 
     @Column(name = "AFM")
-    private int afm;
+    private String afm;
 
     @Column(name = "USER_ID", nullable = false)
     private Long userId;
@@ -40,7 +41,7 @@ public class Vehicle implements Serializable {
     private List<Repair> repairs;
 
 
-    public Vehicle(String plateNo, String carModel, String year, String color, int afm, Long userId) {
+    public Vehicle(String plateNo, String carModel, String year, String color, String afm, Long userId) {
         this.plateNo = plateNo;
         this.carModel = carModel;
         this.year = year;
@@ -48,6 +49,8 @@ public class Vehicle implements Serializable {
         this.afm = afm;
         this.userId = userId;
     }
+
+    public Vehicle() { }
 
     public String getPlateNo() {
         return plateNo;
@@ -81,11 +84,11 @@ public class Vehicle implements Serializable {
         this.color = color;
     }
 
-    public int getAfm() {
+    public String getAfm() {
         return afm;
     }
 
-    public void setAfm(int afm) {
+    public void setAfm(String afm) {
         this.afm = afm;
     }
 
@@ -109,4 +112,3 @@ public class Vehicle implements Serializable {
                 '}';
     }
 }
-*/

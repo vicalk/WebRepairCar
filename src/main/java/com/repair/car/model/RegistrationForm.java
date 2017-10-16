@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 public class RegistrationForm {
 
-    private static final String AFM_PATTERN = "^[0-9]*$";
+    private static final String NUMBERS_PATTERN = "^[0-9]*$";
 
     private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9@#$%^&]*$";
 
@@ -19,7 +19,7 @@ public class RegistrationForm {
     private static final int AFM_SIZE = 9;
 
 
-    @Pattern(regexp = AFM_PATTERN, message = "{register.afm.invalid}")
+    @Pattern(regexp = NUMBERS_PATTERN, message = "{register.afm.invalid}")
     @Size(min = AFM_SIZE, max = AFM_SIZE, message = "{register.afm.size}")
     private String afm;
 
