@@ -1,9 +1,11 @@
 package com.repair.car.controller;
 
-import com.repair.car.converters.UserConverter;
+import com.repair.car.converters.VehicleConverter;
 import com.repair.car.domain.User;
+import com.repair.car.domain.Vehicle;
 import com.repair.car.model.RegistrationForm;
-import com.repair.car.services.AccountService;
+import com.repair.car.model.VehicleForm;
+import com.repair.car.services.VehicleService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -33,7 +35,7 @@ public class VehicleController {
 
     @RequestMapping(value = "/vehicleRegister", method = RequestMethod.POST)
     public String register(@Valid @ModelAttribute(VEHICLE_FORM)
-                                   RegistrationForm registrationForm,
+                                   VehicleForm vehicleForm,
                            BindingResult bindingResult, HttpSession session,
                            RedirectAttributes redirectAttributes) {
 
@@ -44,9 +46,9 @@ public class VehicleController {
         }
 
         try {
-            User user = UserConverter.buildUserObject(registrationForm);
+            Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
             vehicleService.vehicleRegister(vehicle);
-            session.setAttribute("username", registrationForm.getEmail());
+
 
         } catch (Exception exception) {
             //if an error occurs show it to the user
