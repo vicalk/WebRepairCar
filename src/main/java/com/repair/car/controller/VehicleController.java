@@ -28,14 +28,15 @@ public class VehicleController {
 
     @RequestMapping(value = "/vehicleRegister", method = RequestMethod.GET)
     public String vehicleService(Model model) {
-        model.addAttribute(VEHICLE_FORM, new RegistrationForm());
+        model.addAttribute(VEHICLE_FORM, new VehicleForm());
         return "vehicleRegister";
     }
 
 
     @RequestMapping(value = "/vehicleRegister", method = RequestMethod.POST)
-    public String register(@Valid @ModelAttribute(VEHICLE_FORM)
+    public String vehicleRegister(@Valid @ModelAttribute(VEHICLE_FORM)
                                    VehicleForm vehicleForm,
+                                  Model model,
                            BindingResult bindingResult, HttpSession session,
                            RedirectAttributes redirectAttributes) {
 
@@ -53,8 +54,8 @@ public class VehicleController {
         } catch (Exception exception) {
             //if an error occurs show it to the user
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
-            logger.error("User registration failed: " + exception);
-            return "redirect:/register";
+            logger.error("Vehicle registration failed: " + exception);
+            return "redirect:/vehicleRegister";
         }
 
 

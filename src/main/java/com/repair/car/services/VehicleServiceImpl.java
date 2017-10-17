@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
     @Service
     @Transactional
-
     public class VehicleServiceImpl implements VehicleService{
 
         private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(com.repair.car.services.VehicleServiceImpl.class);
@@ -19,11 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
         @Autowired
         private VehicleRepository vehicleRepository;
 
-
         @Override
-        public void VehicleRegister(Vehicle vehicle) throws Exception {
-            vehicleRepository.register(vehicle);
-            LOG.debug("User has been registered!");
+        public void vehicleRegister(Vehicle vehicle) throws Exception {
+            vehicleRepository.save(vehicle);
+            LOG.debug("Vehicle has been registered!");
 
         }
 }
