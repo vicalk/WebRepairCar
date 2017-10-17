@@ -19,15 +19,16 @@ public class AccountServiceImpl implements AccountService{
     private UserRepository userRepository;
 
     @Override
-    public void login(String username, String password) throws AuthenticationException {
+    public User login(String email, String password) throws AuthenticationException {
 
-        try {
-            userRepository.findByEmailAndPassword(username, password);
-        } catch (Exception e) {
-            System.out.println("lathos stoixeia");
+        User retrievedUser = userRepository.findByEmailAndPassword(email, password);
+        if (retrievedUser == null) {
             //throw new InvalidCredentialsException("User not found!");
+            System.out.println("User not found!");
         }
+        return retrievedUser;
     }
+
     @Override
     public void logout(String username) {
         /*try {

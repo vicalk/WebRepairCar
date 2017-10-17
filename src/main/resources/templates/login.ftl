@@ -1,39 +1,41 @@
 <#import "/spring.ftl" as spring/>
 
 <head>
-  <title>Login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+    <meta charset="UTF-8">
+    <title>Sign-Up/Login Form</title>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="static/style.css">
 
+</head>
 
 <body>
 
+
 <h2>${message!""}</h2>
-<h2 style="color: red">${errorMessage!""}</h2>
 
-<div class="container" style="margin-top:30px">
-<div class="col-md-4">
-<div class="panel panel-default">
-  <div class="panel-heading"><h3 class="panel-title"><strong>Sign In </strong></h3></div>
-  <div class="panel-body">
 
-    <form role="form" action="/login" method="post" id="loginForm" name="loginForm">
-     <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
-      </div>
+<h2 style="color: red">
+${errorMessage!""}
+</h2>
 
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-sm btn-default">Sign in</button>
+<ul class="tab-group">
+    <li class="tab active"><a href="/register">Sign Up</a></li>
+    <li class="tab"><a href="/login">Log In</a></li>
+</ul>
+
+
+<div class="form">
+    <form action="/login" method="post" id="loginForm" name="loginForm">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="email" autocomplete="off"/>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="password"/>
+
+        <button type="submit">Login</button>
     </form>
+</div>
 
-      </div>
-    </div>
-    </div>
 
 </body>

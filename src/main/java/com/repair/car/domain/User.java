@@ -1,7 +1,6 @@
 package com.repair.car.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -32,23 +31,22 @@ public class User implements Serializable {
     private String password;
 
     @Column(name = "USER_TYPE",nullable = false)
-    private int userType;
+    private String role;
 
     /*@OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
     private List<Vehicle> vehicles;*/
 
+    public User() {
+    }
 
-    public User(String afm, String lastname, String firstname, String address, String email, String password, int userType) {
+    public User(String afm, String lastname, String firstname, String address, String email, String password, String role) {
         this.afm = afm;
         this.lastname = lastname;
         this.firstname = firstname;
         this.address = address;
         this.email = email;
         this.password = password;
-        this.userType = userType;
-    }
-
-    public User() {
+        this.role = role;
     }
 
     public String getAfm() {
@@ -99,12 +97,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getUserType() {
-        return userType;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -116,7 +114,7 @@ public class User implements Serializable {
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", userType=" + userType +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
