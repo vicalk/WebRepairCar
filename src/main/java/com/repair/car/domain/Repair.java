@@ -19,13 +19,13 @@ public class Repair implements Serializable {
     private Date date;
 
     @Column(name = "STATUS_REPAIR")
-    private String statusRepair;
+    private String repairStatus;
 
     @Column(name = "TYPE_REPAIR")
-    private String typeRepair;
+    private String repairType;
 
     @Column(name = "COST_REPAIR")
-    private int costRepair;
+    private int repairCost;
 
     @Column(name = "REPAIR_DESCRIPTION", nullable = false)
     private String repairDescription;

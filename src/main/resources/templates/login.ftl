@@ -2,40 +2,29 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sign-Up/Login Form</title>
-    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="static/style.css">
-
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
 
-
-<h2>${message!""}</h2>
-
-
-<h2 style="color: red">
-${errorMessage!""}
-</h2>
-
-<ul class="tab-group">
-    <li class="tab active"><a href="/register">Sign Up</a></li>
-    <li class="tab"><a href="/login">Log In</a></li>
-</ul>
-
-
-<div class="form">
-    <form action="/login" method="post" id="loginForm" name="loginForm">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" placeholder="email" autocomplete="off"/>
-
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="password"/>
-
-        <button type="submit">Login</button>
-    </form>
-</div>
-
-
+    <div class="container">
+     <h2>Welcome to Car Repair!</h2>
+		<br></br>
+      <h2>Sign in</h2>
+       <form name="loginForm" action="/login"  id="loginForm" method="post" style="border:1px solid #ccc">
+         <div class="container">
+         <label><b>Enter Email:</b></label>
+         <input type="text" placeholder="Enter Email" name="email" required>
+	        <br></br>
+            <label><b>Enter Password:</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <br></br>
+            <div class="clearfix">
+            <button type="submit" class="loginbtn">Log in</button>
+            <button type="submit" href="signup.ftl" class="signupbtn">Sign up</button>
+            </div>
+         </div>
+        </form>
+     </div>
 </body>

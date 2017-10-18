@@ -26,9 +26,20 @@ public class LoginController {
         model.addAttribute(LOGIN_FORM, new LoginForm());
         return "login";
     }
-    @RequestMapping(value="/search", method=RequestMethod.GET)
-    public String asda(){
-        return "search";
+    @RequestMapping(value="/admin", method=RequestMethod.GET)
+    public String adminPage(){
+        return "admin";
+    }
+
+
+    @RequestMapping(value="/user", method=RequestMethod.GET)
+    public String userPage(){
+        return "user";
+    }
+
+    @RequestMapping(value="/signup", method=RequestMethod.GET)
+    public String signup(){
+        return "signup";
     }
 
 }
