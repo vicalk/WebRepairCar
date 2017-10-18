@@ -15,6 +15,7 @@ public class User implements Serializable {
     private Long userId;
 
     @Column(name = "AFM")
+    @OneToOne(cascade=CascadeType.REMOVE)
     private String afm;
 
     @Column (name = "LASTNAME")
@@ -34,9 +35,9 @@ public class User implements Serializable {
 
     @Column(name = "USER_TYPE",nullable = false)
     private int userType;
-//
-//    @OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
-//    private List<Vehicle> vehicles;
+
+    @OneToMany(mappedBy = "user", targetEntity = Vehicle.class , cascade=CascadeType.REMOVE)
+    private List<Vehicle> vehicles;
 
 
     public User(String afm, String lastname, String firstname, String address, String email, String password, int userType) {

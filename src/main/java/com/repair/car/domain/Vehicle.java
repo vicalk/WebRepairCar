@@ -37,7 +37,7 @@ public class Vehicle implements Serializable {
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private User user;
 
-    @OneToMany(mappedBy = "vehicle", targetEntity = Repair.class)
+    @OneToMany(mappedBy = "vehicle", targetEntity = Repair.class , cascade=CascadeType.REMOVE)
     private List<Repair> repairs;
 
 

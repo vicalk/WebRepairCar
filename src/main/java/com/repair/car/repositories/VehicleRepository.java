@@ -9,19 +9,15 @@ import java.util.List;
 @Repository
 public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
-    List<Vehicle> findAll();
+//    List<Vehicle> findAll();
 
-    List<Vehicle> findByPlateNo(String PlateNo);
+    List<Vehicle> findByPlateNo(String plateNo);
 
-    List<Vehicle> findByAfm(String Afm);
+    List<Vehicle> findByAfm(String afm);
 
-    void deleteById(Long vehicleId);
+    void deleteByVehicleId(Long vehicleId);
 
     Vehicle save(Vehicle vehicle);
-
-
-
-
 
 
 }
