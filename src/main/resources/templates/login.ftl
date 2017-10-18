@@ -22,7 +22,6 @@
             <br></br>
             <div class="clearfix">
             <button type="submit" class="loginbtn">Log in</button>
-            <button type="submit" href="signup.ftl" class="signupbtn">Sign up</button>
             </div>
          </div>
         </form>
