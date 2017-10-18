@@ -26,6 +26,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().fullyAuthenticated()
                 .and().csrf().disable()
+                .antMatcher("/static/**")
                 .formLogin()//.defaultSuccessUrl("/")
                 .successHandler(loginSuccessHandler)
 

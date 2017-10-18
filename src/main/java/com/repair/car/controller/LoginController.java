@@ -42,4 +42,9 @@ public class LoginController {
         return "signup";
     }
 
+    @RequestMapping(value="/update", method=RequestMethod.GET)
+    public String update(){
+        return "update";
+    }
+
 }
