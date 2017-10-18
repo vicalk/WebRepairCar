@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class VehicleForm {
+public class VehicleRegisterForm {
 
     private static final String PLATENO_PATTERN = "^[A-Z]{3}-[0-9]{4}$";
 

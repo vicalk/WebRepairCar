@@ -1,10 +1,9 @@
 package com.repair.car.controller;
 
-import com.repair.car.converters.VehicleConverter;
-import com.repair.car.domain.User;
+import com.repair.car.converters.VehicleFormToVehicleConverter;
 import com.repair.car.domain.Vehicle;
-import com.repair.car.model.RegistrationForm;
-import com.repair.car.model.VehicleForm;
+import com.repair.car.model.VehicleRegisterForm;
+import com.repair.car.model.VehicleSearchForm;
 import com.repair.car.services.VehicleService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +16,29 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 public class VehicleController {
 
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(RegistrationController.class);
-    private static final String VEHICLE_FORM = "vehicleForm";
+    private static final String VEHICLE_REGISTER_FORM = "vehicleRegisterForm";
+    private static final String VEHICLE_SEARCH_FORM = "vehicleSearchForm";
 
     @Autowired
     private VehicleService vehicleService;
 
     @RequestMapping(value = "/vehicleRegister", method = RequestMethod.GET)
     public String vehicleService(Model model) {
-        model.addAttribute(VEHICLE_FORM, new VehicleForm());
+        model.addAttribute(VEHICLE_REGISTER_FORM, new VehicleRegisterForm());
         return "vehicleRegister";
     }
 
-
     @RequestMapping(value = "/vehicleRegister", method = RequestMethod.POST)
-    public String vehicleRegister(@Valid @ModelAttribute(VEHICLE_FORM)
-                                   VehicleForm vehicleForm,
+    public String vehicleRegister(@Valid @ModelAttribute(VEHICLE_REGISTER_FORM)
+                                          VehicleRegisterForm vehicleRegisterForm,
                                   Model model,
-                           BindingResult bindingResult, HttpSession session,
-                           RedirectAttributes redirectAttributes) {
+                                  BindingResult bindingResult, HttpSession session,
+                                  RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
 
@@ -47,7 +47,7 @@ public class VehicleController {
         }
 
         try {
-            Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
+            Vehicle vehicle = VehicleFormToVehicleConverter.buildVehicleObject(vehicleRegisterForm);
             vehicleService.vehicleRegister(vehicle);
 
 
@@ -58,12 +58,33 @@ public class VehicleController {
             return "redirect:/vehicleRegister";
         }
 
-
         redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
         return "redirect:/";
-
-
     }
+
+    @RequestMapping(value = "/vehicleSearch", method = RequestMethod.GET)
+    public String login(Model model) {
+        model.addAttribute(VEHICLE_SEARCH_FORM, new VehicleSearchForm());
+        return "vehicleSearch";
+    }
+
+    @RequestMapping(value = "/vehicleSearch", method = RequestMethod.POST)
+    public String search(@ModelAttribute(VEHICLE_SEARCH_FORM) VehicleSearchForm vehicleSearchForm,
+                         HttpSession session,
+                         RedirectAttributes redirectAttributes) {
+
+        List bookList = vehicleService.finByPlateNo(searchForm.getTitle());
+
+        if (bookList.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "No vehicles found");
+        }
+
+        redirectAttributes.addFlashAttribute(BOOKLIST, bookList);
+        return "redirect:/vehicleSearch";
+    }
+
+
+}
 
 
 

@@ -15,7 +15,13 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
     List<Vehicle> findByAfm(String Afm);
 
+    void deleteById(Long vehicleId);
 
     Vehicle save(Vehicle vehicle);
+
+
+
+
+
 
 }
