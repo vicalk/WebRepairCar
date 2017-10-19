@@ -40,8 +40,9 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">VEHICLE
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">CREATE</a></li>
-                <li><a href="#">SEARCH</a></li>  </ul>
+                <li><a href="vehicle.ftl">CREATE</a></li>
+                <li><a href="Vehicle_se.ftl">SEARCH</a></li>
+               </ul>
   </div>
   </nav>
 <div class="container">

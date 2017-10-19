@@ -31,15 +31,9 @@ public class LoginController {
         return "admin";
     }
 
-
     @RequestMapping(value="/user", method=RequestMethod.GET)
     public String userPage(){
         return "user";
-    }
-
-    @RequestMapping(value="/signup", method=RequestMethod.GET)
-    public String signup(){
-        return "signup";
     }
 
     @RequestMapping(value="/update", method=RequestMethod.GET)
@@ -53,8 +47,12 @@ public class LoginController {
     }
 
     @RequestMapping(value="/search", method=RequestMethod.GET)
-    public String search(){
-        return "search";
-    }
+    public String search(){ return "search";    }
+
+    @RequestMapping(value="/vehicle", method=RequestMethod.GET)
+    public String vehicle(){ return "vehicle";    }
+
+    @RequestMapping(value="/Vehicle_se", method=RequestMethod.GET)
+    public String Vehicle_se(){ return "Vehicle_se";    }
 
 }

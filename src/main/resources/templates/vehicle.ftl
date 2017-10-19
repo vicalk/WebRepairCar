@@ -26,7 +26,7 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">OWNER
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="sign up.ftl">CREATE</a></li>
+          <li><a href="create.ftl">CREATE</a></li>
           <li><a href="search.ftl">SEARCH</a></li>
           <li><a href="update.ftl">UPDATE</a></li>
         </ul>
@@ -42,8 +42,9 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">VEHICLE
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">CREATE</a></li>
-                <li><a href="#">SEARCH</a></li>  </ul>
+                <li><a href="vehicle.ftl">CREATE</a></li>
+                <li><a href="Vehicle_se.ftl">SEARCH</a></li>
+                 </ul>
   </div>
 </nav>
 <h3>Welcome!</h3>

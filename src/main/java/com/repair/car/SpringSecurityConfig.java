@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,14 +21,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private LoginSuccessHandler loginSuccessHandler;
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/static/**");
+
+        //http.antMatcher("/static/**");
         http.authorizeRequests()
                 //.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().fullyAuthenticated()
                 .and().csrf().disable()
+                .antMatcher("/resources/**")
+                .antMatcher("/static/**")
                 .formLogin()//.defaultSuccessUrl("/")
+
                 .successHandler(loginSuccessHandler)
 
                 .loginPage("/login")
@@ -51,6 +58,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authenticationProvider(loginAuthenticationProvider);
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/**").anyRequest();
     }
 
     @Autowired
