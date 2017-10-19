@@ -14,8 +14,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
 
-    @Column(name = "AFM")
-    @OneToOne(cascade=CascadeType.REMOVE)
+    @Column (name = "AFM")
     private String afm;
 
     @Column (name = "LASTNAME")
@@ -41,6 +40,7 @@ public class User implements Serializable {
 
 
     public User(String afm, String lastname, String firstname, String address, String email, String password, int userType) {
+
         this.afm = afm;
         this.lastname = lastname;
         this.firstname = firstname;

@@ -28,19 +28,19 @@ public class AccountServiceImpl implements AccountService{
             //throw new InvalidCredentialsException("User not found!");
         }
     }
-    @Override
-    public void logout(String username) {
-        try {
-            userRepository.logout(username);
-        } catch (Exception e) {
-            //throw new LogoutException("User not logged in!");
-        }
-    }
-
-    @Override
-    public void register(User user) throws Exception {
-        userRepository.register(user);
-        LOG.debug("User has been registered!");
-    }
+//    @Override
+//    public void logout(String username) {
+//        try {
+//            userRepository.logout(username);
+//        } catch (Exception e) {
+//            //throw new LogoutException("User not logged in!");
+//        }
+//    }
+//
+//    @Override
+//    public void register(User user) throws Exception {
+//        userRepository.register(user);
+//        LOG.debug("User has been registered!");
+//    }
 
 }

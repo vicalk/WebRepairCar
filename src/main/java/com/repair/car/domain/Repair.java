@@ -17,7 +17,7 @@ public class Repair implements Serializable {
     private Long repairId;
 
     @Column(name = "REPAIR_DATE", nullable = false)
-    private Date repairdate;
+    private Date repairDate;
 
     @Column(name = "REPAIR_STATUS")
     private String repairStatus;
@@ -31,18 +31,21 @@ public class Repair implements Serializable {
     @Column(name = "REPAIR_DESCRIPTION", nullable = false)
     private String repairDescription;
 
-    @Column(name = "VEHICLE_ID ", nullable = false)
+    @Column(name = "VEHICLE_ID ", nullable = false, insertable = false, updatable = false)
     private Long VehicleId;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "VEHICLE_ID", referencedColumnName = "VEHICLE_ID")
     private Vehicle vehicle;
 
-    @OneToMany(mappedBy = "Repair", targetEntity = Part.class , cascade=CascadeType.REMOVE)
+    @OneToMany(mappedBy = "repair", targetEntity = Part.class , cascade=CascadeType.REMOVE)
     private List<Part> parts;
 
+
+    public Repair() { }
+
     public Repair(Date date, String repairStatus, String repairType, int repairCost, String repairDescription, Long vehicleId) {
-        this.repairdate = date;
+        this.repairDate = date;
         this.repairStatus = repairStatus;
         this.repairType = repairType;
         this.repairCost = repairCost;
@@ -51,11 +54,11 @@ public class Repair implements Serializable {
     }
 
     public Date getDate() {
-        return repairdate;
+        return repairDate;
     }
 
     public void setDate(Date date) {
-        this.repairdate = date;
+        this.repairDate = date;
     }
 
     public String getRepairStatus() {
@@ -101,7 +104,7 @@ public class Repair implements Serializable {
     @Override
     public String toString() {
         return "Repair{" +
-                "date='" + repairdate + '\'' +
+                "date='" + repairDate + '\'' +
                 ", repairStatus='" + repairStatus + '\'' +
                 ", repairType='" + repairType + '\'' +
                 ", repairCost='" + repairCost + '\'' +

@@ -30,7 +30,7 @@ public class Vehicle implements Serializable {
     @Column(name = "AFM")
     private String afm;
 
-    @Column(name = "USER_ID", nullable = false)
+    @Column(name = "USER_ID", nullable = false, insertable = false, updatable = false)
     private Long userId;
 
     @ManyToOne(optional = false)
@@ -48,6 +48,7 @@ public class Vehicle implements Serializable {
         this.color = color;
         this.afm = afm;
         this.userId = userId;
+
     }
 
     public Vehicle() { }

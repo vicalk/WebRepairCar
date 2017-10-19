@@ -20,14 +20,14 @@ import java.util.List;
 
 public class VehicleController {
 
-    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(RegistrationController.class);
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(VehicleController.class);
     private static final String VEHICLE_REGISTER_FORM = "vehicleRegisterForm";
     private static final String VEHICLE_SEARCH_FORM = "vehicleSearchForm";
 
     @Autowired
     private VehicleService vehicleService;
 
-    @RequestMapping(value = "/vehicleRegister", method = RequestMethod.GET)
+    @RequestMapping(value = "/`", method = RequestMethod.GET)
     public String vehicleRegister(Model model) {
         model.addAttribute(VEHICLE_REGISTER_FORM, new VehicleRegisterForm());
         return "vehicleRegister";
@@ -62,58 +62,58 @@ public class VehicleController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/vehicleSearch", method = RequestMethod.GET)
-    public String vehicleSearch(Model model) {
-        model.addAttribute(VEHICLE_SEARCH_FORM, new VehicleSearchForm());
-        return "vehicleSearch";
-    }
-
-    @RequestMapping(value = "/vehicleSearch", method = RequestMethod.POST)
-    public String vehicleSearch(@ModelAttribute(VEHICLE_SEARCH_FORM) VehicleSearchForm vehicleSearchForm,
-                         HttpSession session,
-                         RedirectAttributes redirectAttributes) {
-
-        List vehicleList = vehicleService.finByPlateNo(vehicleSearchForm.getPlateNo());
-
-        List vehicleList = vehicleService.finByAfm(vehicleSearchForm.getAfm());
-
-        if (vehicleList.isEmpty()) {
-            redirectAttributes.addFlashAttribute("errorMessage", "No vehicles found");
-        }
-
-        redirectAttributes.addFlashAttribute(VEHICLELIST, vehicleList);
-        return "redirect:/vehicleSearch";
-    }
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//    @RequestMapping(value = "/vehicleSearch", method = RequestMethod.GET)
+//    public String vehicleSearch(Model model) {
+//        model.addAttribute(VEHICLE_SEARCH_FORM, new VehicleSearchForm());
+//        return "vehicleSearch";
+//    }
+//
+//    @RequestMapping(value = "/vehicleSearch", method = RequestMethod.POST)
+//    public String vehicleSearch(@ModelAttribute(VEHICLE_SEARCH_FORM) VehicleSearchForm vehicleSearchForm,
+//                         HttpSession session,
+//                         RedirectAttributes redirectAttributes) {
+//
+//        List vehicleList = vehicleService.finByPlateNo(vehicleSearchForm.getPlateNo());
+//
+//        List vehicleList = vehicleService.finByAfm(vehicleSearchForm.getAfm());
+//
+//        if (vehicleList.isEmpty()) {
+//            redirectAttributes.addFlashAttribute("errorMessage", "No vehicles found");
+//        }
+//
+//        redirectAttributes.addFlashAttribute(VEHICLELIST, vehicleList);
+//        return "redirect:/vehicleSearch";
+//    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
