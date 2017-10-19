@@ -30,9 +30,6 @@ public class Vehicle implements Serializable {
     @Column(name = "AFM")
     private String afm;
 
-    @Column(name = "USER_ID", nullable = false, insertable = false, updatable = false)
-    private Long userId;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private User user;
@@ -41,13 +38,13 @@ public class Vehicle implements Serializable {
     private List<Repair> repairs;
 
 
-    public Vehicle(String plateNo, String carModel, String year, String color, String afm, Long userId) {
+    public Vehicle(String plateNo, String carModel, String year, String color, String afm) {
         this.plateNo = plateNo;
         this.carModel = carModel;
         this.year = year;
         this.color = color;
         this.afm = afm;
-        this.userId = userId;
+
 
     }
 
@@ -93,13 +90,6 @@ public class Vehicle implements Serializable {
         this.afm = afm;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
     @Override
     public String toString() {
@@ -109,7 +99,6 @@ public class Vehicle implements Serializable {
                 ", year='" + year + '\'' +
                 ", color='" + color + '\'' +
                 ", afm=" + afm +
-                ", userId=" + userId +
                 '}';
     }
 }

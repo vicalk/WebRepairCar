@@ -19,9 +19,6 @@ public class Part implements Serializable {
     @Column(name = "PART_COST")
     private int partCost;
 
-    @Column(name = "REPAIR_ID", insertable = false, updatable = false)
-    private Long repairId;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "REPAIR_ID", referencedColumnName = "REPAIR_ID")
     private Repair repair;
@@ -32,7 +29,6 @@ public class Part implements Serializable {
     public Part(String partType, int partCost, Long repairId) {
         this.partType = partType;
         this.partCost = partCost;
-        this.repairId = repairId;
     }
 
     public Long getPartId() {
@@ -59,21 +55,12 @@ public class Part implements Serializable {
         this.partCost = partCost;
     }
 
-    public Long getRepairId() {
-        return repairId;
-    }
-
-    public void setRepairId(Long repairId) {
-        this.repairId = repairId;
-    }
-
     @Override
     public String toString() {
         return "Part{" +
                 "partId=" + partId +
                 ", partType='" + partType + '\'' +
                 ", partCost=" + partCost +
-                ", repairId=" + repairId +
                 '}';
     }
 }

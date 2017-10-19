@@ -31,9 +31,6 @@ public class Repair implements Serializable {
     @Column(name = "REPAIR_DESCRIPTION", nullable = false)
     private String repairDescription;
 
-    @Column(name = "VEHICLE_ID ", nullable = false, insertable = false, updatable = false)
-    private Long VehicleId;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "VEHICLE_ID", referencedColumnName = "VEHICLE_ID")
     private Vehicle vehicle;
@@ -50,7 +47,6 @@ public class Repair implements Serializable {
         this.repairType = repairType;
         this.repairCost = repairCost;
         this.repairDescription = repairDescription;
-        VehicleId = vehicleId;
     }
 
     public Date getDate() {
@@ -93,14 +89,6 @@ public class Repair implements Serializable {
         this.repairDescription = repairDescription;
     }
 
-    public Long getVehicleId() {
-        return VehicleId;
-    }
-
-    public void setVehicleId(Long vehicleId) {
-        VehicleId = vehicleId;
-    }
-
     @Override
     public String toString() {
         return "Repair{" +
@@ -109,7 +97,6 @@ public class Repair implements Serializable {
                 ", repairType='" + repairType + '\'' +
                 ", repairCost='" + repairCost + '\'' +
                 ", repairDescription='" + repairDescription + '\'' +
-                ", VehicleId='" + VehicleId + '\'' +
                 '}';
     }
 }
