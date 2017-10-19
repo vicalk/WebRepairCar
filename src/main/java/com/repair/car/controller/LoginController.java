@@ -47,4 +47,14 @@ public class LoginController {
         return "update";
     }
 
+    @RequestMapping(value="/create", method=RequestMethod.GET)
+    public String create(){
+        return "create";
+    }
+
+    @RequestMapping(value="/search", method=RequestMethod.GET)
+    public String search(){
+        return "search";
+    }
+
 }
