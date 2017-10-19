@@ -22,11 +22,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.antMatcher("/static/**");
         http.authorizeRequests()
                 //.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().fullyAuthenticated()
                 .and().csrf().disable()
-                .antMatcher("/static/**")
                 .formLogin()//.defaultSuccessUrl("/")
                 .successHandler(loginSuccessHandler)
 
