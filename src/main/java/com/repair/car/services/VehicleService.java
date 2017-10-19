@@ -13,7 +13,6 @@ public interface VehicleService {
 
     List<VehicleDetails> findByPlateNo(String plateNo);
 
-    void save(BookForm bookForm);
 
 
 

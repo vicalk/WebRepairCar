@@ -21,3 +21,4 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
 
 }
+

@@ -4,6 +4,8 @@ public class VehicleSearchForm {
 
     private String plateNo;
 
+    private String Afm;
+
     public String getPlateNo() {
         return plateNo;
     }
@@ -12,4 +14,7 @@ public class VehicleSearchForm {
         this.plateNo = plateNo;
     }
 
+    public String getAfm() { return Afm; }
+
+    public void setAfm(String afm) { Afm = afm; }
 }

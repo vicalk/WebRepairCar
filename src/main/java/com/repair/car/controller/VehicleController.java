@@ -28,7 +28,7 @@ public class VehicleController {
     private VehicleService vehicleService;
 
     @RequestMapping(value = "/vehicleRegister", method = RequestMethod.GET)
-    public String vehicleService(Model model) {
+    public String vehicleRegister(Model model) {
         model.addAttribute(VEHICLE_REGISTER_FORM, new VehicleRegisterForm());
         return "vehicleRegister";
     }
@@ -63,23 +63,25 @@ public class VehicleController {
     }
 
     @RequestMapping(value = "/vehicleSearch", method = RequestMethod.GET)
-    public String login(Model model) {
+    public String vehicleSearch(Model model) {
         model.addAttribute(VEHICLE_SEARCH_FORM, new VehicleSearchForm());
         return "vehicleSearch";
     }
 
     @RequestMapping(value = "/vehicleSearch", method = RequestMethod.POST)
-    public String search(@ModelAttribute(VEHICLE_SEARCH_FORM) VehicleSearchForm vehicleSearchForm,
+    public String vehicleSearch(@ModelAttribute(VEHICLE_SEARCH_FORM) VehicleSearchForm vehicleSearchForm,
                          HttpSession session,
                          RedirectAttributes redirectAttributes) {
 
-        List bookList = vehicleService.finByPlateNo(searchForm.getTitle());
+        List vehicleList = vehicleService.finByPlateNo(vehicleSearchForm.getPlateNo());
 
-        if (bookList.isEmpty()) {
+        List vehicleList = vehicleService.finByAfm(vehicleSearchForm.getAfm());
+
+        if (vehicleList.isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "No vehicles found");
         }
 
-        redirectAttributes.addFlashAttribute(BOOKLIST, bookList);
+        redirectAttributes.addFlashAttribute(VEHICLELIST, vehicleList);
         return "redirect:/vehicleSearch";
     }
 
