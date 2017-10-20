@@ -23,7 +23,7 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String email = authentication.getName();
+        String email =  authentication.getName();
         String password = (String) authentication.getCredentials();
 
         User retrievedUser = userService.login(email, password);
