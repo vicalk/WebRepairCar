@@ -1,3 +1,4 @@
+
 <#import "/spring.ftl" as spring/>
 
 <html lang="en">
@@ -26,45 +27,50 @@
       </div>
 </nav>
 <h3>Welcome!</h3>
-<table width="75%" border="2" align="center">
-  <tbody>
-    <tr>
-      <th style="background-color:#FF0000">Service</th>
-      <th style="background-color:#FF0000">Date and Time</th>
-      <th style="background-color:#FF0000">Condition</th>
-      <th style="background-color:#FF0000">Type of Service</th>
-      <th style="background-color:#FF0000">Costs</th>
-      <th style="background-color:#FF0000">Owner</th>
-      <th style="background-color:#FF0000">Comments</th>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr><tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-   </tbody>
-</table>
+ </div>
+</nav>
+<h3>Welcome!</h3>
+
+      <!-- [#ftl] -->
+      <table id="vehicleTable" class="table" align="center">
+        <thead>
+          <tr>
+            <th>#ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>AFM</th>
+            <th>EMAIL</th>
+            <th>ADDRESS</th>
+            <th>USERTYPE</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <!-- [#if users?? && users?size > 0]
+         [#list users as user] -->
+          <tr>
+            <th scope="row">${user.id}</th>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.afm}</td>
+            <td>${user.email}</td>
+            <td>${user.address}</td>
+            <td>${user.userType}</td>
+
+          </tr>
+         <!--  [/#list]
+          [#else]
+                   <div class="alert alert-danger">
+            <strong>Error!</strong> No Users found.
+                   </div>
+          [/#if] -->
+        </tbody>
+      </table>
+
+
+ </body>
+</html>
+
 
  </body>
 </html>
