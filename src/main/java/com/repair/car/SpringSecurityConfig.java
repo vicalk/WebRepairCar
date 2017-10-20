@@ -25,6 +25,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .formLogin()
                 .loginPage("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
                 .successHandler(loginSuccessHandler)
                 .and()
                 .logout()
@@ -36,8 +38,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/register").anonymous()
-                .antMatchers("/adminPage").hasAnyAuthority("ADMIN")
-                .antMatchers("/userPage").hasAnyAuthority("SIMPLE")
+                .antMatchers("/admin").hasAnyAuthority("ADMIN")
+                .antMatchers("/user").hasAnyAuthority("SIMPLE")
 
                 .and()
                 .authenticationProvider(loginAuthenticationProvider);

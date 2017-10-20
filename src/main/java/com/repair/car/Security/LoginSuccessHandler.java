@@ -16,7 +16,7 @@ import java.util.Collection;
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private String ADMIN_SUCCESS_URL = "/admin";
-    private String DEFAULT_SUCCESS_URL = "/";
+    private String DEFAULT_SUCCESS_URL = "/user";
 
 
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {

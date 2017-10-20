@@ -11,14 +11,14 @@ package com.repair.car.controller;
 //
 //    @RequestMapping(value = "/register", method = RequestMethod.GET)
 //    public String register(Model model) {
-//        model.addAttribute(REGISTER_FORM, new RegistrationForm());
+//        model.addAttribute(REGISTER_FORM, new UserRegisterForm());
 //        return "register";
 //    }
 
 
 //    @RequestMapping(value = "/register", method = RequestMethod.POST)
 //    public String register(@Valid @ModelAttribute(REGISTER_FORM)
-//                                   RegistrationForm registrationForm,
+//                                   UserRegisterForm registrationForm,
 //                           BindingResult bindingResult, HttpSession session,
 //                           RedirectAttributes redirectAttributes) {
 //
