@@ -1,2 +1,2 @@
-insert into Owner(Afm,FirstName,LastName,Email,Pass) values ('1','John','Doe','john@mail.com','pass1234');
-insert into Owner(Afm,FirstName,LastName,Email,Pass) values ('2','Jane','Doe','jane@mail.com','pass1234');
+insert into users(USER_ID,AFM,FIRSTNAME,LASTNAME,email,PASSWORD,user_type) values ('1','12','John','Doe','john@mail.com','pass1234','ADMIN');
+insert into users(USER_ID,AFM,FIRSTNAME,LASTNAME,email,PASSWORD,user_type) values ('2','23','Jane','Doe','jane@mail.com','pass1234','SIMPLE');

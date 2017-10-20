@@ -42,7 +42,7 @@ public class RegistrationForm {
     private String password;
 
     @NotNull
-    private int userType;
+    private String userType;
 
     public String getAfm() {
         return afm;
@@ -92,11 +92,11 @@ public class RegistrationForm {
         this.password = password;
     }
 
-    public int getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType( int userType) {
+    public void setUserType( String userType) {
         this.userType = userType;
     }
 }

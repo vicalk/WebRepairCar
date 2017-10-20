@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void logout(String username) {
-        loggedInUsers.remove(username);
+    public void logout(String email) {
+        loggedInUsers.remove(email);
     }
 
     @Override

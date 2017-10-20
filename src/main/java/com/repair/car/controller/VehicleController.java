@@ -27,7 +27,7 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
-    @RequestMapping(value = "/`", method = RequestMethod.GET)
+    @RequestMapping(value = "/vehicleRegister", method = RequestMethod.GET)
     public String vehicleRegister(Model model) {
         model.addAttribute(VEHICLE_REGISTER_FORM, new VehicleRegisterForm());
         return "vehicleRegister";
