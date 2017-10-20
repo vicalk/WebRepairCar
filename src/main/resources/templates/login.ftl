@@ -22,14 +22,14 @@
     <form role="form" action="/login" method="post" id="loginForm" name="loginForm">
      <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
       </div>
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-sm btn-default">Sign in</button>
+      <button type="submit" class="btn btn-md btn-primary">Sign in</button>
     </form>
 
       </div>

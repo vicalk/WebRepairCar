@@ -33,13 +33,13 @@ public class User implements Serializable {
     private String password;
 
     @Column(name = "USER_TYPE",nullable = false)
-    private int userType;
+    private String userType;
 
     @OneToMany(mappedBy = "user", targetEntity = Vehicle.class , cascade=CascadeType.REMOVE)
     private List<Vehicle> vehicles;
 
 
-    public User(String afm, String lastname, String firstname, String address, String email, String password, int userType) {
+    public User(String afm, String lastname, String firstname, String address, String email, String password, String userType) {
 
         this.afm = afm;
         this.lastname = lastname;
@@ -100,11 +100,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(int userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 

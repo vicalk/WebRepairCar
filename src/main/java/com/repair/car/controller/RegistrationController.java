@@ -1,22 +1,5 @@
 package com.repair.car.controller;
 
-import com.repair.car.converters.UserConverter;
-import com.repair.car.domain.User;
-import com.repair.car.model.RegistrationForm;
-import com.repair.car.services.AccountService;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 
 //@Controller
 //public class RegistrationController {
@@ -24,7 +7,7 @@ import javax.validation.Valid;
 //    private static final String REGISTER_FORM = "registrationForm";
 //
 //    @Autowired
-//    private AccountService accountService;
+//    private UserService accountService;
 //
 //    @RequestMapping(value = "/register", method = RequestMethod.GET)
 //    public String register(Model model) {
