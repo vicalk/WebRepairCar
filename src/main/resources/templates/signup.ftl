@@ -42,6 +42,9 @@
                <li><a href="vehicle.ftl">CREATE</a></li>
                <li><a href="Vehicle_se.ftl">SEARCH</a></li>
                </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                     <li><a href="login.ftl"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                 </ul>
                 </div>
    </nav> 
         <div class="vehicleRegistration">

@@ -17,7 +17,12 @@
       <a class="navbar-brand" href="login.ftl">CAR REPAIR webApp</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="login.ftl">Home</a></li>
+      <li class="active"><a href="user.ftl">Home</a></li>
+      </ul>
+      </ul>
+       <ul class="nav navbar-nav navbar-right">
+           <li><a href="login.ftl"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
       </div>
 </nav>
 <h3>Welcome!</h3>

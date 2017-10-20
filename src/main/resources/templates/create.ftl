@@ -18,7 +18,7 @@
       <a class="navbar-brand" href="admin.ftl">CAR REPAIR webApp</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="login.ftl">Home</a></li>
+      <li class="active"><a href="admin.ftl">Home</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">OWNER
         <span class="caret"></span></a>
@@ -36,12 +36,17 @@
                 <li><a href="#">SEARCH</a></li>
                 </ul>
       <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">VEHICLE
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="vehicle.ftl">CREATE</a></li>
-                <li><a href="Vehicle_se.ftl">SEARCH</a></li>
-                 </ul>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">VEHICLE
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="vehicle.ftl">CREATE</a></li>
+                      <li><a href="Vehicle_se.ftl">SEARCH</a></li>
+                     </ul>
+                      </li>
+                      </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                          <li><a href="login.ftl"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                      </ul>
                 </div>
    </nav> 
         <div class="vehicleRegistration">
