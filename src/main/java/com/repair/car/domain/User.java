@@ -36,13 +36,16 @@ public class User implements Serializable {
     @Column(name = "USER_TYPE",nullable = false)
     private String role;
 
+    @Column(name = "CAR_MODEL")
+    private String carmodel;
+
     /*@OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
     private List<Vehicle> vehicles;*/
 
     public User() {
     }
 
-    public User(String afm, String lastname, String firstname, String address, String email, String password, String role) {
+    public User(String afm, String lastname, String firstname, String address, String email, String password, String role, String carmodel) {
         this.afm = afm;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -50,6 +53,7 @@ public class User implements Serializable {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.carmodel=carmodel;
     }
 
     public String getAfm() {
@@ -108,6 +112,13 @@ public class User implements Serializable {
         this.role = role;
     }
 
+    public String getCarmodel() {
+        return carmodel;
+    }
+
+    public void setCarmodel(String carmodel) {
+        this.carmodel = carmodel;
+    }
     @Override
     public String toString() {
         return "User{" +
@@ -118,6 +129,7 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", carmodel='" + carmodel + '\'' +
                 '}';
     }
 }

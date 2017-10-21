@@ -41,20 +41,4 @@ public class LoginController {
     public String signup(){
         return "signup";
     }
-
-    @RequestMapping(value="/update", method=RequestMethod.GET)
-    public String update(){
-        return "update";
-    }
-
-    @RequestMapping(value="/create", method=RequestMethod.GET)
-    public String create(){
-        return "create";
-    }
-
-    @RequestMapping(value="/search", method=RequestMethod.GET)
-    public String search(){
-        return "search";
-    }
-
 }

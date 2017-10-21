@@ -21,7 +21,7 @@ public class RegistrationForm {
 
     @Pattern(regexp = AFM_PATTERN, message = "{register.afm.invalid}")
     @Size(min = AFM_SIZE, max = AFM_SIZE, message = "{register.afm.size}")
-    private int afm;
+    private String afm;
 
     @Pattern(regexp = CHARACTERS_PATTERN, message = "{register.lastname.invalid}")
     private String lastname;
@@ -41,11 +41,15 @@ public class RegistrationForm {
     @Size(min = PASSWORD_MINSIZE, message = "{register.password.size}")
     private String password;
 
-    public int getAfm() {
+    private String role;
+
+    private String carmodel;
+
+    public String getAfm() {
         return afm;
     }
 
-    public void setAfm(int afm) {
+    public void setAfm(String afm) {
         this.afm = afm;
     }
 
@@ -87,5 +91,21 @@ public class RegistrationForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getCarmodel() {
+        return carmodel;
+    }
+
+    public void setCarmodel(String carmodel) {
+        this.carmodel = carmodel;
     }
 }

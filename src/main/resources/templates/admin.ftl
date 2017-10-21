@@ -26,9 +26,8 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">OWNER
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="create.ftl">CREATE</a></li>
+          <li><a href="register.ftl">CREATE</a></li>
           <li><a href="search.ftl">SEARCH</a></li>
-          <li><a href="update.ftl">UPDATE</a></li>
         </ul>
       </li>
       <li class="dropdown">

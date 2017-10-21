@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,7 +23,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/static/**");
+        //http.antMatcher("/static/**");
         http.authorizeRequests()
                 //.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().fullyAuthenticated()
@@ -44,7 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Permision Authorities
                 .and()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/register").anonymous()
                 .antMatchers("/admin").hasAnyAuthority("ADMIN")
                 .antMatchers("/user").hasAnyAuthority("SIMPLE")
@@ -52,7 +53,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authenticationProvider(loginAuthenticationProvider);
     }
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(loginAuthenticationProvider);
