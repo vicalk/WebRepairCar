@@ -1,6 +1,6 @@
-package com.repair.car.controller;
-
-
+//package com.repair.car.controller;
+//
+//
 //@Controller
 //public class RegistrationController {
 //    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(RegistrationController.class);
@@ -14,8 +14,8 @@ package com.repair.car.controller;
 //        model.addAttribute(REGISTER_FORM, new UserRegisterForm());
 //        return "register";
 //    }
-
-
+//
+//
 //    @RequestMapping(value = "/register", method = RequestMethod.POST)
 //    public String register(@Valid @ModelAttribute(REGISTER_FORM)
 //                                   UserRegisterForm registrationForm,
@@ -46,6 +46,6 @@ package com.repair.car.controller;
 //
 //
 //    }
-
-
+//
+//
 //}

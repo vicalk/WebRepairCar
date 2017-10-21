@@ -12,6 +12,8 @@ public class UserRegisterForm {
 
     private static final String CHARACTERS_PATTERN = "^[a-zA-Z ]*$";
 
+    private static final String NUMBERSCHARACTERS_PATTERN = "^[a-zA-Z0-9]*$";
+
     private static final String EMAIL_PATTERN = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,63}$";
 
     private static final int PASSWORD_MINSIZE = 6;
@@ -29,7 +31,7 @@ public class UserRegisterForm {
     @Pattern(regexp = CHARACTERS_PATTERN, message = "{register.firstname.invalid}")
     private String firstname;
 
-    @Pattern(regexp = CHARACTERS_PATTERN, message = "{register.address.invalid}")
+    @Pattern(regexp = NUMBERSCHARACTERS_PATTERN, message = "{register.address.invalid}")
     private String address;
 
     @NotNull(message = "{register.email.null}")

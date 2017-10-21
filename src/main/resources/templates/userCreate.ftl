@@ -12,87 +12,72 @@
    <link rel="stylesheet" type="text/css" href="stylereg.css">
 </head>
         <body>
-        <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="admin.ftl">CAR REPAIR webApp</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="admin.ftl">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">OWNER
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="create.ftl">CREATE</a></li>
-          <li><a href="search.ftl">SEARCH</a></li>
-          <li><a href="update.ftl">UPDATE</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICE
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">CREATE</a></li>
-                <li><a href="#">SEARCH</a></li>
-                </ul>
-      <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">VEHICLE
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="vehicle.ftl">CREATE</a></li>
-                      <li><a href="Vehicle_se.ftl">SEARCH</a></li>
-                     </ul>
-                      </li>
-                      </ul>
-                     <ul class="nav navbar-nav navbar-right">
-                          <li><a href="login.ftl"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                      </ul>
-                </div>
-   </nav> 
-        <div class="vehicleRegistration">
-        
-        <div class="col-md-2">
-        </div>
-        
-        <div class="col-md-8 col-lg-6">
-        <header><h1>User registration form</h1>
-        
-        <h4>Please fill all the following fields</h4></header>
 
-       <div class="side">
-        <form action="/action_page.php">
-            <label for="lname">Tax number</label>
-            <input type="text" id="TaxNum" name="TaxNum" placeholder="Type a unique tax number.." required><br>
+<#include navbar.ftl>
 
-           <label for="fname">First name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Type first name.." required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <div class="container">
+            <form action="/register" method="post" id="userRegisterForm" name="userRegisterForm">
 
-           <label for="lname">Last name</label>
-            <input type="text" id="lname" name="Last name" placeholder="Type last name.." required><br>
+            <#--bind this field with the registration form fields-->
 
-           <label for="TaxNum">e-mail</label>
-            <input type="text" id="email" name="e-mail" placeholder="Type e-mail.." required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            <@spring.bind "userRegisterForm.afm"/>
+                <label for="afm">Tax ID:</label>
+                <input type="number" name="afm" id="afm" placeholder="firstname"/>
+            <#--dispay validation error message here for this field-->
 
-           <label for="Type of user">User Type</label>
-            <select id="UserType" name="UserType" required>
-                <option value=""disabled selected>---</option>
-                <option value="Admin">Admin</option>
-                <option value="Simple User">Simple user</option>
-            </select><br>
+            <#list spring.status.errorMessages as error>
+                <span>${error}</span>
+            </#list>
 
-           <label for="userpass">User password</label>
-            <input type="text" id="UserP" name="UserPass" placeholder="Set new password.." required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            <@spring.bind "userRegisterForm.lastname"/>
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname" placeholder="lastname"/>
+            <#list spring.status.errorMessages as error>
+                <span>${error}</span>
+            </#list>
 
-           <label for="ConfPass">Confirm password</label>
-            <input type="text" id="ConfirmPass" name="ConfirmPass" placeholder="Confirm password number.." required><br>
-            <div class="divCheck"></div>
-            <br>
-            <label for="Address">Address</label>
-            <input type="text" id="Address" name="Address" placeholder="Type address.." required><br>
+            <@spring.bind "userRegisterForm.firstname"/>
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname" placeholder="firstname"/>
+            <#list spring.status.errorMessages as error>
+                <span>${error}</span>
+            </#list>
 
-           <label for="TaxNum">Plate number</label>
-            <input type="text" id="platenum" name="platenum" placeholder="Type plate number.." required><br>
+             <@spring.bind "userRegisterForm.address"/>
+                 <label for="address">Address</label>
+                 <input type="text" name="address" id="address" placeholder="address"/>
+             <#list spring.status.errorMessages as error>
+                 <span>${error}</span>
+             </#list>
+
+
+            <@spring.bind "userRegisterForm.email"/>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="email"/>
+            <#list spring.status.errorMessages as error>
+                <span>${error}</span>
+            </#list>
+
+            <@spring.bind "userRegisterForm.password"/>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="password"/>
+            <#list spring.status.errorMessages as error>
+                <span>${error}</span>
+            </#list>
+
+            <@spring.bind "registrationForm.userType"/>
+                <label for="userType">User Privileges:</label>
+                <input type="radio" name="userType" value="SIMPLE" />User<br>
+                <input type="radio" name="userType" value="ADMIN" />Admin
+            <#list spring.status.errorMessages as error>
+                <span>${error}</span>
+            </#list>
+
+                <button type="submit">Register</button>
             </form>
+        </div>
+
+
 
    <!-- Choose if you want to add a vehicle:<br>
 <a href="tsertsrtete.html"><button>Go to vehicle form</button></a> !-->
