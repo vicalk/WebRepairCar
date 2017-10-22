@@ -18,13 +18,13 @@
    <div class="container">
        <h1>Admin</h1>
        <div class="row">
-         <form  class="form-group" action="/admin/userSearch" method="post" name="userSearchForm id=name="userSearchForm">
+         <form  class="form-inline" action="/admin/userSearch" method="post" name="userSearchForm id=name="userSearchForm">
            <div class="col-sm-4 col-sm-offset-7">
            <div class="form-group">
               <@spring.bind "userSearchForm.userSearchText"/>
              <input type="text" class="form-control" name="userSearchText" id="userSearchText" placeholder="Search by Tax id or Email...">
              <span style="display: inline;" class="input-group-btn">
-               <button class="btn btn-default btn-primary" type="button">Search</button>
+               <button class="btn btn-default btn-primary" type="submit">Search</button>
              </span>
            </div>
               </div>
@@ -54,7 +54,7 @@
 
 <#if userList?? && userList?size > 0>
 
-       <table id="vehicleTable" class="table" >
+       <table id="userTable" class="table" >
          <thead>
            <tr>
              <th>#ID</th>

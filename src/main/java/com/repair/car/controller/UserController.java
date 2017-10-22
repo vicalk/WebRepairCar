@@ -25,7 +25,7 @@ public class UserController {
 
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
     private static final String REGISTER_FORM = "userRegisterForm";
-    private static final String SEARCH_FORM = "usersearchForm";
+    private static final String SEARCH_FORM = "userSearchForm";
     private static final String USER_LIST = "users";
 
     @Autowired
@@ -77,7 +77,9 @@ public class UserController {
     @RequestMapping(value = "/admin/userSearch", method = RequestMethod.GET)
     public String userSearch(Model model) {
         model.addAttribute(SEARCH_FORM, new UserSearchForm());
+        System.err.println("GET");
         return "userSearch";
+
     }
 
     @RequestMapping(value = "/admin/userSearch", method = RequestMethod.POST)
@@ -85,13 +87,15 @@ public class UserController {
                          HttpSession session,
                          RedirectAttributes redirectAttributes) {
 
-        List<User> userList = userService.userSearch(userSearchForm.getUserSearchText(),userSearchForm.getUserSearchType());
+        List<UserRegisterForm> userList = userService.userSearch(userSearchForm.getUserSearchText(),userSearchForm.getUserSearchType());
+        System.err.println("POST");
 
         if (userList.isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "No Users found");
         }
 
-        redirectAttributes.addFlashAttribute(USER_LIST, userList);
+        redirectAttributes.addFlashAttribute(USER_LIST, userList );
+        System.err.println(userList.get(0).getFirstname());
         return "redirect:/admin/userSearch";
     }
 }

@@ -1,16 +1,17 @@
 package com.repair.car.services;
 
 import com.repair.car.Exceptions.InvalidCredentialsException;
+import com.repair.car.converters.UserConverter;
+import com.repair.car.model.UserRegisterForm;
 import com.repair.car.repositories.UserRepository;
 import com.repair.car.domain.User;
-//import com.repair.car.Exceptions.InvalidCredentialsException;
-//import com.repair.car.Exceptions.LogoutException;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,23 +39,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> userSearch(String userSearchText, String userSearchType)  {
+    public List<UserRegisterForm> userSearch(String userSearchText, String userSearchType)  {
 
-        List<User> retrievedUser;
+        List<User> retrievedUsers;
 
         switch (userSearchType) {
             case "AFM":
-                 retrievedUser =  userRepository.findByAfm(userSearchText);
+                 retrievedUsers =  userRepository.findByAfm(userSearchText);
                 break;
             case "EMAIL":
-                 retrievedUser = userRepository.findByEmail(userSearchText);
+                 retrievedUsers = userRepository.findByEmail(userSearchText);
                 break;
             default:
-                retrievedUser = null ;
+                retrievedUsers = null ;
         }
 
-        return retrievedUser;
-
+        List<UserRegisterForm> userList = new ArrayList<>();
+        for(User user:retrievedUsers){
+            userList.add(UserConverter.buildOwnerForm(user));
+        }
+        return userList;
     }
 
 

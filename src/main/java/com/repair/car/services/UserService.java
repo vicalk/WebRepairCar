@@ -1,6 +1,7 @@
 package com.repair.car.services;
 
 import com.repair.car.domain.User;
+import com.repair.car.model.UserRegisterForm;
 import org.springframework.security.core.AuthenticationException;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface UserService {
 
     void register(User user) throws Exception;
 
-    List<User> userSearch(String userSearchText, String userSearchType) ;
+    List<UserRegisterForm> userSearch(String userSearchText, String userSearchType) ;
 
 
 }
