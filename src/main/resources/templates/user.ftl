@@ -14,10 +14,10 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="login.ftl">CAR REPAIR webApp</a>
+      <a class="navbar-brand" href="/login">CAR REPAIR webApp</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="login.ftl">Home</a></li>
+      <li class="active"><a href="/user">Home</a></li>
       </div>
 </nav>
 <h3>Welcome!</h3>

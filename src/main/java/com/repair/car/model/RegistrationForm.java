@@ -19,6 +19,8 @@ public class RegistrationForm {
     private static final int AFM_SIZE = 9;
 
 
+    private Long userID;
+
     @Pattern(regexp = AFM_PATTERN, message = "{register.afm.invalid}")
     @Size(min = AFM_SIZE, max = AFM_SIZE, message = "{register.afm.size}")
     private String afm;
@@ -43,7 +45,13 @@ public class RegistrationForm {
 
     private String role;
 
-    private String carmodel;
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
 
     public String getAfm() {
         return afm;
@@ -99,13 +107,5 @@ public class RegistrationForm {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getCarmodel() {
-        return carmodel;
-    }
-
-    public void setCarmodel(String carmodel) {
-        this.carmodel = carmodel;
     }
 }

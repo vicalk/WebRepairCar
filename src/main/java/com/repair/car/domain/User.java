@@ -12,7 +12,7 @@ import java.util.*;
 public class User implements Serializable {
     @Id
     @Column(name = "USER_ID",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
     @Column(name = "AFM")
@@ -33,11 +33,8 @@ public class User implements Serializable {
     @Column(name = "PASSWORD",nullable = false)
     private String password;
 
-    @Column(name = "USER_TYPE",nullable = false)
+    @Column(name = "ROLE",nullable = false)
     private String role;
-
-    @Column(name = "CAR_MODEL")
-    private String carmodel;
 
     /*@OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
     private List<Vehicle> vehicles;*/
@@ -45,7 +42,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String afm, String lastname, String firstname, String address, String email, String password, String role, String carmodel) {
+    public User(String afm, String lastname, String firstname, String address, String email, String password, String role) {
         this.afm = afm;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -53,7 +50,6 @@ public class User implements Serializable {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.carmodel=carmodel;
     }
 
     public String getAfm() {
@@ -112,13 +108,14 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public String getCarmodel() {
-        return carmodel;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setCarmodel(String carmodel) {
-        this.carmodel = carmodel;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
+
     @Override
     public String toString() {
         return "User{" +
@@ -129,7 +126,6 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
-                ", carmodel='" + carmodel + '\'' +
                 '}';
     }
 }
