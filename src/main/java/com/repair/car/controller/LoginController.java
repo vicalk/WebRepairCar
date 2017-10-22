@@ -19,6 +19,13 @@ public class LoginController {
 
     private static final String LOGIN_FORM = "loginForm";
 
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home(Model model) {
+
+        return "redirect:/login";
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model,
                         @RequestParam(name = "error", required = false) String error,

@@ -1,7 +1,5 @@
 <#import "/spring.ftl" as spring/>
 
-<!DOCTYPE html>
-<html>
 <head>
   <title>Car Repair Registration Form</title>
   <meta charset="utf-8">
