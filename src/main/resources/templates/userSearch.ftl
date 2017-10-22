@@ -54,7 +54,7 @@
 
 
 
-       <!-- [#ftl] -->
+         [#ftl]
        <table id="vehicleTable" class="table" >
          <thead>
            <tr>
@@ -69,8 +69,8 @@
            </tr>
          </thead>
          <tbody>
-           <!-- [#if users?? && users?size > 0]
-          [#list users as user] -->
+           [#if users?? && users?size > 0]
+          [#list users as user]
            <tr>
              <th scope="row">${user.id}</th>
              <td>${user.firstName}</td>
@@ -81,12 +81,12 @@
              <td>${user.userType}</td>
              <td><a class="btn btn-xs btn-default" href="#!">Edit</a> <a class="btn btn-xs btn-danger" href="#!">Delete</a></td>
            </tr>
-          <!--  [/#list]
+          < [/#list]
            [#else]
                     <div class="alert alert-danger">
              <strong>Error!</strong> No Users found.
                     </div>
-           [/#if] -->
+           [/#if]
          </tbody>
        </table>
        <div>

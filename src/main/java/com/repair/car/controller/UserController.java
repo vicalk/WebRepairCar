@@ -26,7 +26,7 @@ public class UserController {
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
     private static final String REGISTER_FORM = "userRegisterForm";
     private static final String SEARCH_FORM = "usersearchForm";
-    private static final String USER_LIST = "usersearchForm";
+    private static final String USER_LIST = "users";
 
     @Autowired
     private UserService userService;
@@ -85,14 +85,14 @@ public class UserController {
                          HttpSession session,
                          RedirectAttributes redirectAttributes) {
 
-         User userList = userService.userSearch(userSearchForm.getUserSearchText(),userSearchForm.getUserSearchType());
+        List<User> userList = userService.userSearch(userSearchForm.getUserSearchText(),userSearchForm.getUserSearchType());
 
         if (userList.isEmpty()) {
-            redirectAttributes.addFlashAttribute("errorMessage", "No books found");
+            redirectAttributes.addFlashAttribute("errorMessage", "No Users found");
         }
 
-        redirectAttributes.addFlashAttribute(BOOKLIST, bookList);
-        return "redirect:/search";
+        redirectAttributes.addFlashAttribute(USER_LIST, userList);
+        return "redirect:/admin/userSearch";
     }
 }
 
