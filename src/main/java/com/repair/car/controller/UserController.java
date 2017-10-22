@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -25,6 +26,7 @@ public class UserController {
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
     private static final String REGISTER_FORM = "userRegisterForm";
     private static final String SEARCH_FORM = "usersearchForm";
+    private static final String USER_LIST = "usersearchForm";
 
     @Autowired
     private UserService userService;
@@ -72,16 +74,25 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "admin/owners/search", method = RequestMethod.GET)
-    public String search(Model model, @ModelAttribute(SEARCH_FORM) UserSearchForm userSearchForm) {
+    @RequestMapping(value = "/admin/userSearch", method = RequestMethod.GET)
+    public String userSearch(Model model) {
+        model.addAttribute(SEARCH_FORM, new UserSearchForm());
+        return "userSearch";
+    }
 
-        pair= accountService.searchOwnerBySearchText(searchOwnerForm.getSearchText().replaceAll(" ",""));
+    @RequestMapping(value = "/admin/userSearch", method = RequestMethod.POST)
+    public String userSearch(@ModelAttribute(SEARCH_FORM) UserSearchForm userSearchForm,
+                         HttpSession session,
+                         RedirectAttributes redirectAttributes) {
 
-        model.addAttribute(OWNERS_LIST,pair.getKey());
-        model.addAttribute(SEARCH_OWNER,new SearchOwnerForm());
-        model.addAttribute("message", pair.getValue());
+         User userList = userService.userSearch(userSearchForm.getUserSearchText(),userSearchForm.getUserSearchType());
 
-        return "owners";
+        if (userList.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "No books found");
+        }
+
+        redirectAttributes.addFlashAttribute(BOOKLIST, bookList);
+        return "redirect:/search";
     }
 }
 

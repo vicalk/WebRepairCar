@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -37,9 +38,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User userSearch(String userSearchText,String userSearchType) throws Exception {
+    public List<User> userSearch(String userSearchText, String userSearchType)  {
 
-         User retrievedUser;
+        List<User> retrievedUser;
 
         switch (userSearchType) {
             case "AFM":
@@ -52,12 +53,8 @@ public class UserServiceImpl implements UserService {
                 retrievedUser = null ;
         }
 
-        if (retrievedUser == null) {
-
-            throw new Exception("User not found!");
-        }
-
         return retrievedUser;
+
     }
 
 
