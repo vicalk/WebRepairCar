@@ -1,5 +1,7 @@
 package com.repair.car.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -34,11 +36,11 @@ public class UserRegisterForm {
     @Pattern(regexp = NUMBERSCHARACTERS_PATTERN, message = "{register.address.invalid}")
     private String address;
 
-    @NotNull(message = "{register.email.null}")
+    @NotEmpty(message = "{register.email.empty}")
     @Pattern(regexp = EMAIL_PATTERN, message = "{register.email.invalid}")
     private String email;
 
-    @NotNull(message = "{register.password.null}")
+    @NotEmpty(message = "{register.password.empty}")
     @Pattern(regexp = PASSWORD_PATTERN, message = "{register.password.invalid}")
     @Size(min = PASSWORD_MINSIZE, message = "{register.password.size}")
     private String password;
