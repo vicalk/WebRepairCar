@@ -18,7 +18,7 @@
    <div class="container">
        <h1>Admin</h1>
        <div class="row">
-         <form  class="form-inline" action="/admin/userSearch" method="post" name="userSearchForm">
+         <form  class="form-group" action="/admin/userSearch" method="post" name="userSearchForm id=name="userSearchForm">
            <div class="col-sm-4 col-sm-offset-7">
            <div class="form-group">
               <@spring.bind "userSearchForm.userSearchText"/>
