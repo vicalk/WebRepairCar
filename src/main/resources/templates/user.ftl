@@ -11,56 +11,64 @@
    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/login">CAR REPAIR webApp</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/user">Home</a></li>
-      </div>
-</nav>
-<h3>Welcome!</h3>
-<table width="75%" border="2" align="center">
-  <tbody>
-    <tr>
-      <th style="background-color:#FF0000">Service</th>
-      <th style="background-color:#FF0000">Date and Time</th>
-      <th style="background-color:#FF0000">Condition</th>
-      <th style="background-color:#FF0000">Type of Service</th>
-      <th style="background-color:#FF0000">Costs</th>
-      <th style="background-color:#FF0000">Owner</th>
-      <th style="background-color:#FF0000">Comments</th>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr><tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-   </tbody>
-</table>
 
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/login">CAR REPAIR webApp</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="/user">Home</a></li>
+                </div>
+            </nav>
+        <h3>Welcome!</h3>
+        <table width="75%" border="2" align="center">
+        <tbody>
+        <tr>
+            <th style="background-color:#FF0000">Service</th>
+            <th style="background-color:#FF0000">Date and Time</th>
+            <th style="background-color:#FF0000">Condition</th>
+            <th style="background-color:#FF0000">Type of Service</th>
+            <th style="background-color:#FF0000">Costs</th>
+            <th style="background-color:#FF0000">Owner</th>
+            <th style="background-color:#FF0000">Comments</th>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+    <form name="UserForm" action="/logout"  style="border:1px solid #ccc">
+        <div class="container">
+            <div class="clearfix">
+                <button type="submit" class="logout">Log out</button>
+            </div>
+        </div>
+ </form>
  </body>
 </html>
 	

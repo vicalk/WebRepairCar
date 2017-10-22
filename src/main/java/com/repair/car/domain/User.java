@@ -36,8 +36,8 @@ public class User implements Serializable {
     @Column(name = "ROLE",nullable = false)
     private String role;
 
-    /*@OneToMany(mappedBy = "user", targetEntity = Vehicle.class)
-    private List<Vehicle> vehicles;*/
+    @OneToMany(mappedBy = "user", targetEntity = Vehicle.class , cascade=CascadeType.REMOVE)
+    private List<Vehicle> vehicles;
 
     public User() {
     }

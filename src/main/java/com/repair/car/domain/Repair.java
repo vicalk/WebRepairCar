@@ -1,4 +1,3 @@
-/*
 package com.repair.car.domain;
 
 import javax.persistence.*;
@@ -7,7 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 
-@Entity(name = "REPAIR")
+@Entity
+@Table (name = "REPAIRS")
 
 public class Repair implements Serializable {
     @Id
@@ -15,46 +15,45 @@ public class Repair implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long repairId;
 
-    @Column(name = "DATE", nullable = false)
-    private Date date;
+    @Column(name = "REPAIR_DATE", nullable = false)
+    private Date repairDate;
 
-    @Column(name = "STATUS_REPAIR")
+    @Column(name = "REPAIR_STATUS")
     private String repairStatus;
 
-    @Column(name = "TYPE_REPAIR")
+    @Column(name = "REPAIR_TYPE")
     private String repairType;
 
-    @Column(name = "COST_REPAIR")
+    @Column(name = "REPAIR_COST")
     private int repairCost;
 
     @Column(name = "REPAIR_DESCRIPTION", nullable = false)
     private String repairDescription;
 
-    @Column(name = "VEHICLE_ID ", nullable = false)
-    private Long VehicleId;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "VEHICLE_ID", referencedColumnName = "VEHICLE_ID")
     private Vehicle vehicle;
 
-    @OneToMany(mappedBy = "Repair", targetEntity = Part.class)
+    @OneToMany(mappedBy = "repair", targetEntity = Part.class , cascade=CascadeType.REMOVE)
     private List<Part> parts;
 
+
+    public Repair() { }
+
     public Repair(Date date, String repairStatus, String repairType, int repairCost, String repairDescription, Long vehicleId) {
-        this.date = date;
+        this.repairDate = date;
         this.repairStatus = repairStatus;
         this.repairType = repairType;
         this.repairCost = repairCost;
         this.repairDescription = repairDescription;
-        VehicleId = vehicleId;
     }
 
     public Date getDate() {
-        return date;
+        return repairDate;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.repairDate = date;
     }
 
     public String getRepairStatus() {
@@ -89,27 +88,14 @@ public class Repair implements Serializable {
         this.repairDescription = repairDescription;
     }
 
-    public Long getVehicleId() {
-        return VehicleId;
-    }
-
-    public void setVehicleId(Long vehicleId) {
-        VehicleId = vehicleId;
-    }
-
     @Override
     public String toString() {
         return "Repair{" +
-                "date='" + date + '\'' +
+                "date='" + repairDate + '\'' +
                 ", repairStatus='" + repairStatus + '\'' +
                 ", repairType='" + repairType + '\'' +
                 ", repairCost='" + repairCost + '\'' +
                 ", repairDescription='" + repairDescription + '\'' +
-                ", VehicleId='" + VehicleId + '\'' +
                 '}';
     }
 }
-
-
-
-*/

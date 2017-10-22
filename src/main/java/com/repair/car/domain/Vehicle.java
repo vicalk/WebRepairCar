@@ -1,4 +1,3 @@
-/*
 package com.repair.car.domain;
 
 import java.io.Serializable;
@@ -7,7 +6,8 @@ import java.util.List;
 import javax.persistence.*;
 
 
-@Entity (name = "VEHICLE")
+@Entity
+@Table (name = "VEHICLES")
 public class Vehicle implements Serializable {
     @Id
     @Column(name = "VEHICLE_ID",nullable = false)
@@ -20,30 +20,34 @@ public class Vehicle implements Serializable {
     @Column(name = "CAR_MODEL")
     private String carModel;
 
-    @Column(name = "YEAR_MAKE")
+    @Column(name = "YEAR")
     private String year;
 
     @Column(name = "COLOR")
     private String color;
 
-    @Column(name = "USER_ID", nullable = false)
-    private Long userId;
+    @Column(name = "AFM")
+    private String afm;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private User user;
 
-    @OneToMany(mappedBy = "vehicle", targetEntity = Repair.class)
+    @OneToMany(mappedBy = "vehicle", targetEntity = Repair.class , cascade=CascadeType.REMOVE)
     private List<Repair> repairs;
 
 
-    public Vehicle(String plateNo, String carModel, String year, String color, Long userId) {
+    public Vehicle(String plateNo, String carModel, String year, String color, String afm) {
         this.plateNo = plateNo;
         this.carModel = carModel;
         this.year = year;
         this.color = color;
-        this.userId = userId;
+        this.afm = afm;
+
+
     }
+
+    public Vehicle() { }
 
     public String getPlateNo() {
         return plateNo;
@@ -77,13 +81,14 @@ public class Vehicle implements Serializable {
         this.color = color;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getAfm() {
+        return afm;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setAfm(String afm) {
+        this.afm = afm;
     }
+
 
     @Override
     public String toString() {
@@ -92,8 +97,7 @@ public class Vehicle implements Serializable {
                 ", carModel='" + carModel + '\'' +
                 ", year='" + year + '\'' +
                 ", color='" + color + '\'' +
-                ", userId=" + userId +
+                ", afm=" + afm +
                 '}';
     }
 }
-*/
