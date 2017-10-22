@@ -13,8 +13,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     Page<User> findAll(Pageable pageable);
 
-    //User findByEmail(String email);
-
     User findByEmailAndPassword(String email, String password);
 
     List<User> findByAfm(String afm);
@@ -22,4 +20,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
     List<User> findByEmail(String email);
 
     User save(User user);
+
+    void delete(User user);
 }
