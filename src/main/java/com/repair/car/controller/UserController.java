@@ -3,6 +3,7 @@ package com.repair.car.controller;
 import com.repair.car.converters.UserConverter;
 import com.repair.car.domain.User;
 import com.repair.car.model.UserRegisterForm;
+import com.repair.car.model.UserSearchForm;
 import com.repair.car.services.UserService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class UserController {
 
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
     private static final String REGISTER_FORM = "userRegisterForm";
+    private static final String SEARCH_FORM = "usersearchForm";
 
     @Autowired
     private UserService userService;
@@ -70,7 +72,17 @@ public class UserController {
 
     }
 
+    @RequestMapping(value = "admin/owners/search", method = RequestMethod.GET)
+    public String search(Model model, @ModelAttribute(SEARCH_FORM) UserSearchForm userSearchForm) {
 
+        pair= accountService.searchOwnerBySearchText(searchOwnerForm.getSearchText().replaceAll(" ",""));
+
+        model.addAttribute(OWNERS_LIST,pair.getKey());
+        model.addAttribute(SEARCH_OWNER,new SearchOwnerForm());
+        model.addAttribute("message", pair.getValue());
+
+        return "owners";
+    }
 }
 
 

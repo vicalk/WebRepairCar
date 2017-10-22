@@ -37,6 +37,31 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User userSearch(String userSearchText,String userSearchType) throws Exception {
+
+         User retrievedUser;
+
+        switch (userSearchType) {
+            case "AFM":
+                 retrievedUser =  userRepository.findByAfm(userSearchText);
+                break;
+            case "EMAIL":
+                 retrievedUser = userRepository.findByEmail(userSearchText);
+                break;
+            default:
+                retrievedUser = null ;
+        }
+
+        if (retrievedUser == null) {
+
+            throw new Exception("User not found!");
+        }
+
+        return retrievedUser;
+    }
+
+
+    @Override
     public void logout(String email) {
         loggedInUsers.remove(email);
     }

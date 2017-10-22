@@ -1,9 +1,8 @@
 package com.repair.car.controller;
 
-import com.repair.car.converters.VehicleFormToVehicleConverter;
+import com.repair.car.converters.VehicleConverter;
 import com.repair.car.domain.Vehicle;
 import com.repair.car.model.VehicleRegisterForm;
-import com.repair.car.model.VehicleSearchForm;
 import com.repair.car.services.VehicleService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 
 public class VehicleController {
 
@@ -47,7 +45,7 @@ public class VehicleController {
         }
 
         try {
-            Vehicle vehicle = VehicleFormToVehicleConverter.buildVehicleObject(vehicleRegisterForm);
+            Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleRegisterForm);
             vehicleService.vehicleRegister(vehicle);
 
 

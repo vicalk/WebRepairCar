@@ -11,4 +11,8 @@ public interface UserService {
     void logout(String email) throws Exception;
 
     void register(User user) throws Exception;
+
+    User userSearch(String userSearchText,String userSearchType) throws Exception;
+
+
 }

@@ -19,6 +19,19 @@ public class UserConverter {
         return user;
     }
 
+    public static UserRegisterForm buildOwnerForm(User user){
+
+        UserRegisterForm userRegisterForm=new UserRegisterForm();
+        userRegisterForm.setAfm(user.getAfm());
+        userRegisterForm.setLastname(user.getLastname());
+        userRegisterForm.setFirstname(user.getFirstname());
+        userRegisterForm.setAddress(user.getAddress());
+        userRegisterForm.setEmail(user.getEmail());
+        userRegisterForm.setPassword(user.getPassword());
+        userRegisterForm.setUserType(user.getUserType());
+
+        return userRegisterForm;
+    }
 
 
 }

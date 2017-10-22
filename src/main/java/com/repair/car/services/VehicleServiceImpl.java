@@ -34,8 +34,8 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public List<VehicleDetails> findByPlateNo(String plateNo) {
-        List<Vehicle> books = vehicleRepository.findByPlateNo(plateNo);
-        return books
+        List<Vehicle> vehicles  = vehicleRepository.findByPlateNo(plateNo);
+        return vehicles
                 .stream()
                 .map(VehicleToVehicleDetailsConverter::convert)
                 .collect(Collectors.toList());

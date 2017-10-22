@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring/>
 
 <head>
-  <title> User Registration Form</title>
+  <title> Vehicle Registration Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,19 +16,19 @@
 <#include "/navbar.ftl">
 
  <div class="container">
- <form class="form-horizontal" action="/admin/userCreate" method="post" id="userRegisterForm" name="userRegisterForm">
+ <form class="form-horizontal" action="/admin/vehicleCreate" method="post" id="vehicleRegisterForm" name="vehicleRegisterForm">
 
 <fieldset>
 
 <!-- Form Name -->
-<legend>Create new user:</legend>
+<legend>Create new vehicle entry:</legend>
 
 <!-- afm input-->
 <div class="form-group">
-  	<@spring.bind "userRegisterForm.afm"/>
-  	<label class="col-sm-2 control-label">Tax ID:</label>
+  	<@spring.bind "vehicleRegisterForm.afm"/>
+  	<label class="col-sm-2 control-label">Plate Number:</label>
   	<div class="col-sm-10">
-   		 <input  name="afm" id="afm"  placeholder="Tax id..." class="form-control"  type="number">
+   		 <input  name="plateNo" id="afm"  placeholder="Tax id..." class="form-control"  type="number">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -39,7 +39,7 @@
 
 <!-- lastname input-->
 <div class="form-group">
-  	<@spring.bind "userRegisterForm.lastname"/>
+  	<@spring.bind "vehicleRegisterForm.lastname"/>
   	<label class="col-sm-2 control-label">Last Name:</label>
   	<div class="col-sm-10">
    		 <input  name="lastname" id="lastname"  placeholder="Last name..." class="form-control"  type="text">
@@ -53,7 +53,7 @@
 
 <!-- firstname input-->
 <div class="form-group">
-  	<@spring.bind "userRegisterForm.firstname"/>
+  	<@spring.bind "vehicleRegisterForm.firstname"/>
   	<label class="col-sm-2 control-label">First Name:</label>
   	<div class="col-sm-10">
    		 <input  name="firstname" id="firstname"  placeholder="first name..." class="form-control"  type="text">
@@ -67,7 +67,7 @@
 
 <!-- Address input-->
 <div class="form-group">
-  	<@spring.bind "userRegisterForm.address"/>
+  	<@spring.bind "vehicleRegisterForm.address"/>
   	<label class="col-sm-2 control-label">Address:</label>
   	<div class="col-sm-10">
    		 <input name="address" id="address"  placeholder="Address..."  class="form-control"  type="text"/>
@@ -81,7 +81,7 @@
 
 <!-- email input-->
 <div class="form-group">
-  	<@spring.bind "userRegisterForm.email"/>
+  	<@spring.bind "vehicleRegisterForm.email"/>
   	<label class="col-sm-2 control-label">Email:</label>
   	<div class="col-sm-10">
    		 <input  name="email" id="email"  placeholder="Email..." class="form-control"  type="email">
@@ -95,7 +95,7 @@
 
 <!-- password input-->
 <div class="form-group">
-  	<@spring.bind "userRegisterForm.password"/>
+  	<@spring.bind "vehicleRegisterForm.password"/>
   	<label class="col-sm-2 control-label">Password:</label>
   	<div class="col-sm-10">
    		 <input  name="password" id="password"  placeholder="Password..." class="form-control"  type="text">
@@ -110,7 +110,7 @@
 <!--userType input -->
 
 		  <div class="form-group ">
-            <@spring.bind "userRegisterForm.userType"/>
+            <@spring.bind "vehicleRegisterForm.userType"/>
 			<label class="col-sm-2 control-label">User Type:</label>
 			<div class="col-sm-10">
 				<label class="radio-inline">
@@ -124,7 +124,7 @@
 
   <div class="form-group">
               <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary btn-lg">Create User
+                <button type="submit" class="btn btn-primary btn-lg">Create vehicle
               </div>
 
 
