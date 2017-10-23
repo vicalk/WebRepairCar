@@ -40,6 +40,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserRegisterForm> findAllUsers() {
+
+
+        List<User> retrievedUsers = userRepository.findAll();
+
+        return retrievedUsers
+                .stream()
+                .map(UserConverter::buildOwnerForm)
+                .collect(Collectors.toList());
+    }
+
+
+    @Override
     public List<UserRegisterForm> userSearch(String userSearchText, String userSearchType)  {
 
         List<User> retrievedUsers;

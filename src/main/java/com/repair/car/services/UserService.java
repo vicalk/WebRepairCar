@@ -19,5 +19,7 @@ public interface UserService {
 
      void deleteById(Long userId);
 
+    List<UserRegisterForm> findAllUsers();
+
 
 }

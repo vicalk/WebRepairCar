@@ -53,7 +53,7 @@
        <p>&nbsp;</p>
 
 
-<#if userList?? >
+<#if (userList??) && (userList?size > 0 )>
 
        <table id="userTable" class="table" >
          <thead>
@@ -84,12 +84,6 @@
              <td><form action="/admin/userSearch/${user.userId}/delete" method="post">
                        <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
                  </form>
-                 <form action="/admin/userSearch/${user.userId}/delete" method="post">
-                                        <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
-                                  </form>
-
-
-
 
 
            </tr>

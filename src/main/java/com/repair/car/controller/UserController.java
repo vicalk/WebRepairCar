@@ -78,8 +78,9 @@ public class UserController {
     @RequestMapping(value = "/admin/userSearch", method = RequestMethod.GET)
     public String userSearch(Model model) {
         model.addAttribute(SEARCH_FORM, new UserSearchForm());
-        System.err.println("GET");
+        model.addAttribute(USER_LIST,userService.findAllUsers());
 
+        System.err.println("GET ALL");
 
         return "userSearch";
 
@@ -98,7 +99,6 @@ public class UserController {
             System.err.println("empty");
         }
         model.addAttribute(USER_LIST, userList );
-        System.err.println(userList.get(0).getFirstname());
         return "userSearch";
     }
 
