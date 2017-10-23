@@ -19,7 +19,7 @@ public class UserConverter {
         return user;
     }
 
-    public static UserRegisterForm buildOwnerForm(User user){
+    public static UserRegisterForm buildUserForm(User user){
 
 
         UserRegisterForm userRegisterForm=new UserRegisterForm();

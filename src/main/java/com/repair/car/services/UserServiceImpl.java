@@ -11,7 +11,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -47,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
         return retrievedUsers
                 .stream()
-                .map(UserConverter::buildOwnerForm)
+                .map(UserConverter::buildUserForm)
                 .collect(Collectors.toList());
     }
 
@@ -70,13 +69,16 @@ public class UserServiceImpl implements UserService {
 
             return retrievedUsers
                     .stream()
-                    .map(UserConverter::buildOwnerForm)
+                    .map(UserConverter::buildUserForm)
                     .collect(Collectors.toList());
         }
 
-
-
-
+//    @Override
+//    public UserRow patchBookById(Long id, BookForm bookForm) {
+//        Book persistedBook = bookRepository.findById(id).orElseThrow(RuntimeException::new);
+//        Book updatedBook = BookFormToBookPatcher.patch(bookForm, persistedBook);
+//        return BookToBookRowConverter.convert(bookRepository.save(updatedBook));
+//    }
 
     @Override
     public void logout(String email) {

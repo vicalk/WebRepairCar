@@ -38,10 +38,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()
 //                .antMatchers("/admin").hasAnyAuthority("ADMIN")
-//                .antMatchers("/userCreate").permitAll()
 //                .antMatchers("/user").hasAnyAuthority("SIMPLE")
-//                .antMatchers("**/css/**").permitAll()
-//                .antMatchers("/navbar.ftl").permitAll()
+                .antMatchers("**/css/**").permitAll()
+                .antMatchers("/navbar.ftl").permitAll()
 //
                 .and()
                 .authenticationProvider(loginAuthenticationProvider);
