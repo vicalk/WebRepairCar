@@ -15,32 +15,45 @@
 
 <#include "/navbar.ftl">
 
- <div class="container">
+<div class="container">
+
  <form class="form-horizontal" action="/admin/vehicleCreate" method="post" id="vehicleRegisterForm" name="vehicleRegisterForm">
 
-<fieldset>
+    <fieldset>
 
 <!-- Form Name -->
-<legend>Create new vehicle entry:</legend>
+<legend>Register a new vehicle:</legend>
 
 <!-- afm input-->
 <div class="form-group">
   	<@spring.bind "vehicleRegisterForm.afm"/>
   	<label class="col-sm-2 control-label">Plate Number:</label>
   	<div class="col-sm-10">
-   		 <input  name="plateNo" id="afm"  placeholder="Tax id..." class="form-control"  type="number">
+   		 <input  name="afm" id="afm"  placeholder="Owner tax id..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
-
   	</div>
-
 </div>
 
-<!-- lastname input-->
+<!-- plateNo input-->
 <div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.lastname"/>
-  	<label class="col-sm-2 control-label">Last Name:</label>
+  	<@spring.bind "vehicleRegisterForm.afm"/>
+  	<label class="col-sm-2 control-label">Plate Number:</label>
+  	<div class="col-sm-10">
+   		 <input  name="afm" id="afm"  placeholder="Tax id..." class="form-control"  type="text">
+   		    		    <#list spring.status.errorMessages as error>
+                         <span> <h5 style="color:red;">${error}</h5> </span>
+                      </#list>
+  	</div>
+</div>
+
+
+
+<!-- carModel input-->
+<div class="form-group">
+  	<@spring.bind "vehicleRegisterForm.carModel"/>
+  	<label class="col-sm-2 control-label">Car Model:</label>
   	<div class="col-sm-10">
    		 <input  name="lastname" id="lastname"  placeholder="Last name..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
@@ -51,12 +64,12 @@
 
 </div>
 
-<!-- firstname input-->
+<!-- year input-->
 <div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.firstname"/>
+  	<@spring.bind "vehicleRegisterForm.year"/>
   	<label class="col-sm-2 control-label">First Name:</label>
   	<div class="col-sm-10">
-   		 <input  name="firstname" id="firstname"  placeholder="first name..." class="form-control"  type="text">
+   		 <input  name="year" id="year"  placeholder="Car year..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -65,7 +78,7 @@
 
 </div>
 
-<!-- Address input-->
+<!-- color input-->
 <div class="form-group">
   	<@spring.bind "vehicleRegisterForm.address"/>
   	<label class="col-sm-2 control-label">Address:</label>
@@ -79,7 +92,7 @@
 
 </div>
 
-<!-- email input-->
+<!-- afm input-->
 <div class="form-group">
   	<@spring.bind "vehicleRegisterForm.email"/>
   	<label class="col-sm-2 control-label">Email:</label>
@@ -88,39 +101,8 @@
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
-
   	</div>
-
 </div>
-
-<!-- password input-->
-<div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.password"/>
-  	<label class="col-sm-2 control-label">Password:</label>
-  	<div class="col-sm-10">
-   		 <input  name="password" id="password"  placeholder="Password..." class="form-control"  type="text">
-   		    		    <#list spring.status.errorMessages as error>
-                         <span> <h5 style="color:red;">${error}</h5> </span>
-                      </#list>
-
-  	</div>
-
-</div>
-
-<!--userType input -->
-
-		  <div class="form-group ">
-            <@spring.bind "vehicleRegisterForm.userType"/>
-			<label class="col-sm-2 control-label">User Type:</label>
-			<div class="col-sm-10">
-				<label class="radio-inline">
-                                  <input type="radio" name="userType" id="userType" value="ADMIN" />Admin
-				</label>
-                                <label class="radio-inline">
-                                  <input type="radio" checked="checked" name="userType" id="userType" value="SIMPLE" />User
-				</label> <br />
-			</div>
-		  </div>
 
   <div class="form-group">
               <div class="col-md-12 text-right">
