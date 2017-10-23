@@ -8,5 +8,5 @@ insert into repairs(REPAIR_DATE,REPAIR_STATUS,REPAIR_TYPE,REPAIR_COST,REPAIR_DES
 insert into repairs(REPAIR_DATE,REPAIR_STATUS,REPAIR_TYPE,REPAIR_COST,REPAIR_DESCRIPTION,VEHICLE_ID) values ('2007-11-11','COMPLETED','LARGE','1000','FILTER CHANGE',2);
 
 
---insert into parts(USER_ID,AFM,FIRSTNAME,LASTNAME,email,PASSWORD,user_type) values ('2','23','Jane','Doe','jane@mail.com','pass1234','SIMPLE');
+insert into parts(USER_ID,AFM,FIRSTNAME,LASTNAME,email,PASSWORD,user_type) values ('2','23','Jane','Doe','jane@mail.com','pass1234','SIMPLE');
 
