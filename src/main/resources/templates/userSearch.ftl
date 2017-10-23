@@ -84,6 +84,9 @@
              <td><form action="/admin/userSearch/${user.userId}/delete" method="post">
                        <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
                  </form>
+                 <form action="/admin/userSearch/${user.userId}/edit" method="post">
+                                        <input class="btn btn-xs btn-default" type="submit" value="Edit"/>
+                                  </form>
 
 
            </tr>

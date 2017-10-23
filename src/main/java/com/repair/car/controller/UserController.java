@@ -109,6 +109,13 @@ public class UserController {
         return "redirect:/admin/userSearch";
     }
 
+    @RequestMapping(value = "/admin/userSearch/{id}/edit", method = RequestMethod.GET)
+    public String editUser(@PathVariable("id") Long userId) {
+        userService.findById(userId);
+        System.err.println("edit");
+        return "redirect:/admin/userSearch";
+    }
+
 
 }
 
