@@ -17,5 +17,7 @@ public interface UserService {
 
     List<UserRegisterForm> userSearch(String userSearchText, String userSearchType) ;
 
+     void deleteById(Long userId);
+
 
 }

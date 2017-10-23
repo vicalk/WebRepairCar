@@ -45,6 +45,7 @@
  				</label> <br />
  			</div>
  		  </div>
+ 		  </form>
 
 
 
@@ -52,7 +53,7 @@
        <p>&nbsp;</p>
 
 
-<#if userList?? && userList?size > 0>
+<#if userList?? >
 
        <table id="userTable" class="table" >
          <thead>
@@ -70,15 +71,27 @@
          <tbody>
 
           <#list userList as user>
+
+
            <tr>
              <th scope="row">${user?counter}</th>
-             <td>${user.firstName}</td>
-             <td>${user.lastName}</td>
+             <td>${user.firstname!""}</td>
+             <td>${user.lastname!""}</td>
              <td>${user.afm}</td>
              <td>${user.email}</td>
-             <td>${user.address}</td>
+             <td>${user.address!""}</td>
              <td>${user.userType}</td>
-             <td><a class="btn btn-xs btn-default" href="#!">Edit</a> <a class="btn btn-xs btn-danger" href="#!">Delete</a></td>
+             <td><form action="/admin/userSearch/${user.userId}/delete" method="post">
+                       <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
+                 </form>
+                 <form action="/admin/userSearch/${user.userId}/delete" method="post">
+                                        <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
+                                  </form>
+
+
+
+
+
            </tr>
           </#list>
            </tbody>
@@ -90,3 +103,5 @@
            </#if>
    </div>
  </body>
+
+

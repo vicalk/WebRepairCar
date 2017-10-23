@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,7 +27,7 @@ public class UserController {
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
     private static final String REGISTER_FORM = "userRegisterForm";
     private static final String SEARCH_FORM = "userSearchForm";
-    private static final String USER_LIST = "users";
+    private static final String USER_LIST = "userList";
 
     @Autowired
     private UserService userService;
@@ -78,12 +79,14 @@ public class UserController {
     public String userSearch(Model model) {
         model.addAttribute(SEARCH_FORM, new UserSearchForm());
         System.err.println("GET");
+
+
         return "userSearch";
 
     }
 
     @RequestMapping(value = "/admin/userSearch", method = RequestMethod.POST)
-    public String userSearch(@ModelAttribute(SEARCH_FORM) UserSearchForm userSearchForm,
+    public String userSearch(Model model,@ModelAttribute(SEARCH_FORM) UserSearchForm userSearchForm,
                          HttpSession session,
                          RedirectAttributes redirectAttributes) {
 
@@ -92,12 +95,21 @@ public class UserController {
 
         if (userList.isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "No Users found");
+            System.err.println("empty");
         }
-
-        redirectAttributes.addFlashAttribute(USER_LIST, userList );
+        model.addAttribute(USER_LIST, userList );
         System.err.println(userList.get(0).getFirstname());
+        return "userSearch";
+    }
+
+    @RequestMapping(value = "/admin/userSearch/{id}/delete", method = RequestMethod.POST)
+    public String deleteUser(@PathVariable("id") Long userId) {
+        userService.deleteById(userId);
+        System.err.println("delete");
         return "redirect:/admin/userSearch";
     }
+
+
 }
 
 

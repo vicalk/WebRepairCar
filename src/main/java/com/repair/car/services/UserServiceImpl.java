@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -54,12 +55,14 @@ public class UserServiceImpl implements UserService {
                 retrievedUsers = null ;
         }
 
-        List<UserRegisterForm> userList = new ArrayList<>();
-        for(User user:retrievedUsers){
-            userList.add(UserConverter.buildOwnerForm(user));
+            return retrievedUsers
+                    .stream()
+                    .map(UserConverter::buildOwnerForm)
+                    .collect(Collectors.toList());
         }
-        return userList;
-    }
+
+
+
 
 
     @Override
@@ -71,6 +74,11 @@ public class UserServiceImpl implements UserService {
     public void register(User user) throws Exception {
         userRepository.save(user);
         LOG.debug("User has been registered!");
+    }
+
+    @Override
+    public void deleteById(Long userId) {
+        userRepository.deleteByUserId(userId);
     }
 
 }

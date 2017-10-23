@@ -21,7 +21,10 @@ public class UserConverter {
 
     public static UserRegisterForm buildOwnerForm(User user){
 
+
         UserRegisterForm userRegisterForm=new UserRegisterForm();
+
+        userRegisterForm.setUserId(user.getUserId());
         userRegisterForm.setAfm(user.getAfm());
         userRegisterForm.setLastname(user.getLastname());
         userRegisterForm.setFirstname(user.getFirstname());
