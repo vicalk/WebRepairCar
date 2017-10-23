@@ -1,33 +1,34 @@
-<#import "/spring.ftl" as spring/>
-
-<html>
 <head>
-    <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="/style.css">
+<#include "master.ftl"/>
+  <title>Login</title>
 </head>
 
-    <body>
+<body>
 
-    <div class="container">
-     <h2>Welcome to Car Repair!</h2>
-		<br></br>
-      <h2>Sign in</h2>
-       <form name="loginForm" action="/login"  method="post" style="border:1px solid #ccc">
-  <div class="container">
-    <label><b>Enter Email:</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-	<br></br>
-    <label><b>Enter Password:</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-    <br></br>
-    <div class="clearfix">
-      <button type="submit" class="signupbtn">Log in</button>
+<h2>${message!""}</h2>
+<h2 style="color: red">${errorMessage!""}</h2>
+
+<div class="container" style="margin-top:30px">
+<div class="col-md-4">
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title"><strong>Sign In </strong></h3></div>
+  <div class="panel-body">
+
+    <form role="form" action="/login" method="post" id="loginForm" name="loginForm">
+     <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-md btn-primary">Sign in</button>
+    </form>
+
+      </div>
     </div>
-  </div>
-</form>
-</div>
-    </body>
-    </html>
+    </div>
 
-
+</body>
