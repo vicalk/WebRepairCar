@@ -27,7 +27,7 @@
 <!-- afm input-->
 <div class="form-group">
   	<@spring.bind "vehicleRegisterForm.afm"/>
-  	<label class="col-sm-2 control-label">Plate Number:</label>
+  	<label class="col-sm-2 control-label">Owner Tax Id:</label>
   	<div class="col-sm-10">
    		 <input  name="afm" id="afm"  placeholder="Owner tax id..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
@@ -38,10 +38,10 @@
 
 <!-- plateNo input-->
 <div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.afm"/>
+  	<@spring.bind "vehicleRegisterForm.plateNo"/>
   	<label class="col-sm-2 control-label">Plate Number:</label>
   	<div class="col-sm-10">
-   		 <input  name="afm" id="afm"  placeholder="Tax id..." class="form-control"  type="text">
+   		 <input  name="plateNo" id="plateNo"  placeholder="Tax id..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -55,7 +55,7 @@
   	<@spring.bind "vehicleRegisterForm.carModel"/>
   	<label class="col-sm-2 control-label">Car Model:</label>
   	<div class="col-sm-10">
-   		 <input  name="lastname" id="lastname"  placeholder="Last name..." class="form-control"  type="text">
+   		 <input  name="carModel" id="carModel"  placeholder="Car Model..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -67,7 +67,7 @@
 <!-- year input-->
 <div class="form-group">
   	<@spring.bind "vehicleRegisterForm.year"/>
-  	<label class="col-sm-2 control-label">First Name:</label>
+  	<label class="col-sm-2 control-label">Car year:</label>
   	<div class="col-sm-10">
    		 <input  name="year" id="year"  placeholder="Car year..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
@@ -80,10 +80,10 @@
 
 <!-- color input-->
 <div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.address"/>
-  	<label class="col-sm-2 control-label">Address:</label>
+  	<@spring.bind "vehicleRegisterForm.color"/>
+  	<label class="col-sm-2 control-label">Color:</label>
   	<div class="col-sm-10">
-   		 <input name="address" id="address"  placeholder="Address..."  class="form-control"  type="text"/>
+   		 <input name="color" id="color"  placeholder="Color..."  class="form-control"  type="text"/>
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -92,21 +92,11 @@
 
 </div>
 
-<!-- afm input-->
-<div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.email"/>
-  	<label class="col-sm-2 control-label">Email:</label>
-  	<div class="col-sm-10">
-   		 <input  name="email" id="email"  placeholder="Email..." class="form-control"  type="email">
-   		    		    <#list spring.status.errorMessages as error>
-                         <span> <h5 style="color:red;">${error}</h5> </span>
-                      </#list>
-  	</div>
-</div>
+<!-- Submit-->
 
   <div class="form-group">
               <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary btn-lg">Create vehicle
+                <button type="submit" class="btn btn-primary btn-lg">Register vehicle
               </div>
 
 

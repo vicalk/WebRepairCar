@@ -1,5 +1,7 @@
 package com.repair.car.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -10,29 +12,25 @@ public class VehicleRegisterForm {
 
     private static final String NUMBERS_PATTERN = "^[0-9]*$";
 
-    private static final String CHARACTERS_PATTERN = "^[a-zA-Z ]*$";
-
-    private static final String NUMBERSCHARACTERS_PATTERN = "^[a-zA-Z0-9]*$";
-
     private static final int PLATENO_SIZE = 8;
 
     private static final int AFM_SIZE = 9;
 
-    @NotNull(message = "{vehicleRegister.plateNo.null}")
-    @Pattern(regexp = PLATENO_PATTERN, message = "{vehicleRegister.afm.invalid}")
-    @Size(min = PLATENO_SIZE, max = PLATENO_SIZE, message = "{vehicleRegister.afm.size}")
+    @NotEmpty(message = "{vehicleRegister.plateNo.empty}")
+    @Pattern(regexp = PLATENO_PATTERN, message = "{vehicleRegister.plateNo.invalid}")
+    @Size(min = PLATENO_SIZE, max = PLATENO_SIZE, message = "{vehicleRegister.plateNo.size}")
     private String plateNo;
 
-    @Pattern(regexp = NUMBERSCHARACTERS_PATTERN, message = "{vehicleRegister.carModel.invalid}")
+
     private String carModel;
 
     @Pattern(regexp = NUMBERS_PATTERN, message = "{vehicleRegister.year.invalid}")
     private String year;
 
-    @Pattern(regexp = CHARACTERS_PATTERN, message = "{vehicleRegister.color.invalid}")
+
     private String color;
 
-
+    @NotEmpty(message = "{vehicleRegister.plateNo.empty}")
     @Pattern(regexp = NUMBERS_PATTERN, message = "{vehicleRegister.afm.invalid}")
     @Size(min = AFM_SIZE, max = AFM_SIZE, message = "{vehicleRegister.afm.size}")
     private String afm;
