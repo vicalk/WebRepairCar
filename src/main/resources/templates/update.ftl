@@ -182,3 +182,4 @@
 
 
 </body>
+<#include "footer.ftl"/>

@@ -70,5 +70,6 @@
 
 
  </body>
+ <#include "footer.ftl"/>
 </html>
 	

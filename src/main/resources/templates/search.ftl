@@ -97,5 +97,5 @@
           </#if>
    </div>
  </body>
-
+<#include "footer.ftl"/>
 
