@@ -1,3 +1,4 @@
+
 package com.repair.car.domain;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ public class Vehicle implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long vehicleId;
 
-    @Column(name = "PLATENO", nullable = false)
+    @Column(name = "PLATENO", nullable = false,unique=true)
     private String plateNo;
 
     @Column(name = "CAR_MODEL")
@@ -26,8 +27,6 @@ public class Vehicle implements Serializable {
     @Column(name = "COLOR")
     private String color;
 
-    @Column(name = "AFM")
-    private String afm;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
@@ -38,16 +37,22 @@ public class Vehicle implements Serializable {
 
 
     public Vehicle(String plateNo, String carModel, String year, String color, String afm) {
+
         this.plateNo = plateNo;
         this.carModel = carModel;
         this.year = year;
         this.color = color;
-        this.afm = afm;
-
 
     }
 
     public Vehicle() { }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
+    public Long getVehicleId() { return vehicleId; }
+
 
     public String getPlateNo() {
         return plateNo;
@@ -81,13 +86,6 @@ public class Vehicle implements Serializable {
         this.color = color;
     }
 
-    public String getAfm() {
-        return afm;
-    }
-
-    public void setAfm(String afm) {
-        this.afm = afm;
-    }
 
 
     @Override
@@ -97,7 +95,6 @@ public class Vehicle implements Serializable {
                 ", carModel='" + carModel + '\'' +
                 ", year='" + year + '\'' +
                 ", color='" + color + '\'' +
-                ", afm=" + afm +
                 '}';
     }
 }

@@ -1,3 +1,4 @@
+
 package com.repair.car.domain;
 
 import javax.persistence.*;
@@ -63,3 +64,6 @@ public class Part implements Serializable {
                 '}';
     }
 }
+
+
+
