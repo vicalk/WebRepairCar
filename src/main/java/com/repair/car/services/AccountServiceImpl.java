@@ -31,11 +31,11 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public void logout(String username) {
-        /*try {
-            userRepository.logout(username);
+        try {
+            logout(username);
         } catch (Exception e) {
             //throw new LogoutException("User not logged in!");
-        }*/
+        }
     }
 
     @Override

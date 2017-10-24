@@ -1,70 +1,61 @@
 <#import "/spring.ftl" as spring/>
-<!DOCTYPE html>
-<html>
+
 <head>
-  <title>Car Repair Registration Form</title>
+  <title> User Registration Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/../styleup.css">
+   <link rel="stylesheet" type="text/css" href="/../styleup.css">
 </head>
+
+<body>
+
+<#include "/navbar.ftl">
         <body>
-        <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/../login">CAR REPAIR webApp</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/../admin">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">OWNER
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="/../register">CREATE</a></li>
-          <li><a href="/../search">SEARCH</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICE
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">CREATE</a></li>
-                <li><a href="#">SEARCH</a></li>
-                </ul>
-      <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">VEHICLE
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="vehicle.ftl">CREATE</a></li>
-                      <li><a href="Vehicle_se.ftl">SEARCH</a></li>
-                     </ul>
-                      </li>
-                      </ul>
-                     <ul class="nav navbar-nav navbar-right">
-                          <li><a href="login.ftl"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                      </ul>
-                </div>
-   </nav>
-<form action="/search" method="post" id="SearchForm" name="SearchForm">
+
 <div class="container">
-    <div class="">
-      <h1>Admin</h1>
-      <div class="row">
-        <div class="col-sm-4 col-sm-offset-8 col-lg-offset-4">
-          <div class="input-group">
-            <input name="afm" type="text" class="form-control" placeholder="Search User with AFM or Email...">
-            <span class="input-group-btn">
-                <button class="btn btn-default btn-primary" type="button">Search</button>
-            </span>
-          </div>
-          <!-- /input-group -->
-        </div>
-    <!-- /.col-lg-6 -->
-</div>
-</form>
+       <h1>Admin</h1>
+       <div class="row">
+         <form  class="form-inline" action="/search" method="post" name="SearchForm id="SearchForm">
+           <div class="col-sm-4 col-sm-offset-7">
+           <div class="form-group">
+             <input type="text" class="form-control" name="afm" id="afm" placeholder="Search with AFM or Email...">
+             <span style="display: inline;" class="input-group-btn">
+               <button class="btn btn-default btn-primary" type="submit">Search</button>
+             </span>
+           </div>
+              </div>
+            </div>
+    <p>&nbsp;</p>
+           <!-- /input-group -->
+           <!--
+          <div class="col-sm-4 col-sm-offset-7">
+           <div class="form-group ">
+             <label class="col-sm- control-label">Search by:</label>
+ 				<label class="radio-inline">
+                   <input type="radio" name="afm" id="userSearchType" value="afm" />Tax Id
+ 				</label>
+                <label class="radio-inline">
+                   <input type="radio" checked="checked" name="afm" id="afm" value="email" />Email
+ 				</label> <br />
+ 			</div>
+ 		  </div>  -->
+ 		  </form>
+
+
+
+       <p>&nbsp;</p>
+       <p>&nbsp;</p>
 <!-- /.row -->
+ <div class="container">
+ <form class="form-horizontal" action="/update/user/{afm}" method="post" id="registrationForm" name="registrationForm">
+
+<fieldset>
+
+<!-- Form Name -->
+<legend>Update new user:</legend>
         <div class="vehicleRegistration">
         <div class="col-md-3">
         </div>
@@ -72,62 +63,122 @@
         <header><h1>User form</h1>
         <h4>Please fill all the following fields</h4></header>
 
-<div class="side">
-    <form action="/update/user/{afm}" method="post" id="registrationForm" name="registrationForm">
+<!-- userID input-->
+<div>
+    <@spring.bind "registrationForm.userID"/>
+    <input type="hidden" name="userID" value="${registrationForm.userID}"/>
+</div>
 
-            <input type="hidden" name="userID" value="${registrationForm.userID}"/>
 
-            <label for="afm">Tax number</label>
-            <input type="text" id="afm" name="afm" value="${registrationForm.afm!""}" placeholder="Type your afm.." required>
+<!-- afm input-->
+<div class="form-group">
+  	<label class="col-sm-2 control-label">Afm:</label>
+  	<div class="col-sm-10">
+   		 <input  name="afm" id="afm" value="${registrationForm.afm!""}" placeholder="Tax ID..." class="form-control"  type="number">
+   		    		  <#list spring.status.errorMessages as error>
+                         <span> <h5 style="color:red;">${error}</h5> </span>
+                      </#list>
 
-           <label for="fname">First name</label>
-            <input type="text" id="fname" name="firstname" value="${registrationForm.firstname!""}" placeholder="Type first name.." required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  	</div>
 
-           <label for="lname">Last name</label>
-            <input type="text" id="lname" name="lastname" value="${registrationForm.lastname!""}" placeholder="Type last name.." required><br>
+</div>
 
-           <label for="TaxNum">E-mail</label>
-            <input type="text" id="email" name="email" value="${registrationForm.email!""}" placeholder="Type e-mail.." required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<!-- firstname input-->
+<div class="form-group">
+    <@spring.bind "registrationForm.firstname"/>
+  	<label class="col-sm-2 control-label">First Name:</label>
+  	<div class="col-sm-10">
+   		 <input  name="firstname" id="firstname"  value="${registrationForm.firstname!""}" placeholder="First name..." class="form-control"  type="text">
+   		    		  <#list spring.status.errorMessages as error>
+                         <span> <h5 style="color:red;">${error}</h5> </span>
+                      </#list>
 
-           <label for="Type of user">User Type</label>
-            <select id="UserType" name="role" value="${registrationForm.role!""}" required>
-                <option selected="true" disabled selected>${registrationForm.role}</option>
-                <option value="ADMIN">ADMIN</option>
-                <option value="SIMPLE">SIMPLE</option>
-            </select><br>
+  	</div>
 
-           <label for="userpass">User password</label>
-            <input type="text" id="UserP" name="password" value="${registrationForm.password!""}" placeholder="Set new password.." required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+</div>
 
-           <label for="ConfPass">Confirm password</label>
-            <input type="text" id="ConfirmPass" name="confirmpassword" placeholder="Confirm new password number.." required><br>
-            <div class="divCheck"></div>
-            <br>
-            <label for="Address">Address</label>
-            <input type="text" id="Address" name="address" value="${registrationForm.address!""}" placeholder="Type address.." required><br>
+<!-- lastname input-->
+<div class="form-group">
+    <@spring.bind "registrationForm.lastname"/>
+  	<label class="col-sm-2 control-label">Last Name:</label>
+  	<div class="col-sm-10">
+   		 <input  name="lastname" id="lastname"  value="${registrationForm.lastname!""}" placeholder="Last name..." class="form-control"  type="text">
+   		    		    <#list spring.status.errorMessages as error>
+                         <span> <h5 style="color:red;">${error}</h5> </span>
+                      </#list>
 
-   <!-- Choose if you want to add a vehicle:<br>
-    <a href="tsertsrtete.html"><button>Go to vehicle form</button></a> !-->
-        <input type="submit" value="Update">
-     </form>
-<form action="/delete/user/{afm}" method="post" id="registrationForm" name="registrationForm">
-        <!-- delete button  !-->
-        <script>
-			function ConfirmDelete()
-        {
-        var x = confirm("Are you sure you want to delete?");
-        if (x)
-            return true;
-        else
-            return false;
-        }
+  	</div>
 
-        </script>
+</div>
 
-<input type="button" value="Delete" style="color:red" Onclick="ConfirmDelete()">
-</form>
+<!-- Address input-->
+<div class="form-group">
+    <@spring.bind "registrationForm.address"/>
+  	<label class="col-sm-2 control-label">Address:</label>
+  	<div class="col-sm-10">
+   		 <input name="address" id="address"  value="${registrationForm.address!""}" placeholder="Address..."  class="form-control"  type="text"/>
+   		    		    <#list spring.status.errorMessages as error>
+                         <span> <h5 style="color:red;">${error}</h5> </span>
+                      </#list>
 
-  </div>
-  </div>
+  	</div>
+
+</div>
+
+<!-- email input-->
+<div class="form-group">
+    <@spring.bind "registrationForm.email"/>
+  	<label class="col-sm-2 control-label">Email:</label>
+  	<div class="col-sm-10">
+   		 <input  name="email" id="email"  value="${registrationForm.email!""}" placeholder="Email..." class="form-control"  type="email">
+   		    		    <#list spring.status.errorMessages as error>
+                         <span> <h5 style="color:red;">${error}</h5> </span>
+                      </#list>
+
+  	</div>
+
+</div>
+
+<!-- password input-->
+<div class="form-group">
+    <@spring.bind "registrationForm.password"/>
+  	<label class="col-sm-2 control-label">Password:</label>
+  	<div class="col-sm-10">
+   		 <input  name="password" id="password"  value="${registrationForm.password!""}" placeholder="Password..." class="form-control"  type="text">
+   		    		    <#list spring.status.errorMessages as error>
+                         <span> <h5 style="color:red;">${error}</h5> </span>
+                      </#list>
+
+  	</div>
+
+</div>
+
+<!--userType input -->
+
+		  <div class="form-group ">
+            <@spring.bind "registrationForm.role"/>
+			<label class="col-sm-2 control-label">User Type:</label>
+			<div class="col-sm-10">
+				<label class="radio-inline" value="${registrationForm.role!""}">
+                                  <input type="radio" name="role" id="userType" value="ADMIN" />Admin
+				</label>
+                                <label class="radio-inline">
+                                  <input type="radio" checked="checked" name="role" id="userType" value="SIMPLE" />User
+				</label> <br />
+			</div>
+		  </div>
+
+  <div class="form-group">
+              <div class="col-md-12 text-right">
+                <button type="submit" class="btn btn-primary btn-lg">Update User
+              </div>
+
+
+                </fieldset>
+ </form>
+
+
+        </div>
+
+
 </body>
-</html>

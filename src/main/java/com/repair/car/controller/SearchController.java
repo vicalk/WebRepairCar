@@ -1,8 +1,6 @@
 package com.repair.car.controller;
 
-import com.repair.car.converters.UserConverter;
 import com.repair.car.domain.User;
-import com.repair.car.model.RegistrationForm;
 import com.repair.car.model.SearchForm;
 import com.repair.car.services.UserService;
 import org.slf4j.LoggerFactory;

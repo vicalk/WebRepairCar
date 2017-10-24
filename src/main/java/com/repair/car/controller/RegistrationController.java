@@ -40,17 +40,9 @@ public class RegistrationController {
                            RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            //have some error handling here, perhaps add extra error messages to the model
-            //for now we're going to return a view ( register) but normally we would redirect to the
-            //get method after adding the binding result and the form to the redirect attributes.
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
             return "register";
         }
-
-        //here we would have the logic for sending the registration request  to our service
-        // and then redireect to the home page
-        //we want to show the user's username in the homepage welcome message, so we'll use session storage for that
-        //We'll also pass a second parameter using Redirect attributes to do the same thing
 
         try {
             User user = UserConverter.buildUserObject(registrationForm);
