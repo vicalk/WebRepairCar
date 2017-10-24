@@ -160,10 +160,10 @@
 			<label class="col-sm-2 control-label">User Type:</label>
 			<div class="col-sm-10">
 				<label class="radio-inline" value="${registrationForm.role!""}">
-                                  <input type="radio" name="role" id="userType" value="ADMIN" />Admin
+                                  <input type="radio" checked="checked" name="role" id="userType" value="ADMIN" />Admin
 				</label>
                                 <label class="radio-inline">
-                                  <input type="radio" checked="checked" name="role" id="userType" value="SIMPLE" />User
+                                  <input type="radio" name="role" id="userType" value="SIMPLE" />User
 				</label> <br />
 			</div>
 		  </div>
