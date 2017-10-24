@@ -1,6 +1,7 @@
 package com.repair.car.model;
 
-public class RepairForm {
+
+public class RepairCreateForm {
 
     private String repairDate;
     private String repairStatus;

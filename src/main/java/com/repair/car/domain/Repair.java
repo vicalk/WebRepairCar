@@ -2,7 +2,6 @@ package com.repair.car.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 
@@ -16,7 +15,7 @@ public class Repair implements Serializable {
     private Long repairId;
 
     @Column(name = "REPAIR_DATE", nullable = false)
-    private Date repairDate;
+    private String repairDate;
 
     @Column(name = "REPAIR_STATUS")
     private String repairStatus;
@@ -40,7 +39,7 @@ public class Repair implements Serializable {
 
     public Repair() { }
 
-    public Repair(Date date, String repairStatus, String repairType, int repairCost, String repairDescription, Long vehicleId) {
+    public Repair(String date, String repairStatus, String repairType, int repairCost, String repairDescription, Long vehicleId) {
         this.repairDate = date;
         this.repairStatus = repairStatus;
         this.repairType = repairType;
@@ -48,12 +47,12 @@ public class Repair implements Serializable {
         this.repairDescription = repairDescription;
     }
 
-    public Date getDate() {
+    public String getRepairDate() {
         return repairDate;
     }
 
-    public void setDate(Date date) {
-        this.repairDate = date;
+    public void setRepairDate(String repairDate) {
+        this.repairDate = repairDate;
     }
 
     public String getRepairStatus() {

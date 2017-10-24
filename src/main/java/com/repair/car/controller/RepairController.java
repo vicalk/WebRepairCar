@@ -1,7 +1,68 @@
 package com.repair.car.controller;
 
+import com.repair.car.converters.RepairConverter;
+import com.repair.car.domain.Repair;
+import com.repair.car.model.RepairCreateForm;
+import com.repair.car.services.RepairService;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+@Controller
 public class RepairController {
 
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(RepairController.class);
+    private static final String REPAIR_CREATE_FORM = "repairCreateForm";
+    private static final String REAPIR_SEARCH_FORM = "repairSearchForm";
+    private static final String REPAIR_LIST = "repairList";
+
+    private RepairService repairService;
+
+    @RequestMapping(value = "/admin/repairCreate", method = RequestMethod.GET)
+    public String repairCreate(Model model) {
 
 
+        model.addAttribute(REPAIR_CREATE_FORM, new RepairCreateForm());
+        return "repair";
+    }
+
+   @RequestMapping(value = "/admin/repairCreate", method = RequestMethod.POST)
+    public String repairCreate(Model model, @ModelAttribute(REPAIR_CREATE_FORM)
+            RepairCreateForm repairCreateForm,
+                               BindingResult bindingResult, HttpSession session,
+                               RedirectAttributes redirectAttributes) {
+/*
+        if (bindingResult.hasErrors()) {
+
+            logger.error(String.format("%s Validation Errors present: ",
+                    bindingResult.getErrorCount()));
+            model.addAttribute(REPAIR_CREATE_FORM, repairCreateForm);
+            return "repair";
+        }*/
+
+
+        try {
+            Repair repair = RepairConverter.buildRepairObject(repairCreateForm);
+            repairService.create(repair);
+
+
+        } catch (Exception exception) {
+            //if an error occurs show it to the user
+            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+            logger.error("repair create failed: " + exception);
+        }
+
+
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
+        return "repair";
+
+    }
 }
