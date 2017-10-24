@@ -71,18 +71,12 @@ public class OwnerController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String login(Model model) {
         model.addAttribute(SEARCH_FORM, new SearchForm());
+        model.addAttribute(USERLIST,userService.findAllUsers());
         return "search";
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String search(@Valid @ModelAttribute(SEARCH_FORM) SearchForm searchForm, BindingResult bindindResult,
-                         HttpSession session,
-                         RedirectAttributes redirectAttributes) {
-
-        /*if (bindindResult.hasErrors()){
-            //redirectattributes.addfla("message", lathos)
-            return "search";
-        }*/
+    public String search(Model model, @Valid @ModelAttribute(SEARCH_FORM) SearchForm searchForm) {
         List<User> userList;
         if (searchForm.getAfm().indexOf('@') != -1){
             //Search with mail
@@ -92,12 +86,8 @@ public class OwnerController {
             //Search with afm
             userList = userService.findByAfm(searchForm.getAfm());
         }
-
-        if (USERLIST.isEmpty()) {
-            redirectAttributes.addFlashAttribute("errorMessage", "No users found");
-        }
-        redirectAttributes.addFlashAttribute(USERLIST, userList);
-        return "redirect:/search";
+        model.addAttribute(USERLIST, userList);
+        return "search";
     }
     @RequestMapping(value="/delete/user/{afm}", method = RequestMethod.POST)
     public String deleteUser(@PathVariable String afm,
@@ -111,6 +101,7 @@ public class OwnerController {
         }
         return "redirect:/search";
     }
+
     //update Mappings
     @RequestMapping(value="/update/user/{afm}", method= RequestMethod.GET)
     public String editUser(@PathVariable String afm,Model model){

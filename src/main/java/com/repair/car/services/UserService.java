@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
+    List <User> findAllUsers();
     List <User> findByEmail(String email);
 
     List <User> findByAfm(String afm);

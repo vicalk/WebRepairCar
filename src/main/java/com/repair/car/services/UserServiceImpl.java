@@ -38,4 +38,11 @@ public class UserServiceImpl implements UserService {
     public void delete(User user){
         userRepository.delete(user);
     }
+
+    @Override
+    public List<User> findAllUsers() {
+        List<User> retrievedUsers = userRepository.findAll();
+
+        return retrievedUsers;
+    }
 }
