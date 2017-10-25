@@ -18,10 +18,10 @@
    <div class="container">
        <h1>Admin</h1>
        <div class="row">
-         <form  class="form-inline" action="/search" method="post" name="SearchForm id="SearchForm">
+         <form  class="form-inline" action="/admin/userSearch" method="post" name="UserSearchForm id="UserSearchForm">
            <div class="col-sm-4 col-sm-offset-7">
            <div class="form-group">
-             <input type="text" class="form-control" name="afm" id="afm" placeholder="Search with AFM or Email...">
+             <input type="text" class="form-control" name="SearchType" id="SearchType" placeholder="Search with AFM or Email...">
              <span style="display: inline;" class="input-group-btn">
                <button class="btn btn-default btn-primary" type="submit">Search</button>
              </span>
@@ -75,12 +75,12 @@
              <td>${user.address!""}</td>
              <td>${user.role}</td>
              <td>
-             <form action="/update/user/${user.afm}" method="GET">
+             <form action="/admin/userUpdate/${user.afm}" method="GET">
                    <input class="btn btn-xs btn-default" type="submit" value="Update"/>
              </td>
              </form>
              <td class="text-center">
-             <form action="/delete/user/${user.afm}" method="POST">
+             <form action="/admin/userDelete/${user.afm}" method="POST">
                    <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
              </form>
              </td>

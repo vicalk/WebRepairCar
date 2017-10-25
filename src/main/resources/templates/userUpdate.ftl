@@ -18,10 +18,10 @@
 <div class="container">
        <h1>Admin</h1>
        <div class="row">
-         <form  class="form-inline" action="/search" method="post" name="SearchForm id="SearchForm">
+         <form  class="form-inline" action="/admin/userSearch" method="post" name="UserSearchForm id="UserSearchForm">
            <div class="col-sm-4 col-sm-offset-7">
            <div class="form-group">
-             <input type="text" class="form-control" name="afm" id="afm" placeholder="Search with AFM or Email...">
+             <input type="text" class="form-control" name="SearchType" id="SearchType" placeholder="Search with AFM or Email...">
              <span style="display: inline;" class="input-group-btn">
                <button class="btn btn-default btn-primary" type="submit">Search</button>
              </span>
@@ -50,7 +50,7 @@
        <p>&nbsp;</p>
 <!-- /.row -->
  <div class="container">
- <form class="form-horizontal" action="/update/user/{afm}" method="post" id="registrationForm" name="registrationForm">
+ <form class="form-horizontal" action="/admin/userUpdate/{afm}" method="post" id="UserRegistrationForm" name="UserRegistrationForm">
 
 <fieldset>
 
@@ -65,8 +65,8 @@
 
 <!-- userID input-->
 <div>
-    <@spring.bind "registrationForm.userID"/>
-    <input type="hidden" name="userID" value="${registrationForm.userID}"/>
+    <@spring.bind "UserRegistrationForm.userID"/>
+    <input type="hidden" name="userID" value="${UserRegistrationForm.userID}"/>
 </div>
 
 
@@ -74,7 +74,7 @@
 <div class="form-group">
   	<label class="col-sm-2 control-label">Afm:</label>
   	<div class="col-sm-10">
-   		 <input  name="afm" id="afm" value="${registrationForm.afm!""}" placeholder="Tax ID..." class="form-control"  type="number">
+   		 <input  name="afm" id="afm" value="${UserRegistrationForm.afm!""}" placeholder="Tax ID..." class="form-control"  type="number">
    		    		  <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -85,10 +85,10 @@
 
 <!-- firstname input-->
 <div class="form-group">
-    <@spring.bind "registrationForm.firstname"/>
+    <@spring.bind "UserRegistrationForm.firstname"/>
   	<label class="col-sm-2 control-label">First Name:</label>
   	<div class="col-sm-10">
-   		 <input  name="firstname" id="firstname"  value="${registrationForm.firstname!""}" placeholder="First name..." class="form-control"  type="text">
+   		 <input  name="firstname" id="firstname"  value="${UserRegistrationForm.firstname!""}" placeholder="First name..." class="form-control"  type="text">
    		    		  <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -99,10 +99,10 @@
 
 <!-- lastname input-->
 <div class="form-group">
-    <@spring.bind "registrationForm.lastname"/>
+    <@spring.bind "UserRegistrationForm.lastname"/>
   	<label class="col-sm-2 control-label">Last Name:</label>
   	<div class="col-sm-10">
-   		 <input  name="lastname" id="lastname"  value="${registrationForm.lastname!""}" placeholder="Last name..." class="form-control"  type="text">
+   		 <input  name="lastname" id="lastname"  value="${UserRegistrationForm.lastname!""}" placeholder="Last name..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -113,10 +113,10 @@
 
 <!-- Address input-->
 <div class="form-group">
-    <@spring.bind "registrationForm.address"/>
+    <@spring.bind "UserRegistrationForm.address"/>
   	<label class="col-sm-2 control-label">Address:</label>
   	<div class="col-sm-10">
-   		 <input name="address" id="address"  value="${registrationForm.address!""}" placeholder="Address..."  class="form-control"  type="text"/>
+   		 <input name="address" id="address"  value="${UserRegistrationForm.address!""}" placeholder="Address..."  class="form-control"  type="text"/>
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -127,10 +127,10 @@
 
 <!-- email input-->
 <div class="form-group">
-    <@spring.bind "registrationForm.email"/>
+    <@spring.bind "UserRegistrationForm.email"/>
   	<label class="col-sm-2 control-label">Email:</label>
   	<div class="col-sm-10">
-   		 <input  name="email" id="email"  value="${registrationForm.email!""}" placeholder="Email..." class="form-control"  type="email">
+   		 <input  name="email" id="email"  value="${UserRegistrationForm.email!""}" placeholder="Email..." class="form-control"  type="email">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -141,10 +141,10 @@
 
 <!-- password input-->
 <div class="form-group">
-    <@spring.bind "registrationForm.password"/>
+    <@spring.bind "UserRegistrationForm.password"/>
   	<label class="col-sm-2 control-label">Password:</label>
   	<div class="col-sm-10">
-   		 <input  name="password" id="password"  value="${registrationForm.password!""}" placeholder="Password..." class="form-control"  type="text">
+   		 <input  name="password" id="password"  value="${UserRegistrationForm.password!""}" placeholder="Password..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -156,10 +156,10 @@
 <!--userType input -->
 
 		  <div class="form-group ">
-            <@spring.bind "registrationForm.role"/>
+            <@spring.bind "UserRegistrationForm.role"/>
 			<label class="col-sm-2 control-label">User Type:</label>
 			<div class="col-sm-10">
-				<label class="radio-inline" value="${registrationForm.role!""}">
+				<label class="radio-inline" value="${UserRegistrationForm.role!""}">
                                   <input type="radio" checked="checked" name="role" id="userType" value="ADMIN" />Admin
 				</label>
                                 <label class="radio-inline">
