@@ -11,13 +11,17 @@ import java.util.List;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    Page<User> findAll(Pageable pageable);
+//    Page<User> findAll(Pageable pageable);
+
+    List<User> findAll();
 
     User findByEmailAndPassword(String email, String password);
 
-    List<User> findByAfm(String afm);
+    List<User> findByEmailOrAfm(String search,String searchText );
 
-    List<User> findByEmail(String email);
+    User findByAfm(String afm);
+
+    User findByEmail(String email);
 
     User save(User user);
 

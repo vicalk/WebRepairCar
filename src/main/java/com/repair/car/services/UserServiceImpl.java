@@ -1,17 +1,13 @@
 package com.repair.car.services;
 
-import com.repair.car.converters.SearchConverter;
-import com.repair.car.converters.UserConverter;
 //import com.codingSchool.bookstore.Converters.BookToBookDetailsConverter;
 import com.repair.car.domain.User;
-import com.repair.car.model.SearchForm;
-import com.repair.car.Repositories.UserRepository;
+        import com.repair.car.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -21,13 +17,19 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> findByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public List<User> findByAfm(String afm) {
+    public User findByAfm(String afm) {
         return userRepository.findByAfm(afm);
+    }
+
+
+    @Override
+    public List<User> findByEmailOrAfm(String searchText) {
+        return userRepository.findByEmailOrAfm(searchText,searchText);
     }
 
     @Override
@@ -37,5 +39,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(User user){
         userRepository.delete(user);
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        List<User> retrievedUsers = userRepository.findAll();
+
+        return retrievedUsers;
     }
 }

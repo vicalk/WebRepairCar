@@ -16,6 +16,11 @@ public class LoginController {
 
     private static final String LOGIN_FORM = "loginForm";
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home(Model model) {
+
+        return "redirect:/login";
+    }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, @RequestParam(name = "error", required = false) String error) {
         if (error != null) {
@@ -25,20 +30,5 @@ public class LoginController {
         }
         model.addAttribute(LOGIN_FORM, new LoginForm());
         return "login";
-    }
-    @RequestMapping(value="/admin", method=RequestMethod.GET)
-    public String adminPage(){
-        return "admin";
-    }
-
-
-    @RequestMapping(value="/user", method=RequestMethod.GET)
-    public String userPage(){
-        return "user";
-    }
-
-    @RequestMapping(value="/signup", method=RequestMethod.GET)
-    public String signup(){
-        return "signup";
     }
 }

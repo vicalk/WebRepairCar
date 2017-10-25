@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class RegistrationForm {
+public class UserRegistrationForm {
 
     private static final String AFM_PATTERN = "^[0-9]*$";
 

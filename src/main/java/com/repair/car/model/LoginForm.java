@@ -12,12 +12,12 @@ public class LoginForm {
 
     private static final int PASSWORD_MINSIZE = 6;
 
-    //@Pattern(regexp = EMAIL_PATTERN, message = "{login.email.invalid}")
+    @Pattern(regexp = EMAIL_PATTERN, message = "{login.email.invalid}")
     private String email;
 
-    //@NotNull(message = "{login.password.null}")
-    //@Pattern(regexp = PASSWORD_PATTERN, message = "{login.password.invalid}")
-    //@Size(min = PASSWORD_MINSIZE, message = "{login.password.size}")
+    @NotNull(message = "{login.password.null}")
+    @Pattern(regexp = PASSWORD_PATTERN, message = "{login.password.invalid}")
+    @Size(min = PASSWORD_MINSIZE, message = "{login.password.size}")
     private String password;
 
 

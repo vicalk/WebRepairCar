@@ -16,7 +16,7 @@
 <#include "/navbar.ftl">
 
  <div class="container">
- <form class="form-horizontal" action="/register" method="post" id="registrationForm" name="registrationForm">
+ <form class="form-horizontal" action="/admin/userRegister" method="post" id="UserRegistrationForm" name="UserRegistrationForm">
 
 <fieldset>
 
@@ -25,13 +25,13 @@
 
 <!-- afm input-->
 <div class="form-group">
-  	<@spring.bind "registrationForm.afm"/>
+  	<@spring.bind "UserRegistrationForm.afm"/>
   	<label class="col-sm-2 control-label">Tax ID:</label>
   	<div class="col-sm-10">
    		 <input  name="afm" id="afm"  placeholder="Tax id..." class="form-control"  type="number">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
-                      </#list>
+                        </#list>
 
   	</div>
 
@@ -39,7 +39,7 @@
 
 <!-- lastname input-->
 <div class="form-group">
-  	<@spring.bind "registrationForm.lastname"/>
+  	<@spring.bind "UserRegistrationForm.lastname"/>
   	<label class="col-sm-2 control-label">Last Name:</label>
   	<div class="col-sm-10">
    		 <input  name="lastname" id="lastname"  placeholder="Last name..." class="form-control"  type="text">
@@ -53,7 +53,7 @@
 
 <!-- firstname input-->
 <div class="form-group">
-  	<@spring.bind "registrationForm.firstname"/>
+  	<@spring.bind "UserRegistrationForm.firstname"/>
   	<label class="col-sm-2 control-label">First Name:</label>
   	<div class="col-sm-10">
    		 <input  name="firstname" id="firstname"  placeholder="first name..." class="form-control"  type="text">
@@ -67,7 +67,7 @@
 
 <!-- Address input-->
 <div class="form-group">
-  	<@spring.bind "registrationForm.address"/>
+  	<@spring.bind "UserRegistrationForm.address"/>
   	<label class="col-sm-2 control-label">Address:</label>
   	<div class="col-sm-10">
    		 <input name="address" id="address"  placeholder="Address..."  class="form-control"  type="text"/>
@@ -81,7 +81,7 @@
 
 <!-- email input-->
 <div class="form-group">
-  	<@spring.bind "registrationForm.email"/>
+  	<@spring.bind "UserRegistrationForm.email"/>
   	<label class="col-sm-2 control-label">Email:</label>
   	<div class="col-sm-10">
    		 <input  name="email" id="email"  placeholder="Email..." class="form-control"  type="email">
@@ -95,7 +95,7 @@
 
 <!-- password input-->
 <div class="form-group">
-  	<@spring.bind "registrationForm.password"/>
+  	<@spring.bind "UserRegistrationForm.password"/>
   	<label class="col-sm-2 control-label">Password:</label>
   	<div class="col-sm-10">
    		 <input  name="password" id="password"  placeholder="Password..." class="form-control"  type="text">
@@ -110,7 +110,7 @@
 <!--userType input -->
 
 		  <div class="form-group ">
-            <@spring.bind "registrationForm.role"/>
+            <@spring.bind "UserRegistrationForm.role"/>
 			<label class="col-sm-2 control-label">User Type:</label>
 			<div class="col-sm-10">
 				<label class="radio-inline">

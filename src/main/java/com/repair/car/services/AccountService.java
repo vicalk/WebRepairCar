@@ -8,7 +8,7 @@ public interface AccountService {
 
     User login(String email, String password) throws AuthenticationException;
 
-    void logout(String username) throws Exception;
+    void logout(String email) throws Exception;
 
     void register(User user) throws Exception;
 }
