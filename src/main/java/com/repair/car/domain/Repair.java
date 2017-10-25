@@ -12,7 +12,7 @@ import java.util.List;
 public class Repair implements Serializable {
     @Id
     @Column(name = "REPAIR_ID",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long repairId;
 
     @Column(name = "REPAIR_DATE", nullable = false)
@@ -34,8 +34,8 @@ public class Repair implements Serializable {
     @JoinColumn(name = "VEHICLE_ID", referencedColumnName = "VEHICLE_ID")
     private Vehicle vehicle;
 
-    @OneToMany(mappedBy = "repair", targetEntity = Part.class , cascade=CascadeType.REMOVE)
-    private List<Part> parts;
+   // @OneToMany(mappedBy = "repair", targetEntity = Part.class , cascade=CascadeType.REMOVE)
+   // private List<Part> parts;
 
 
     public Repair() { }
@@ -47,6 +47,14 @@ public class Repair implements Serializable {
         this.repairCost = repairCost;
         this.repairDescription = repairDescription;
     }
+
+    public Vehicle getVehicle() { return vehicle; }
+
+    public void setVehicle(Vehicle vehicle) { this.vehicle = vehicle; }
+
+    public Long getRepairId() { return repairId; }
+
+    public void setRepairId(Long repairId) { this.repairId = repairId; }
 
     public String getRepairDate() {
         return repairDate;

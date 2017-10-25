@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface RepairService {
 
-    void create(Repair repair) throws Exception;
+    void repairCreate(RepairCreateForm repairCreateForm) throws Exception;
 
     List<RepairCreateForm> repairSearch(String repairSearchText, String repairSearchType) ;
 

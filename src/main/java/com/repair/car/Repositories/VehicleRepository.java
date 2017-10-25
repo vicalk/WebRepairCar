@@ -1,3 +1,4 @@
+/*
 package com.repair.car.Repositories;
 
 import com.repair.car.domain.Vehicle;
@@ -14,6 +15,8 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
     Vehicle findByPlateNo(String plateNo);
 
+    Vehicle findPlateNo(String plateNo);
+
     Vehicle findByVehicleId(Long vehicleId);
 
     List<Vehicle> findByPlateNoOrUser_afm(String plateNo,String afm);
@@ -27,3 +30,4 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
 }
 
+*/

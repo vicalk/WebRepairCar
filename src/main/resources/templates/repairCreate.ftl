@@ -16,19 +16,33 @@
 <#include "/navbar.ftl">
 
     <div class="container">
-        <form class="form-horizontal" action="/repairCreate" method="post" id="repairCreateForm" name="repairCreateForm">
+        <form class="form-horizontal" action="/admin/repairCreate" method="post" id="repairCreateForm" name="repairCreateForm">
 
             <fieldset>
 
                 <!-- Form Name -->
                 <legend>Create new repair:</legend>
 
+                <!-- Vehicle's plateNo input-->
+                <div class="form-group">
+                    <@spring.bind "repairCreateForm.vehiclePlateNo"/>
+                    <label class="col-sm-2 control-label">Plate Number:</label>
+                    <div class="col-sm-10">
+                        <input  name="vehiclePlateNo" id="vehiclePlateNo"  placeholder="Plate Number..." class="form-control"  type="text">
+                        <#list spring.status.errorMessages as error>
+                            <span> <h5 style="color:red;">${error}</h5> </span>
+                        </#list>
+
+                    </div>
+
+                </div>
+
                 <!-- Repair Date input-->
                 <div class="form-group">
                     <@spring.bind "repairCreateForm.repairDate"/>
                     <label class="col-sm-2 control-label">Repair Date:</label>
                     <div class="col-sm-10">
-                        <input  name="repairDate" id="repairDate"  placeholder="Repair Date..." class="form-control"  type="text">
+                        <input  name="repairDate" id="repairDate"  placeholder="Repair Date..." class="form-control"  type="date">
                         <#list spring.status.errorMessages as error>
                             <span> <h5 style="color:red;">${error}</h5> </span>
                         </#list>
@@ -38,25 +52,30 @@
                 </div>
 
                 <!-- Repair Status input-->
-                <div class="form-group">
-                    <@spring.bind "repairCreateForm.repairStatus"/>
-                    <label class="col-sm-2 control-label">Repair Status:</label>
-                    <div class="col-sm-10">
-                        <input  name="repairStatus" id="repairStatus"  placeholder="Repair Status..." class="form-control"  type="text">
+                    <div class="form-group">
+                        <@spring.bind "repairCreateForm.repairStatus"/>
+                        <label class="col-sm-2 control-label">Repair Status:</label>
+                        <div class="col-sm-10">
+                                <select class="col-sm-12" >
+                                    <option value="1" name ="repairStatus" selected="selected">On Hold</option>
+                                    <option value="2" name ="repairStatus">In Progress</option>
+                                    <option value="3" name ="repairStatus">Completed</option>
+                                </select>
                         <#list spring.status.errorMessages as error>
                             <span> <h5 style="color:red;">${error}</h5> </span>
                         </#list>
-
+                        </div>
                     </div>
-
-                </div>
 
                 <!-- Repair Type input-->
                 <div class="form-group">
                     <@spring.bind "repairCreateForm.repairType"/>
                     <label class="col-sm-2 control-label">Repair Type:</label>
                     <div class="col-sm-10">
-                        <input  name="repairType" id="repairType"  placeholder="Repair Type..." class="form-control"  type="text">
+                                <select class="col-sm-12" >
+                                    <option value="1" name="repairType" selected="selected">Regular</option>
+                                    <option value="2" name="repairType">Extended</option>
+                                </select>
                         <#list spring.status.errorMessages as error>
                             <span> <h5 style="color:red;">${error}</h5> </span>
                         </#list>
