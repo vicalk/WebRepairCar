@@ -12,9 +12,11 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
     List<Vehicle> findAll();
 
-    List<Vehicle> findByPlateNo(String plateNo);
+    Vehicle findByPlateNo(String plateNo);
 
     Vehicle findByVehicleId(Long vehicleId);
+
+    List<Vehicle> findByPlateNoOrUser_afm(String plateNo,String afm);
 
     List<Vehicle> findByUser_UserId(Long userId);
 

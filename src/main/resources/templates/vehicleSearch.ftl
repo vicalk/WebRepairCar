@@ -31,20 +31,7 @@
             </div>
     <p>&nbsp;</p>
 
-           <!-- /input-group -->
 
-          <div class="col-sm-4 col-sm-offset-7">
-           <div class="form-group ">
-             <@spring.bind "vehicleSearchForm.searchType"/>
-             <label class="col-sm- control-label">Search by:</label>
- 				<label class="radio-inline">
-                   <input type="radio" name="SearchType" id="SearchType" value="AFM" />Tax Id
- 				</label>
-                <label class="radio-inline">
-                   <input type="radio" checked="checked" name="SearchType" id="SearchType" value="PLATENO" />Plate number
- 				</label> <br />
- 			</div>
- 		  </div>
  		  </form>
 
 

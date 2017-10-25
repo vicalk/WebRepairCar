@@ -84,7 +84,7 @@ public class VehicleController {
                                 HttpSession session,
                                 RedirectAttributes redirectAttributes) {
 
-        List<VehicleRegisterForm> vehicleList = vehicleService.vehicleSearch(vehicleSearchForm.getSearchText(),vehicleSearchForm.getSearchType());
+        List<VehicleRegisterForm> vehicleList = vehicleService.vehicleSearch(vehicleSearchForm.getSearchText());
         System.err.println("postty");
         if (vehicleList.isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "No Vehicles found");
