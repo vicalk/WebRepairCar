@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Vehicle implements Serializable {
     @Id
     @Column(name = "VEHICLE_ID",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long vehicleId;
 
     @Column(name = "PLATENO", nullable = false,unique=true)
@@ -53,6 +53,7 @@ public class Vehicle implements Serializable {
 
     public Long getVehicleId() { return vehicleId; }
 
+    public void setVehicleId(Long vehicleId) { this.vehicleId = vehicleId; }
 
     public String getPlateNo() {
         return plateNo;
@@ -85,7 +86,6 @@ public class Vehicle implements Serializable {
     public void setColor(String color) {
         this.color = color;
     }
-
 
 
     @Override

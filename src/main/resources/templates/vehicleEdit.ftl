@@ -30,7 +30,7 @@
 </#if>
 
 
- <form class="form-horizontal" action="/admin/vehicleSearch/{id}/edit" method="post" id="vehicleRegisterForm" name="vehicleRegisterForm">
+ <form class="form-horizontal" action="/admin/vehicleSearch/{id}/edit" method="post" id="vehicleToEdit" name="vehicleToEdit">
 
     <fieldset>
 
@@ -38,12 +38,31 @@
 <legend>Edit existing vehicle:</legend>
 
 
+<!-- userID input-->
+<div>
+    <@spring.bind "vehicleToEdit.vehicleId"/>
+    <input type="hidden" name="vehicleId" value="${vehicleToEdit.vehicleId}"/>
+</div>
+
+<!-- afm output-->
+<div class="form-group">
+  	<@spring.bind "vehicleToEdit.afm"/>
+  	<label class="col-sm-2 control-label">Owner Tax Id:</label>
+  	<div class="col-sm-10">
+   		 <input  name="afm" id="afm" value="${vehicleToEdit.afm!""}" class="form-control"  type="text" readonly>
+   		    		    <#list spring.status.errorMessages as error>
+                         <span> <h5 style="color:red;">${error}</h5> </span>
+                      </#list>
+  	</div>
+</div>
+
+
 <!-- plateNo input-->
 <div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.plateNo"/>
+  	<@spring.bind "vehicleToEdit.plateNo"/>
   	<label class="col-sm-2 control-label">Plate Number:</label>
   	<div class="col-sm-10">
-   		 <input  name="plateNo" id="plateNo" value="${vehicleRegisterForm.plateNo!""}"  placeholder="Plate Number.." class="form-control"  type="text">
+   		 <input  name="plateNo" id="plateNo" value="${vehicleToEdit.plateNo!""}"  placeholder="Plate Number.." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -54,10 +73,10 @@
 
 <!-- carModel input-->
 <div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.carModel"/>
+  	<@spring.bind "vehicleToEdit.carModel"/>
   	<label class="col-sm-2 control-label">Car Model:</label>
   	<div class="col-sm-10">
-   		 <input  name="carModel" id="carModel" value="${vehicleRegisterForm.carModel!""}"  placeholder="Car Model..." class="form-control"  type="text">
+   		 <input  name="carModel" id="carModel" value="${vehicleToEdit.carModel!""}"  placeholder="Car Model..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -68,10 +87,10 @@
 
 <!-- year input-->
 <div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.year"/>
+  	<@spring.bind "vehicleToEdit.year"/>
   	<label class="col-sm-2 control-label">Car year:</label>
   	<div class="col-sm-10">
-   		 <input  name="year" id="year" value="${vehicleRegisterForm.year!""}"  placeholder="Car year..." class="form-control"  type="text">
+   		 <input  name="year" id="year" value="${vehicleToEdit.year!""}"  placeholder="Car year..." class="form-control"  type="text">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>
@@ -82,10 +101,10 @@
 
 <!-- color input-->
 <div class="form-group">
-  	<@spring.bind "vehicleRegisterForm.color"/>
+  	<@spring.bind "vehicleToEdit.color"/>
   	<label class="col-sm-2 control-label">Color:</label>
   	<div class="col-sm-10">
-   		 <input name="color" id="color" value="${vehicleRegisterForm.color!""}"  placeholder="Car color..."  class="form-control"  type="text"/>
+   		 <input name="color" id="color" value="${vehicleToEdit.color!""}"  placeholder="Car color..."  class="form-control"  type="text"/>
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
                       </#list>

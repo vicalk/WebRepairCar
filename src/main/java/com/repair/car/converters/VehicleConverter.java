@@ -1,4 +1,3 @@
-/*
 package com.repair.car.converters;
 
 import com.repair.car.domain.Vehicle;
@@ -19,26 +18,37 @@ public class VehicleConverter {
         return vehicle;
     }
 
+    public static VehicleRegisterForm buildVehicleForm(Vehicle vehicle) {
+
+        VehicleRegisterForm vehicleRegisterForm = new VehicleRegisterForm();
+
+        vehicleRegisterForm.setVehicleId(vehicle.getVehicleId());
+        vehicleRegisterForm.setAfm(vehicle.getUser().getAfm());
+        vehicleRegisterForm.setPlateNo(vehicle.getPlateNo());
+        vehicleRegisterForm.setCarModel(vehicle.getCarModel());
+        vehicleRegisterForm.setYear(vehicle.getYear());
+        vehicleRegisterForm.setColor(vehicle.getColor());
 
 
-        public static VehicleRegisterForm buildVehicleForm(Vehicle vehicle) {
-
-            VehicleRegisterForm vehicleRegisterForm = new VehicleRegisterForm();
-
-            vehicleRegisterForm.setVehicleId(vehicle.getVehicleId());
-            vehicleRegisterForm.setAfm(vehicle.getUser().getAfm());
-            vehicleRegisterForm.setPlateNo(vehicle.getPlateNo());
-            vehicleRegisterForm.setCarModel(vehicle.getCarModel());
-            vehicleRegisterForm.setYear(vehicle.getYear());
-            vehicleRegisterForm.setColor(vehicle.getColor());
+        return vehicleRegisterForm;
+    }
 
 
-            return vehicleRegisterForm;
-        }
+    public static Vehicle buildUpdateVehicleObject(VehicleRegisterForm vehicleRegisterForm) {
+
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setVehicleId(vehicleRegisterForm.getVehicleId());
+        vehicle.setPlateNo(vehicleRegisterForm.getPlateNo());
+        vehicle.setCarModel(vehicleRegisterForm.getCarModel());
+        vehicle.setColor(vehicleRegisterForm.getColor());
+        vehicle.setYear(vehicleRegisterForm.getYear());
+
+        return vehicle;
+    }
 
 }
 
 
 
 
-*/

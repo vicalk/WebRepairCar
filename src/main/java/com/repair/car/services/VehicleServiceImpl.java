@@ -1,7 +1,4 @@
-/*
 package com.repair.car.services;
-
-
 import com.repair.car.converters.VehicleConverter;
 import com.repair.car.domain.User;
 import com.repair.car.domain.Vehicle;
@@ -12,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,7 +38,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public VehicleRegisterForm findByVehicleId(Long vehicleId){
 
-       return VehicleConverter.buildVehicleForm(vehicleRepository.findByVehicleId(vehicleId));
+        return VehicleConverter.buildVehicleForm(vehicleRepository.findByVehicleId(vehicleId));
 
     }
 
@@ -75,14 +71,11 @@ public class VehicleServiceImpl implements VehicleService {
 
 
     @Override
-    public void editVehicle(VehicleRegisterForm vehicleRegisterForm) {
+    public void editVehicle(VehicleRegisterForm vehicleToEdit) {
 
-        Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleRegisterForm);
-
-//        Vehicle persistVehicle = vehicleRepository.findByVehicleId(vehicle.getVehicleId());
-//
-////        vehicle.setUser(persistVehicle.getUser());
-
+        Vehicle vehicle = VehicleConverter.buildUpdateVehicleObject(vehicleToEdit);
+        Vehicle persistedVehicle = vehicleRepository.findByVehicleId(vehicle.getVehicleId());
+        vehicle.setUser(persistedVehicle.getUser());
         vehicleRepository.save(vehicle);
         LOG.debug("Vehicle has been edited!");
 
@@ -97,38 +90,3 @@ public class VehicleServiceImpl implements VehicleService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-//public void insertVehicle(VehicleForm vehicleForm) {
-
-//    public List<Vehicle> findVelicleByAfm(String afm){
-//        List<Vehicle> vehicles= vehicleRepository.findByAfm(plateNo);
-//        vehicles=(List)userService.findUserbyAFM(afm).getVehicle();
-//
-//        return vehicles;
-//
-
-//
-//    @Override
-//    public List<VehicleDetails> findByPlateNo(String plateNo) {
-//        List<Vehicle> vehicles  = vehicleRepository.findByPlateNo(plateNo);
-//        return vehicles
-//                .stream()
-//                .map(VehicleConverter::)
-//                .collect(Collectors.toList());
-//    }
-
-
-
-*/

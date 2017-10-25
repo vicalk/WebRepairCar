@@ -1,4 +1,4 @@
-/*
+
 package com.repair.car.controller;
 
 
@@ -35,7 +35,7 @@ public class VehicleController {
     @RequestMapping(value = "/admin/vehicleCreate", method = RequestMethod.GET)
     public String vehicleRegister(Model model) {
 
-        System.err.println("qq");
+
         model.addAttribute(VEHICLE_REGISTER_FORM, new VehicleRegisterForm());
         return "vehicleCreate";
     }
@@ -54,12 +54,8 @@ public class VehicleController {
         }
 
         try {
-
-
             vehicleService.vehicleRegister(vehicleRegisterForm);
             redirectAttributes.addFlashAttribute("success", true);
-
-
 
         } catch (Exception exception) {
 
@@ -67,7 +63,6 @@ public class VehicleController {
             logger.error("Vehicle registration failed: " + exception);
 
         }
-
         return "redirect:/admin/vehicleCreate";
     }
 
@@ -77,7 +72,7 @@ public class VehicleController {
         model.addAttribute(VEHICLE_LIST,vehicleService.findAllVehicles());
         System.err.println("get");
 
-    return "vehicleSearch";
+        return "vehicleSearch";
     }
 
     @RequestMapping(value = "/admin/vehicleSearch", method = RequestMethod.POST)
@@ -86,11 +81,7 @@ public class VehicleController {
                                 RedirectAttributes redirectAttributes) {
 
         List<VehicleRegisterForm> vehicleList = vehicleService.vehicleSearch(vehicleSearchForm.getSearchText());
-        System.err.println("postty");
-        if (vehicleList.isEmpty()) {
-            redirectAttributes.addFlashAttribute("errorMessage", "No Vehicles found");
-            System.err.println("empty");
-        }
+//
         model.addAttribute(VEHICLE_LIST, vehicleList );
         return "vehicleSearch";
     }
@@ -101,81 +92,52 @@ public class VehicleController {
     @RequestMapping(value = "/admin/vehicleSearch/{id}/edit", method = RequestMethod.GET)
     public String vehicleEdit(Model model, @PathVariable("id") Long vehicleId) {
 
+
         VehicleRegisterForm vehicleToEdit = vehicleService.findByVehicleId(vehicleId);
+        System.err.println(vehicleToEdit.getVehicleId());
+
         model.addAttribute(VEHICLE_TO_EDIT, vehicleToEdit);
+        System.err.println("edit");
         return "vehicleEdit";
     }
 
     @RequestMapping(value = "/admin/vehicleSearch/{id}/edit", method = RequestMethod.POST)
-    public String vehicleEdit(Model model, @Valid @ModelAttribute(VEHICLE_REGISTER_FORM)
-            VehicleRegisterForm vehicleRegisterForm,
+    public String vehicleEdit(Model model, @Valid @ModelAttribute(VEHICLE_TO_EDIT)
+            VehicleRegisterForm vehicleToEdit,
                               BindingResult bindingResult, HttpSession session,
                               RedirectAttributes redirectAttributes) {
 
+        System.err.println("post");
         if (bindingResult.hasErrors()) {
 
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
-            model.addAttribute(VEHICLE_REGISTER_FORM, vehicleRegisterForm);
+            model.addAttribute(VEHICLE_TO_EDIT, vehicleToEdit);
             return "vehicleEdit";
         }
 
         try {
 
-
-            vehicleService.editVehicle(vehicleRegisterForm);
-            redirectAttributes.addFlashAttribute("success", true);
-
+            vehicleService.editVehicle(vehicleToEdit);
+            model.addAttribute("success", true);
+            System.err.println("succ");
 
 
         } catch (Exception exception) {
 
-            redirectAttributes.addFlashAttribute("error", true);
+            model.addAttribute("error", true);
             logger.error("Vehicle Edit failed: " + exception);
-
+            System.err.println("err");
         }
+        System.err.println("ret");
+        return "vehicleEdit";
 
-        return "redirect:/admin/vehicleEdit";
     }
 
-
-
-
     @RequestMapping(value = "/admin/vehicleSearch/{id}/delete", method = RequestMethod.POST)
-    public String deleteUser(@PathVariable("id") Long vehicleId) {
+    public String deleteVehicle(@PathVariable("id") Long vehicleId) {
         vehicleService.deleteById(vehicleId);
         System.err.println("delete");
         return "redirect:/admin/vehicleSearch";
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
