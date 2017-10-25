@@ -17,5 +17,7 @@ public interface RepairRepository extends CrudRepository<Repair, Long> {
 
     List<Repair>  findTop10ByOrderByRepairDateDesc() ;
 
+    List<Repair> findByVehicle_User_email(String email);
+
 
 }

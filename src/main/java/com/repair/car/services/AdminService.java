@@ -30,4 +30,14 @@ public class AdminService {
     }
 
 
+    public List<AdminForm> userSearch(String email)  {
+
+        List<Repair> retrievedRepairs = repairRepository.findByVehicle_User_email(email);
+
+        return retrievedRepairs
+                .stream()
+                .map(RepairToAdminFormConverter::buildAdminForm)
+                .collect(Collectors.toList());
+    }
+
 }

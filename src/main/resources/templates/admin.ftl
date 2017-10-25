@@ -32,7 +32,7 @@
          <thead>
            <tr>
              <th>#ID</th>
-             <th>Service Date</th>
+             <th>Service Date & Time</th>
              <th>Service Type</th>
              <th>Service Status</th>
              <th>Plate Number</th>

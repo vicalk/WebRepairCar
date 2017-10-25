@@ -23,7 +23,7 @@ public class AdminController {
     private AdminService adminService;
 
     @RequestMapping(value="/admin", method= RequestMethod.GET)
-    public String adminPage(Model model, @ModelAttribute(REPAIR_LIST) AdminForm adminForm, HttpSession session){
+    public String adminPage(Model model){
 
         List<AdminForm> repairList = adminService.adminSearch();
 
@@ -34,4 +34,3 @@ public class AdminController {
         }
 
     }
-
