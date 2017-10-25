@@ -13,7 +13,7 @@ public interface VehicleService {
 
     VehicleRegisterForm findByVehicleId(Long vehicleId);
 
-    List<VehicleRegisterForm> vehicleSearch(String SearchText, String SearchType);
+    List<VehicleRegisterForm> vehicleSearch(String SearchText);
 
     List<VehicleRegisterForm> findAllVehicles();
 
