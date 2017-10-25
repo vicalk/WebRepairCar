@@ -1,5 +1,4 @@
 
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -27,14 +26,14 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICE
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/admin/repairCreate">CREATE</a></li>
-                <li><a href="/admin/repairSearch">SEARCH</a></li>
-              </ul>
-      </li>
-
-      <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-      </ul>
+                <li><a href="/admin/ServiceCreate">CREATE</a></li>
+                <li><a href="/admin/ServiceSearch">SEARCH</a></li>
+               </ul>
+                </li>
+                </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
 
   </div>
 </nav>
