@@ -25,7 +25,7 @@ public class Repair implements Serializable {
     private String repairType;
 
     @Column(name = "REPAIR_COST")
-    private int repairCost;
+    private String repairCost;
 
     @Column(name = "REPAIR_DESCRIPTION")
     private String repairDescription;
@@ -40,7 +40,7 @@ public class Repair implements Serializable {
 
     public Repair() { }
 
-    public Repair(String date, String repairStatus, String repairType, int repairCost, String repairDescription, Long vehicleId) {
+    public Repair(String date, String repairStatus, String repairType, String repairCost, String repairDescription, Long vehicleId) {
         this.repairDate = date;
         this.repairStatus = repairStatus;
         this.repairType = repairType;
@@ -80,11 +80,11 @@ public class Repair implements Serializable {
         this.repairType = repairType;
     }
 
-    public int getRepairCost() {
+    public String getRepairCost() {
         return repairCost;
     }
 
-    public void setRepairCost(int repairCost) {
+    public void setRepairCost(String repairCost) {
         this.repairCost = repairCost;
     }
 
@@ -95,6 +95,12 @@ public class Repair implements Serializable {
     public void setRepairDescription(String repairDescription) {
         this.repairDescription = repairDescription;
     }
+
+//    public enum RepairStage {NOT_STARTED, IN_PROGRESS, COMPLETED};
+//
+//    public enum RepairType {SMALL, BIG};
+
+
 
     @Override
     public String toString() {

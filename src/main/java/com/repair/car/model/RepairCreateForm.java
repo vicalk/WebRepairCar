@@ -22,7 +22,7 @@ public class RepairCreateForm {
     private String repairType;
 
     @Pattern(regexp = REPAIR_COST_PATTERN, message = "{repair.repairCost.invalid}")
-    private int repairCost;
+    private String repairCost;
     private String repairDescription;
 
     public Long getRepairId() {
@@ -65,11 +65,11 @@ public class RepairCreateForm {
         this.repairType = repairType;
     }
 
-    public int getRepairCost() {
+    public String getRepairCost() {
         return repairCost;
     }
 
-    public void setRepairCost(int repairCost) {
+    public void setRepairCost(String repairCost) {
         this.repairCost = repairCost;
     }
 

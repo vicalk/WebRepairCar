@@ -11,3 +11,15 @@ public class UserController {
         return "user";
     }
 }
+//
+//    String email = addUsernameInModel(model);
+//
+//
+//    User user = userService.findByEmail(email);
+//
+//    List<Repair> repairList = userService.findByUser(user);
+//
+//        model.addAttribute(USER,user);
+//                model.addAttribute(REPAIR_DATA,repairList);
+//
+//                return "userInfo";

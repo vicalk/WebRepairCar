@@ -1,30 +1,37 @@
 package com.repair.car.controller;
 
-import com.repair.car.domain.User;
-import com.repair.car.services.UserService;
+
+import com.repair.car.model.AdminForm;
+import com.repair.car.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 public class AdminController {
-    private static final String REPAIRLIST = "repairs";
 
-    /*@Autowired
-    private UserService repairService;*/
+    private static final String REPAIR_LIST = "repairList";
+
+    @Autowired
+    private AdminService adminService;
 
     @RequestMapping(value="/admin", method= RequestMethod.GET)
-    public String adminPage(){
-        //typwnei 10 epomena repairs me vash thn hmera kai wra
-        //auth h lista tha dwthei sto .ftl arxeio
-        /*List<Repairs> repairsList;
-            //Search all repairs and get them in a list
-            repairsList = repairService.findAll();
+    public String adminPage(Model model, @ModelAttribute(REPAIR_LIST) AdminForm adminForm, HttpSession session){
 
-        redirectAttributes.addFlashAttribute(REPAIRLIST, repairsList);*/
-        return "admin";
+        List<AdminForm> repairList = adminService.adminSearch();
+
+
+            model.addAttribute(REPAIR_LIST, repairList );
+
+            return "admin";
+        }
+
     }
-}
+
