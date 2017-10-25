@@ -1,4 +1,3 @@
-/*
 package com.repair.car.controller;
 
 import com.repair.car.converters.RepairConverter;
@@ -66,7 +65,7 @@ public class RepairController {
 
     @RequestMapping(value = "/admin/repairSearch", method = RequestMethod.GET)
     public String repairSearch(Model model) {
-        model.addAttribute(REPAIR_SEARCH_FORM, new RepairS earchForm());
+        model.addAttribute(REPAIR_SEARCH_FORM, new RepairSearchForm());
        // model.addAttribute(REPAIR_LIST,repairService.findAllRepairs());
         System.err.println("get");
 
@@ -92,4 +91,4 @@ public class RepairController {
 
 
 
-}*/
+}
