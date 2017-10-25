@@ -11,8 +11,8 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">OWNER
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="/register">CREATE</a></li>
-          <li><a href="/search">SEARCH</a></li>
+          <li><a href="/admin/userRegister">CREATE</a></li>
+          <li><a href="/admin/userSearch">SEARCH</a></li>
         </ul>
       </li>
       <li class="dropdown">
