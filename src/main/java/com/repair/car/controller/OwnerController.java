@@ -77,15 +77,10 @@ public class OwnerController {
 
     @RequestMapping(value = "/admin/userSearch", method = RequestMethod.POST)
     public String search(Model model, @Valid @ModelAttribute(SEARCH_FORM) UserSearchForm userSearchForm) {
-        List<User> userList;
-        if (userSearchForm.getSearchType().indexOf('@') != -1){
-            //Search with mail
-            userList = userService.findByEmail(userSearchForm.getSearchType());
-        }
-        else{
-            //Search with afm
-            userList = userService.findByAfm(userSearchForm.getSearchType());
-        }
+
+
+        List<User> userList = userService.findByEmailOrAfm(userSearchForm.getSearchText());
+
         model.addAttribute(USERLIST, userList);
         return "userSearch";
     }
@@ -93,7 +88,7 @@ public class OwnerController {
     public String deleteUser(@PathVariable String afm,
                              RedirectAttributes redirectAttributes){
         try {
-            User user = userService.findByAfm(afm).get(0);
+            User user = userService.findByAfm(afm);
             userService.delete(user);
         } catch (Exception exception) {
             //if an error occurs show it to the user
@@ -106,7 +101,7 @@ public class OwnerController {
     @RequestMapping(value="/admin/userUpdate/{afm}", method= RequestMethod.GET)
     public String editUser(@PathVariable String afm,Model model){
 
-        User retrievedUser = userService.findByAfm(afm).get(0);
+        User retrievedUser = userService.findByAfm(afm);
         UserRegistrationForm userRegistrationForm = UserConverter.buildRegistrationForm(retrievedUser);
         //adding to model that form
         model.addAttribute(REGISTER_FORM, userRegistrationForm);

@@ -21,7 +21,7 @@
          <form  class="form-inline" action="/admin/userSearch" method="post" name="UserSearchForm id="UserSearchForm">
            <div class="col-sm-4 col-sm-offset-7">
            <div class="form-group">
-             <input type="text" class="form-control" name="SearchType" id="SearchType" placeholder="Search with AFM or Email...">
+             <input type="text" class="form-control" name="SearchText" id="SearchText" placeholder="Search with AFM or Email...">
              <span style="display: inline;" class="input-group-btn">
                <button class="btn btn-default btn-primary" type="submit">Search</button>
              </span>

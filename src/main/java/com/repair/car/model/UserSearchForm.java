@@ -17,13 +17,13 @@ public class UserSearchForm {
     @Size(min = AFM_SIZE, max = AFM_SIZE, message = "{register.afm.size}")
     private String afm;*/
 
-    private String SearchType;
+    private String SearchText;
 
-    public String getSearchType() {
-        return SearchType;
+    public String getSearchText() {
+        return SearchText;
     }
 
-    public void setSearchType(String SearchType) {
-        this.SearchType = SearchType;
+    public void setSearchText(String searchText) {
+        SearchText = searchText;
     }
 }

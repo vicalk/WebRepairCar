@@ -17,13 +17,19 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> findByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public List<User> findByAfm(String afm) {
+    public User findByAfm(String afm) {
         return userRepository.findByAfm(afm);
+    }
+
+
+    @Override
+    public List<User> findByEmailOrAfm(String searchText) {
+        return userRepository.findByEmailOrAfm(searchText,searchText);
     }
 
     @Override
