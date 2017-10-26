@@ -2,14 +2,20 @@ package com.repair.car.converters;
 
 import com.repair.car.domain.Repair;
 import com.repair.car.model.RepairCreateForm;
+import com.repair.car.utils.DateFormatConverter;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class RepairConverter {
 
 
     public static Repair buildRepairObject(RepairCreateForm repairForm){
+
         Repair repair = new Repair();
 
-        repair.setRepairDate(repairForm.getRepairDate());
+        repair.setRepairDate(DateFormatConverter.convert(repairForm.getRepairDate()));
         repair.setRepairTime(repairForm.getRepairTime());
         repair.setRepairStatus(repairForm.getRepairStatus());
         repair.setRepairType(repairForm.getRepairType());
@@ -41,7 +47,7 @@ public class RepairConverter {
 
 
         repair.setRepairId(repairCreateForm.getRepairId());
-        repair.setRepairDate(repairCreateForm.getRepairDate());
+        repair.setRepairDate(DateFormatConverter.convert(repairCreateForm.getRepairDate()));
         repair.setRepairTime(repairCreateForm.getRepairTime());
         repair.setRepairStatus(repairCreateForm.getRepairStatus());
         repair.setRepairType(repairCreateForm.getRepairType());
