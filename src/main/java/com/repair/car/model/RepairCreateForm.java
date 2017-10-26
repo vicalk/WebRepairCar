@@ -1,6 +1,5 @@
 package com.repair.car.model;
 
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;
@@ -9,20 +8,28 @@ import javax.validation.constraints.Size;
 public class RepairCreateForm {
 
     private static final String REPAIR_COST_PATTERN = "^[0-9]*$";
+
     private static final String VEHICLE_PLATENO_PATTERN = "^[A-Z]{3}-[0-9]{4}$";
 
+    private static final int VEHICLE_PLATENO_SIZE = 8;
+
     private Long repairId;
-    @NotEmpty(message = "{vehicleRegister.plateNo.empty}")
-    @Pattern(regexp = VEHICLE_PLATENO_PATTERN, message = "{vehicleRegister.plateNo.invalid}")
-   // @Size(min = PLATENO_SIZE, max = PLATENO_SIZE, message = "{vehicleRegister.plateNo.size}")
-    private String plateNo;
+
+    @NotEmpty(message = "{repairCreate.vehiclePlateNo.empty}")
+    @Pattern(regexp = VEHICLE_PLATENO_PATTERN, message = "{repairCreate.vehiclePlateNo.invalid}")
+    @Size(min = VEHICLE_PLATENO_SIZE, max = VEHICLE_PLATENO_SIZE, message = "{repairCreate.vehiclePlateNo.size}")
     private String vehiclePlateNo;
+
+    @NotEmpty(message = "{repairCreate.repairDate.empty}")
     private String repairDate;
+
     private String repairStatus;
+
     private String repairType;
 
-    @Pattern(regexp = REPAIR_COST_PATTERN, message = "{repair.repairCost.invalid}")
+    @Pattern(regexp = REPAIR_COST_PATTERN, message = "{repairCreate.repairCost.invalid}")
     private String repairCost;
+
     private String repairDescription;
 
     public Long getRepairId() {

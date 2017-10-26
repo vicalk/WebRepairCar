@@ -13,11 +13,11 @@ public interface RepairRepository extends CrudRepository<Repair, Long> {
 
     Repair save(Repair repair);
 
+    Repair findByRepairId(Long repairId);
+
+    List<Repair> findAll();
+
+    void deleteByRepairId(Long repairId);
+
 //    List<Repair> findByDate (String repairDate);
-
-    List<Repair>  findTop10ByOrderByRepairDateDesc() ;
-
-    List<Repair> findByVehicle_User_email(String email);
-
-
 }

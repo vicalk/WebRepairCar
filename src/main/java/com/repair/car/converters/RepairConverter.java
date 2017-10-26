@@ -34,5 +34,16 @@ public class RepairConverter {
 
         return repairCreateForm;
     }
+   public static Repair buildUpdateRepairObject(RepairCreateForm repairCreateForm){
 
+        Repair repair = new Repair();
+
+        repair.setRepairDate(repairCreateForm.getRepairDate());
+        repair.setRepairStatus(repairCreateForm.getRepairStatus());
+        repair.setRepairType(repairCreateForm.getRepairType());
+        repair.setRepairDescription(repairCreateForm.getRepairDescription());
+        repair.setRepairCost(repairCreateForm.getRepairCost());
+
+        return repair;
+    }
 }

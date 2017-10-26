@@ -26,8 +26,8 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICE
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/admin/ServiceCreate">CREATE</a></li>
-                <li><a href="/admin/ServiceSearch">SEARCH</a></li>
+                <li><a href="/admin/repairCreate">CREATE</a></li>
+                <li><a href="/admin/repairSearch">SEARCH</a></li>
                </ul>
                 </li>
                 </ul>

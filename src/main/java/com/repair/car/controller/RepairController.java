@@ -6,10 +6,12 @@ import com.repair.car.model.RepairCreateForm;
 import com.repair.car.model.RepairSearchForm;
 import com.repair.car.services.RepairService;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,19 +26,22 @@ public class RepairController {
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(RepairController.class);
     private static final String REPAIR_CREATE_FORM = "repairCreateForm";
     private static final String REPAIR_SEARCH_FORM = "repairSearchForm";
+    private static final String REPAIR_TO_EDIT = "repairToEdit";
     private static final String REPAIR_LIST = "repairList";
 
+    @Autowired
     private RepairService repairService;
 
     @RequestMapping(value = "/admin/repairCreate", method = RequestMethod.GET)
     public String repairCreate(Model model) {
-        model.addAttribute(REPAIR_CREATE_FORM, new RepairCreateForm());
+
+            model.addAttribute(REPAIR_CREATE_FORM, new RepairCreateForm());
         return "repairCreate";     //repairCreate.ftl
     }
 
    @RequestMapping(value = "/admin/repairCreate", method = RequestMethod.POST)
    public String repairCreate(Model model,
-                                @ModelAttribute(REPAIR_CREATE_FORM) RepairCreateForm repairCreateForm,
+                                 @Valid @ModelAttribute(REPAIR_CREATE_FORM) RepairCreateForm repairCreateForm,
                                  BindingResult bindingResult,
                                  HttpSession session,
                                  RedirectAttributes redirectAttributes) {
@@ -45,7 +50,7 @@ public class RepairController {
 
            logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
            model.addAttribute(REPAIR_CREATE_FORM, repairCreateForm);
-           return "redirect:/admin/repairCreate";
+           return "repairCreate";
        }
 
        try {
@@ -66,7 +71,7 @@ public class RepairController {
     @RequestMapping(value = "/admin/repairSearch", method = RequestMethod.GET)
     public String repairSearch(Model model) {
         model.addAttribute(REPAIR_SEARCH_FORM, new RepairSearchForm());
-       // model.addAttribute(REPAIR_LIST,repairService.findAllRepairs());
+        model.addAttribute(REPAIR_LIST,repairService.findAllRepairs());
         System.err.println("get");
 
         return "repairSearch";
@@ -90,5 +95,49 @@ public class RepairController {
     }
 
 
+    @RequestMapping(value = "/admin/repairSearch/{id}/edit", method = RequestMethod.GET)
+    public String repairEdit(Model model, @PathVariable("id") Long repairId) {
+
+
+        RepairCreateForm repairToEdit = repairService.findByRepairId(repairId);
+        System.err.println(repairToEdit.getRepairId());
+
+        model.addAttribute(REPAIR_TO_EDIT, repairToEdit);
+        System.err.println("edit");
+        return "repairEdit";
+    }
+
+
+    @RequestMapping(value = "/admin/repairSearch/{id}/edit", method = RequestMethod.POST)
+    public String getRepairToEdit(Model model, @Valid @ModelAttribute(REPAIR_TO_EDIT) RepairCreateForm repairToEdit,
+                              BindingResult bindingResult,
+                              HttpSession session,
+                              RedirectAttributes redirectAttributes) {
+
+        System.err.println("post");
+        if (bindingResult.hasErrors()) {
+
+            logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
+            model.addAttribute(REPAIR_TO_EDIT, repairToEdit);
+            return "repairEdit";
+        }
+
+        try {
+
+            repairService.repairEdit(repairToEdit);
+            model.addAttribute("success", true);
+            System.err.println("succ");
+
+
+        } catch (Exception exception) {
+
+            model.addAttribute("error", true);
+            logger.error("Repair Edit failed: " + exception);
+            System.err.println("err");
+        }
+        System.err.println("ret");
+        return "repairEdit";
+
+    }
 
 }

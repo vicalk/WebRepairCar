@@ -52,5 +52,53 @@
        <p>&nbsp;</p>
        <p>&nbsp;</p>
 
+       <#if repairs??>
+              <table class="table" >
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Service Date</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Cost</th>
+                    <th>Description</th>
+                    <th>Plate Number</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                 <#list repairList as repair>
+                  <tr>
+                    <th scope="row">${repair?counter}</th>
+                    <td>${repair.repairDate!""}</td>
+                    <td>${repair.repairStatus!""}</td>
+                    <td>${repair.repairType}</td>
+                    <td>${repair.repairCost}</td>
+                    <td>${repair.repairDescription!""}</td>
+                    <td>${repair.vehiclePlateNo}</td>
+                    <td>
+                    <form action="/admin/repairSearch/${repair.vehiclePlateNo}" method="GET">
+                          <input class="btn btn-xs btn-default" type="submit" value="Update"/>
+                    </td>
+                    </form>
+                    <td class="text-center">
+                    <form action="/admin/repairSearch/${repair.vehiclePlateNo}" method="POST">
+                          <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
+                    </form>
+                    </td>
+
+
+                  </tr>
+                 </#list>
+                  </tbody>
+                </table>
+                    <#else>
+                         <div class="alert alert-danger">
+                               <strong>Error!</strong> No Services found.
+                         </div>
+                 </#if>
+    </div>
+
 
 </body>
