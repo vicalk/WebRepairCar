@@ -16,6 +16,19 @@
 <#include "/navbar.ftl">
 
     <div class="container">
+
+        <#if (success??) >
+         <div class="alert alert-success">
+              <strong>Success!</strong> Service has been Created.
+         </div>
+        </#if>
+
+        <#if (error??) >
+         <div class="alert alert-danger">
+              <strong>Error!</strong> Could Not Create Service.
+         </div>
+        </#if>
+
         <form class="form-horizontal" action="/admin/repairCreate" method="post" id="repairCreateForm" name="repairCreateForm">
 
             <fieldset>
