@@ -25,7 +25,7 @@
 
         <#if (error??) >
          <div class="alert alert-danger">
-              <strong>Error!</strong> Could Not Create Service.
+              <strong>Error!</strong> Vehicle with the specified Plate Number not found.
          </div>
         </#if>
 
@@ -64,6 +64,20 @@
 
                 </div>
 
+                                <!-- Repair Time input-->
+                                <div class="form-group">
+                                    <@spring.bind "repairCreateForm.repairTime"/>
+                                    <label class="col-sm-2 control-label">Service Time:</label>
+                                    <div class="col-sm-10">
+                                        <input  name="repairTime" id="repairTime"  placeholder="example: 09:30" class="form-control"  type="text">
+                                        <#list spring.status.errorMessages as error>
+                                            <span> <h5 style="color:red;">${error}</h5> </span>
+                                        </#list>
+
+                                    </div>
+
+                                </div>
+
 
                 <!-- Repair Status input-->
                     <div class="form-group">
@@ -71,9 +85,9 @@
                         <label class="col-sm-2 control-label">Service Status:</label>
                         <div class="col-sm-10">
                                 <select class="form-control" id="repairStatus" name="repairStatus">
-                                    <option value="ON_HOLD" selected="selected">On Hold</option>
-                                    <option value="IN_PROGRESS" >In Progress</option>
-                                    <option value="COMPLETED" >Completed</option>
+                                    <option value="On_Hold" selected="selected">On Hold</option>
+                                    <option value="In_Progress" >In Progress</option>
+                                    <option value="Completed" >Completed</option>
                                 </select>
                         <#list spring.status.errorMessages as error>
                             <span> <h5 style="color:red;">${error}</h5> </span>
@@ -87,8 +101,8 @@
                     <label class="col-sm-2 control-label">Service Type:</label>
                     <div class="col-sm-10">
                                 <select class="form-control" id="repairType" name="repairType">
-                                    <option value="SMALL"  selected="selected">Small</option>
-                                    <option value="BIG" >Big</option>
+                                    <option value="Small"  selected="selected">Small</option>
+                                    <option value="Big" >Big</option>
                                 </select>
                         <#list spring.status.errorMessages as error>
                             <span> <h5 style="color:red;">${error}</h5> </span>

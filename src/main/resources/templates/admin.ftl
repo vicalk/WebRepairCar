@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring/>
 
 <head>
-  <title> Admin Repairs</title>
+  <title> Admin Services</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,7 +16,7 @@
 <#include "/navbar.ftl">
 
    <div class="container">
-       <h1>Admin Repairs</h1>
+       <h1>Admin Services</h1>
 
 
 
@@ -32,7 +32,8 @@
          <thead>
            <tr>
              <th>#ID</th>
-             <th>Service Date & Time</th>
+             <th>Service Date</th>
+             <th>Service Time</th>
              <th>Service Type</th>
              <th>Service Status</th>
              <th>Plate Number</th>
@@ -52,6 +53,7 @@
              <th scope="row">${repair?counter}</th>
 
              <td>${repair.repairDate!""}</td>
+             <td>${repair.repairTime!""}</td>
              <td>${repair.repairType!""}</td>
              <td>${repair.repairStatus!""}</td>
              <td>${repair.plateNo}</td>

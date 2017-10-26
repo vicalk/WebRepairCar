@@ -7,6 +7,8 @@ import javax.validation.constraints.Size;
 
 public class RepairCreateForm {
 
+    private static final String REPAIR_TIME_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";;
+
     private static final String REPAIR_COST_PATTERN = "^[0-9]*$";
 
     private static final String VEHICLE_PLATENO_PATTERN = "^[A-Z]{3}-[0-9]{4}$";
@@ -22,6 +24,10 @@ public class RepairCreateForm {
 
     @NotEmpty(message = "{repairCreate.repairDate.empty}")
     private String repairDate;
+
+    @NotEmpty(message = "{repairCreate.repairTime.empty}")
+    @Pattern(regexp = REPAIR_TIME_PATTERN, message = "{repairCreate.repairTime.invalid}")
+    private String repairTime;
 
     private String repairStatus;
 
@@ -55,6 +61,10 @@ public class RepairCreateForm {
     public void setRepairDate(String repairDate) {
         this.repairDate = repairDate;
     }
+
+    public String getRepairTime() { return repairTime; }
+
+    public void setRepairTime(String repairTime) { this.repairTime = repairTime; }
 
     public String getRepairStatus() {
         return repairStatus;

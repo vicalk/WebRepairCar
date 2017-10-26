@@ -67,17 +67,27 @@
                 </div>
             </div>
 
-
+            <!-- repair Time input-->
+            <div class="form-group">
+                <@spring.bind "repairToEdit.repairTime"/>
+                <label class="col-sm-2 control-label">Service Time:</label>
+                <div class="col-sm-10">
+                     <input  name="repairTime" id="repairTime" value="${repairToEdit.repairTime!""}"  placeholder="example: 09:30" class="form-control"  type="text">
+                                    <#list spring.status.errorMessages as error>
+                                     <span> <h5 style="color:red;">${error}</h5> </span>
+                                  </#list>
+                </div>
+            </div>
 
             <!-- repair Status input-->
             <div class="form-group">
                 <@spring.bind "repairToEdit.repairStatus"/>
                 <label class="col-sm-2 control-label">Service Status:</label>
                 <div class="col-sm-10">
-                              <select class="col-sm-12" id="repairStatus" value="${repairToEdit.repairStatus!""}" >
-                                  <option value="1" name ="repairStatus" selected="selected">On Hold</option>
-                                  <option value="2" name ="repairStatus">In Progress</option>
-                                  <option value="3" name ="repairStatus">Completed</option>
+                              <select class="col-sm-12" id="repairStatus" name ="repairStatus" >
+                                  <option value="On_Hold" selected="selected">On Hold</option>
+                                  <option value="In_Progress" >In Progress</option>
+                                  <option value="Completed" >Completed</option>
                               </select>
                                     <#list spring.status.errorMessages as error>
                                      <span> <h5 style="color:red;">${error}</h5> </span>
@@ -90,9 +100,9 @@
                 <@spring.bind "repairToEdit.repairType"/>
                 <label class="col-sm-2 control-label">Service Type:</label>
                 <div class="col-sm-10">
-                                <select class="col-sm-12" id="repairType" value="${repairToEdit.repairType!""}" >
-                                    <option value="1" name="repairType" selected="selected">Small</option>
-                                    <option value="2" name="repairType">Big</option>
+                                <select class="col-sm-12" id="repairType" name="repairType" >
+                                    <option value="Small"selected="selected">Small</option>
+                                    <option value="Big" >Big</option>
                                 </select>
                                     <#list spring.status.errorMessages as error>
                                      <span> <h5 style="color:red;">${error}</h5> </span>

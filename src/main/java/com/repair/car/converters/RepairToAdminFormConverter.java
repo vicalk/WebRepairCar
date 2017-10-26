@@ -10,6 +10,7 @@ public class RepairToAdminFormConverter {
         AdminForm adminForm = new AdminForm();
 
         adminForm.setRepairDate(repair.getRepairDate());
+        adminForm.setRepairTime(repair.getRepairTime());
         adminForm.setRepairType(repair.getRepairType());
         adminForm.setRepairStatus(repair.getRepairStatus());
         adminForm.setPlateNo(repair.getVehicle().getPlateNo());

@@ -18,6 +18,9 @@ public class Repair implements Serializable {
     @Column(name = "REPAIR_DATE", nullable = false)
     private String repairDate;
 
+    @Column(name = "REPAIR_TIME", nullable = false)
+    private String repairTime;
+
     @Column(name = "REPAIR_STATUS")
     private String repairStatus;
 
@@ -63,6 +66,10 @@ public class Repair implements Serializable {
     public void setRepairDate(String repairDate) {
         this.repairDate = repairDate;
     }
+
+    public String getRepairTime() { return repairTime; }
+
+    public void setRepairTime(String repairTime) { this.repairTime = repairTime; }
 
     public String getRepairStatus() {
         return repairStatus;

@@ -6,6 +6,8 @@ public class AdminForm {
 
         private String repairDate;
 
+        private String repairTime;
+
         private String PlateNo;
 
         private String repairStatus;
@@ -26,6 +28,10 @@ public class AdminForm {
         this.repairDate = repairDate;
     }
 
+    public String getRepairTime() { return repairTime; }
+
+    public void setRepairTime(String repairTime) { this.repairTime = repairTime; }
+
     public String getPlateNo() {
         return PlateNo;
     }
@@ -38,9 +44,7 @@ public class AdminForm {
         return repairStatus;
     }
 
-    public void setRepairStatus(String repairStatus) {
-        this.repairStatus = repairStatus;
-    }
+    public void setRepairStatus(String repairStatus) { this.repairStatus = repairStatus; }
 
     public String getRepairType() {
         return repairType;
@@ -66,8 +70,3 @@ public class AdminForm {
         this.lastname = lastname;
     }
 }
-
-
-
-
-

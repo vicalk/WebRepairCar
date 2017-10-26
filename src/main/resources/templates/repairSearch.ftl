@@ -46,6 +46,7 @@
                     <th>#ID</th>
                     <th>Plate Number</th>
                     <th>Service Date</th>
+                    <th>Service Time</th>
                     <th>Status</th>
                     <th>Type</th>
                     <th>Cost</th>
@@ -62,6 +63,7 @@
                         <th scope="row">${repair?counter}</th>
                         <td>${repair.vehiclePlateNo!""}</td>
                         <td>${repair.repairDate!""}</td>
+                        <td>${repair.repairTime!""}</td>
                         <td>${repair.repairStatus!""}</td>
                         <td>${repair.repairType!""}</td>
                         <td>${repair.repairCost!""}</td>

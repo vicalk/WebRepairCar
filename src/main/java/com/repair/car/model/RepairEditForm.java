@@ -14,6 +14,8 @@ public class RepairEditForm {
     @NotEmpty(message = "{repairCreate.repairDate.empty}")
     private String repairDate;
 
+    private String repairTime;
+
     private String repairStatus;
 
     private String repairType;
@@ -36,6 +38,10 @@ public class RepairEditForm {
     public void setRepairDate(String repairDate) {
         this.repairDate = repairDate;
     }
+
+    public String getRepairTime() { return repairTime; }
+
+    public void setRepairTime(String repairTime) { this.repairTime = repairTime; }
 
     public String getRepairStatus() {
         return repairStatus;

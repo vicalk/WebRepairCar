@@ -10,6 +10,7 @@ public class RepairConverter {
         Repair repair = new Repair();
 
         repair.setRepairDate(repairForm.getRepairDate());
+        repair.setRepairTime(repairForm.getRepairTime());
         repair.setRepairStatus(repairForm.getRepairStatus());
         repair.setRepairType(repairForm.getRepairType());
         repair.setRepairDescription(repairForm.getRepairDescription());
@@ -25,6 +26,7 @@ public class RepairConverter {
 
         repairCreateForm.setRepairId(repair.getRepairId());
         repairCreateForm.setRepairDate(repair.getRepairDate());
+        repairCreateForm.setRepairTime(repair.getRepairTime());
         repairCreateForm.setRepairStatus(repair.getRepairStatus());
         repairCreateForm.setRepairType(repair.getRepairType());
         repairCreateForm.setRepairCost(repair.getRepairCost());
@@ -37,7 +39,10 @@ public class RepairConverter {
 
         Repair repair = new Repair();
 
+
+        repair.setRepairId(repairCreateForm.getRepairId());
         repair.setRepairDate(repairCreateForm.getRepairDate());
+        repair.setRepairTime(repairCreateForm.getRepairTime());
         repair.setRepairStatus(repairCreateForm.getRepairStatus());
         repair.setRepairType(repairCreateForm.getRepairType());
         repair.setRepairDescription(repairCreateForm.getRepairDescription());
