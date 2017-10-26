@@ -64,12 +64,13 @@
 
                 </div>
 
+
                 <!-- Repair Status input-->
                     <div class="form-group">
                         <@spring.bind "repairCreateForm.repairStatus"/>
                         <label class="col-sm-2 control-label">Service Status:</label>
                         <div class="col-sm-10">
-                                <select class="col-sm-12" id="repairStatus">
+                                <select class="form-control" id="repairStatus">
                                     <option value="1" name ="repairStatus" selected="selected">On Hold</option>
                                     <option value="2" name ="repairStatus">In Progress</option>
                                     <option value="3" name ="repairStatus">Completed</option>
@@ -85,7 +86,7 @@
                     <@spring.bind "repairCreateForm.repairType"/>
                     <label class="col-sm-2 control-label">Service Type:</label>
                     <div class="col-sm-10">
-                                <select class="col-sm-12" id="repairType" >
+                                <select class="form-control" id="repairType" >
                                     <option value="1" name="repairType" selected="selected">Small</option>
                                     <option value="2" name="repairType">Big</option>
                                 </select>
@@ -116,7 +117,7 @@
                     <@spring.bind "repairCreateForm.repairDescription"/>
                     <label class="col-sm-2 control-label">Service Description:</label>
                     <div class="col-sm-10">
-                        <input  name="repairDescription" id="repairDescription"  placeholder="Service Description..." class="form-control"  type="text">
+                        <textarea  name="repairDescription" id="repairDescription"  placeholder="Service Description..." class="form-control"  type="text"></textarea>
                         <#list spring.status.errorMessages as error>
                             <span> <h5 style="color:red;">${error}</h5> </span>
                         </#list>
