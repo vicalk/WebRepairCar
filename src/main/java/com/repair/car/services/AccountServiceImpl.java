@@ -36,16 +36,10 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public void logout(String email) {
         try {
+            logout(email);
             loggedInUsers.remove(email);
         } catch (Exception e) {
             throw new LogoutException("User not logged in!");
         }
     }
-
-    @Override
-    public void register(User user) throws Exception {
-        userRepository.save(user);
-        LOG.debug("User has been registered!");
-    }
-
 }

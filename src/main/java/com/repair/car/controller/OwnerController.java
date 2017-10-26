@@ -1,10 +1,8 @@
 package com.repair.car.controller;
 
-import com.repair.car.converters.UserConverter;
 import com.repair.car.domain.User;
 import com.repair.car.model.UserRegistrationForm;
 import com.repair.car.model.UserSearchForm;
-import com.repair.car.services.AccountService;
 import com.repair.car.services.UserService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,98 +28,90 @@ public class OwnerController {
     private static final String USERLIST = "users";
 
     @Autowired
-    private AccountService accountService;
-
-    @Autowired
     private UserService userService;
+
     //Register Mappings
     @RequestMapping(value = "/admin/userRegister", method = RequestMethod.GET)
-    public String register(Model model) {
+    public String userRegister(Model model) {
         model.addAttribute(REGISTER_FORM, new UserRegistrationForm());
         return "userRegister";
     }
 
-
     @RequestMapping(value = "/admin/userRegister", method = RequestMethod.POST)
-    public String register(@Valid @ModelAttribute(REGISTER_FORM)
+    public String userRegister(Model model, @Valid @ModelAttribute(REGISTER_FORM)
                                    UserRegistrationForm userRegistrationForm,
                            BindingResult bindingResult, HttpSession session,
                            RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
+            //model.addAttribute(REGISTER_FORM, UserRegistrationForm);
             return "userRegister";
         }
 
         try {
-            User user = UserConverter.buildUserObject(userRegistrationForm);
-            accountService.register(user);
-            //session.setAttribute("firstname", userRegistrationForm.getFirstname());
+            userService.register(userRegistrationForm);
+            redirectAttributes.addFlashAttribute("success", true);
 
         } catch (Exception exception) {
-            //if an error occurs show it to the user
-            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+            redirectAttributes.addFlashAttribute("error", true);
             logger.error("User registration failed: " + exception);
             return "redirect:/admin/userRegister";
         }
+
         redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
         return "redirect:/admin";
     }
+
     //search Mappings
     @RequestMapping(value = "/admin/userSearch", method = RequestMethod.GET)
-    public String login(Model model) {
+    public String userSearch(Model model) {
+
         model.addAttribute(SEARCH_FORM, new UserSearchForm());
         model.addAttribute(USERLIST,userService.findAllUsers());
         return "userSearch";
     }
 
     @RequestMapping(value = "/admin/userSearch", method = RequestMethod.POST)
-    public String search(Model model, @Valid @ModelAttribute(SEARCH_FORM) UserSearchForm userSearchForm) {
-
+    public String userSearch(Model model, @Valid @ModelAttribute(SEARCH_FORM) UserSearchForm userSearchForm) {
 
         List<User> userList = userService.findByEmailOrAfm(userSearchForm.getSearchText());
-
         model.addAttribute(USERLIST, userList);
         return "userSearch";
-    }
-    @RequestMapping(value="/admin/userDelete/{afm}", method = RequestMethod.POST)
-    public String deleteUser(@PathVariable String afm,
-                             RedirectAttributes redirectAttributes){
-        try {
-            User user = userService.findByAfm(afm);
-            userService.delete(user);
-        } catch (Exception exception) {
-            //if an error occurs show it to the user
-            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
-        }
-        return "redirect:/admin/userSearch";
     }
 
     //update Mappings
     @RequestMapping(value="/admin/userUpdate/{afm}", method= RequestMethod.GET)
-    public String editUser(@PathVariable String afm,Model model){
+    public String userUpdate(@PathVariable String afm,Model model){
 
-        User retrievedUser = userService.findByAfm(afm);
-        UserRegistrationForm userRegistrationForm = UserConverter.buildRegistrationForm(retrievedUser);
-        //adding to model that form
+        UserRegistrationForm userRegistrationForm = userService.findByAfm(afm);
         model.addAttribute(REGISTER_FORM, userRegistrationForm);
         return "userUpdate";
     }
 
     @RequestMapping(value="/admin/userUpdate/{afm}", method= RequestMethod.POST)
-    public String updateUser(@PathVariable String afm,@Valid @ModelAttribute(REGISTER_FORM)
+    public String userUpdate(@PathVariable String afm,@Valid @ModelAttribute(REGISTER_FORM)
             UserRegistrationForm userRegistrationForm,
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes){
         try {
-            User user = UserConverter.buildUpdateUserObject(userRegistrationForm);
-            userService.save(user);
+            userService.save(userRegistrationForm);
         } catch (Exception exception) {
-            //if an error occurs show it to the user
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
             logger.error("User registration failed: " + exception);
         }
         return "userUpdate";
     }
+
+    //Dellete Mapping
+    @RequestMapping(value="/admin/userDelete/{afm}", method = RequestMethod.POST)
+    public String userDelete(@PathVariable String afm,
+                             RedirectAttributes redirectAttributes){
+        try {
+            userService.delete(afm);
+        } catch (Exception exception) {
+            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+        }
+        return "redirect:/admin/userSearch";
+    }
 }
-//

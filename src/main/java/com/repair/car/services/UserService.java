@@ -1,11 +1,16 @@
 package com.repair.car.services;
 
 import com.repair.car.domain.User;
+import com.repair.car.model.UserRegistrationForm;
 //import com.codingSchool.bookstore.Model.BookForm;
 
 import java.util.List;
 
 public interface UserService {
+
+    void register(UserRegistrationForm userRegistrationForm) throws Exception;
+
+    UserRegistrationForm findByAfm(String afm);
 
     List <User> findAllUsers();
 
@@ -13,9 +18,7 @@ public interface UserService {
 
     User findByEmail(String email);
 
-    User findByAfm(String afm);
+    void save(UserRegistrationForm userRegistrationForm);
 
-    void save(User user);
-
-    void delete(User user);
+    void delete(String afm);
 }
