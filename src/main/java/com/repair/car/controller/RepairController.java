@@ -28,6 +28,7 @@ public class RepairController {
     private static final String REPAIR_SEARCH_FORM = "repairSearchForm";
     private static final String REPAIR_TO_EDIT = "repairToEdit";
     private static final String REPAIR_LIST = "repairList";
+    private static final String REPAIR_DETAILS = "repairDetails";
 
     @Autowired
     private RepairService repairService;
@@ -92,6 +93,15 @@ public class RepairController {
         }
         model.addAttribute(REPAIR_LIST, repairList );
         return "repairSearch";
+    }
+
+    @RequestMapping(value = "/admin/repairSearch/{id}/show", method = RequestMethod.GET)
+    public String repairShow(Model model, @PathVariable("id") Long repairId) {
+
+        RepairCreateForm repairDetails = repairService.findByRepairId(repairId);
+        model.addAttribute(REPAIR_DETAILS, repairDetails);
+
+        return "repairShow";
     }
 
 
