@@ -69,7 +69,7 @@
                                     <@spring.bind "repairCreateForm.repairTime"/>
                                     <label class="col-sm-2 control-label">Service Time:</label>
                                     <div class="col-sm-10">
-                                        <input  name="repairTime" id="repairTime"  placeholder="example: 09:30" class="form-control"  type="text">
+                                        <input  name="repairTime" id="repairTime"  placeholder="example: hh:mm:ss" class="form-control"  type="time">
                                         <#list spring.status.errorMessages as error>
                                             <span> <h5 style="color:red;">${error}</h5> </span>
                                         </#list>
@@ -85,8 +85,8 @@
                         <label class="col-sm-2 control-label">Service Status:</label>
                         <div class="col-sm-10">
                                 <select class="form-control" id="repairStatus" name="repairStatus">
-                                    <option value="On_Hold" selected="selected">On Hold</option>
-                                    <option value="In_Progress" >In Progress</option>
+                                    <option value="On_Hold" selected="selected">On_Hold</option>
+                                    <option value="In_Progress" >In_Progress</option>
                                     <option value="Completed" >Completed</option>
                                 </select>
                         <#list spring.status.errorMessages as error>

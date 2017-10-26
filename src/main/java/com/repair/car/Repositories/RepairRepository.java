@@ -3,6 +3,7 @@ package com.repair.car.Repositories;
 import com.repair.car.domain.Repair;
 import com.repair.car.domain.User;
 import com.repair.car.model.RepairCreateForm;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,11 +18,11 @@ public interface RepairRepository extends CrudRepository<Repair, Long> {
 
     List<Repair> findByRepairDateOrVehicle_plateNo(String repairDate, String plateNo);
 
+    List<Repair> findByRepairDateOrderByRepairTimeAsc(String repairTime);
+
+    List<Repair> findByVehicle_User_emailOrderByRepairDateDescRepairTimeAsc(String email);
+
     void deleteByRepairId(Long repairId);
-
-    List<Repair>  findTop10ByOrderByRepairDateDesc() ;
-
-    List<Repair> findByVehicle_User_email(String email);
 
     Repair save(Repair repair);
 

@@ -23,9 +23,7 @@ public class UserController {
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String userPage(Model model,Principal principal) {
 
-
         List<AdminForm> repairList = adminService.userSearch(principal.getName());
-
         model.addAttribute(REPAIR_LIST, repairList );
 
         return "user";

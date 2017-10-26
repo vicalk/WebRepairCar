@@ -31,13 +31,16 @@
             </div>
     <p>&nbsp;</p>
 
-
  		  </form>
 
-
-
        <p>&nbsp;</p>
        <p>&nbsp;</p>
+
+    <#if (deleteSuccess??)>
+       <div class="alert alert-success">
+           <strong>Success!</strong> ${deleteSuccess}.
+       </div>
+    </#if>
 
 
 <#if (vehicleList??) && (vehicleList?size > 0 )>

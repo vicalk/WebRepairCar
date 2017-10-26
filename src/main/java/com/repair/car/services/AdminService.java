@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +24,11 @@ public class AdminService {
 
     public List<AdminForm> adminSearch()  {
 
-        List<Repair> retrievedRepairs = repairRepository.findTop10ByOrderByRepairDateDesc() ;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate now = LocalDate.now();
+        String date = now.format(dtf).toString();
+
+        List<Repair> retrievedRepairs = repairRepository.findByRepairDateOrderByRepairTimeAsc(date);
 
         return retrievedRepairs
                 .stream()
@@ -32,7 +39,7 @@ public class AdminService {
 
     public List<AdminForm> userSearch(String email)  {
 
-        List<Repair> retrievedRepairs = repairRepository.findByVehicle_User_email(email);
+        List<Repair> retrievedRepairs = repairRepository.findByVehicle_User_emailOrderByRepairDateDescRepairTimeAsc(email);
 
         return retrievedRepairs
                 .stream()

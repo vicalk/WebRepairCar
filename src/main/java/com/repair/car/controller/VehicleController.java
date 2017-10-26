@@ -36,7 +36,6 @@ public class VehicleController {
     @RequestMapping(value = "/admin/vehicleCreate", method = RequestMethod.GET)
     public String vehicleRegister(Model model) {
 
-
         model.addAttribute(VEHICLE_REGISTER_FORM, new VehicleRegisterForm());
         return "vehicleCreate";
     }
@@ -70,7 +69,7 @@ public class VehicleController {
     @RequestMapping(value = "/admin/vehicleSearch", method = RequestMethod.GET)
     public String vehicleSearch(Model model) {
         model.addAttribute(VEHICLE_SEARCH_FORM, new VehicleSearchForm());
-        model.addAttribute(VEHICLE_LIST,vehicleService.findAllVehicles());
+        model.addAttribute(VEHICLE_LIST, vehicleService.findAllVehicles());
         System.err.println("get");
 
         return "vehicleSearch";
@@ -82,8 +81,7 @@ public class VehicleController {
                                 RedirectAttributes redirectAttributes) {
 
         List<VehicleRegisterForm> vehicleList = vehicleService.vehicleSearch(vehicleSearchForm.getSearchText());
-//
-        model.addAttribute(VEHICLE_LIST, vehicleList );
+        model.addAttribute(VEHICLE_LIST, vehicleList);
 
         return "vehicleSearch";
     }
@@ -93,25 +91,19 @@ public class VehicleController {
     public String vehicleShow(Model model, @PathVariable("id") Long vehicleId) {
 
         VehicleRegisterForm vehicleDetails = vehicleService.findByVehicleId(vehicleId);
-
-        model.addAttribute(VEHICLE_DETAILS,vehicleDetails);
-
+        model.addAttribute(VEHICLE_DETAILS, vehicleDetails);
 
         return "vehicleShow";
     }
 
-
-/////////////////
 
     @RequestMapping(value = "/admin/vehicleSearch/{id}/edit", method = RequestMethod.GET)
     public String vehicleEdit(Model model, @PathVariable("id") Long vehicleId) {
 
 
         VehicleRegisterForm vehicleToEdit = vehicleService.findByVehicleId(vehicleId);
-        System.err.println(vehicleToEdit.getVehicleId());
-
         model.addAttribute(VEHICLE_TO_EDIT, vehicleToEdit);
-        System.err.println("edit");
+
         return "vehicleEdit";
     }
 
@@ -121,7 +113,7 @@ public class VehicleController {
                               BindingResult bindingResult, HttpSession session,
                               RedirectAttributes redirectAttributes) {
 
-        System.err.println("post");
+
         if (bindingResult.hasErrors()) {
 
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
@@ -133,8 +125,6 @@ public class VehicleController {
 
             vehicleService.editVehicle(vehicleToEdit);
             model.addAttribute("success", true);
-            System.err.println("succ");
-
 
         } catch (Exception exception) {
 
@@ -142,15 +132,18 @@ public class VehicleController {
             logger.error("Vehicle Edit failed: " + exception);
             System.err.println("err");
         }
-        System.err.println("ret");
+
         return "vehicleEdit";
 
     }
 
     @RequestMapping(value = "/admin/vehicleSearch/{id}/delete", method = RequestMethod.POST)
-    public String deleteVehicle(@PathVariable("id") Long vehicleId) {
+    public String deleteVehicle(@PathVariable("id") Long vehicleId,
+                                RedirectAttributes redirectAttributes) {
+
         vehicleService.deleteById(vehicleId);
-        System.err.println("delete");
+        redirectAttributes.addFlashAttribute("deleteSuccess", "Vehicle deleted Successfully");
+
         return "redirect:/admin/vehicleSearch";
     }
 

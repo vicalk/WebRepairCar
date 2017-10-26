@@ -26,11 +26,9 @@ public class AdminController {
     public String adminPage(Model model){
 
         List<AdminForm> repairList = adminService.adminSearch();
+        model.addAttribute(REPAIR_LIST, repairList );
 
-
-            model.addAttribute(REPAIR_LIST, repairList );
-
-            return "admin";
-        }
-
+        return "admin";
     }
+
+}

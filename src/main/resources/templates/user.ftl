@@ -32,7 +32,8 @@
          <thead>
            <tr>
              <th>#ID</th>
-             <th>Service Date & Time</th>
+             <th>Service Date</th>
+             <th>Service Time</th>
              <th>Service Type</th>
              <th>Service Status</th>
              <th>Plate Number</th>
@@ -52,6 +53,7 @@
              <th scope="row">${repair?counter}</th>
 
              <td>${repair.repairDate!""}</td>
+             <td>${repair.repairTime!""}</td>
              <td>${repair.repairType!""}</td>
              <td>${repair.repairStatus!""}</td>
              <td>${repair.plateNo}</td>
