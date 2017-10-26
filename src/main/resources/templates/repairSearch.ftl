@@ -68,11 +68,17 @@
                         <td>${repair.repairType!""}</td>
                         <td>${repair.repairCost!""}</td>
                         <td>${repair.repairDescription!""}</td>
-                        <td><form style="float: left;" class="form" action="/admin/repairSearch/${repair.repairId}/edit" method="GET">
-                                <input class="btn btn-xs btn-default" type="submit" value="Edit"/>
+                        <td>
+                            <form style="float: left;" class="form"  action="/admin/repairSearch/${repair.repairId}/show" method="GET">
+                                    <input class="btn btn-sm btn-info" type="submit" value="Show"/>&emsp;
+                             </form>
+
+                            <form style="float: left;" class="form" action="/admin/repairSearch/${repair.repairId}/edit" method="GET">
+                                <input class="btn btn-sm btn-primary" type="submit" value="Edit"/>&emsp;
                             </form>
+
                             <form style="float: left;" class="form" action="/admin/repairSearch/${repair.repairId}/delete" method="POST">
-                                 <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
+                                 <input class="btn btn-sm btn-danger" type="submit" value="Delete"/>
                             </form>
                         </td>
                     </tr>
