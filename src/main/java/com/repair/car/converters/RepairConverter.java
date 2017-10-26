@@ -24,13 +24,12 @@ public class RepairConverter {
         RepairCreateForm repairCreateForm = new RepairCreateForm();
 
         repairCreateForm.setRepairId(repair.getRepairId());
-       // repairCreateForm.setVehiclePlateNo(repair.getVehicle().getPlateNo());
         repairCreateForm.setRepairDate(repair.getRepairDate());
         repairCreateForm.setRepairStatus(repair.getRepairStatus());
         repairCreateForm.setRepairType(repair.getRepairType());
         repairCreateForm.setRepairCost(repair.getRepairCost());
         repairCreateForm.setRepairDescription(repair.getRepairDescription());
-
+        repairCreateForm.setVehiclePlateNo(repair.getVehicle().getPlateNo());
 
         return repairCreateForm;
     }

@@ -11,7 +11,7 @@ public interface RepairService {
 
     RepairCreateForm findByRepairId(Long repairId);
 
-    List<RepairCreateForm> repairSearch(String repairSearchText, String repairSearchType) ;
+    List<RepairCreateForm> repairSearch(String repairSearchText) ;
 
     List<RepairCreateForm> findAllRepairs();
 

@@ -70,9 +70,9 @@ public class RepairController {
 
     @RequestMapping(value = "/admin/repairSearch", method = RequestMethod.GET)
     public String repairSearch(Model model) {
+
         model.addAttribute(REPAIR_SEARCH_FORM, new RepairSearchForm());
         model.addAttribute(REPAIR_LIST,repairService.findAllRepairs());
-        System.err.println("get");
 
         return "repairSearch";
     }
@@ -85,7 +85,7 @@ public class RepairController {
                                HttpSession session,
                                RedirectAttributes redirectAttributes) {
 
-        List<RepairCreateForm> repairList = repairService.repairSearch(repairSearchForm.getSearchText(),repairSearchForm.getSearchType());
+        List<RepairCreateForm> repairList = repairService.repairSearch(repairSearchForm.getSearchText());
         if (repairList.isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "No Repairs found");
             System.err.println("empty");

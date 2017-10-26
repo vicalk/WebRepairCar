@@ -6,5 +6,5 @@ insert into users(USER_ID,AFM,FIRSTNAME,LASTNAME,EMAIL,PASSWORD,ROLE,ADDRESS) va
 insert into vehicles(PLATENO,CAR_MODEL,YEAR,COLOR,USER_ID) values ('IMA-8357','AUDI','2007','GREY','2');
 insert into vehicles(PLATENO,CAR_MODEL,YEAR,COLOR,USER_ID) values ('IMA-8356','AUDI','2007','GREY','2');
 
-insert into repairs(REPAIR_DATE,REPAIR_STATUS,REPAIR_TYPE,VEHICLE_ID) values ('11/11/2017','completed','small','1');
-insert into repairs(REPAIR_DATE,REPAIR_STATUS,REPAIR_TYPE,VEHICLE_ID) values ('10/11/2017','in progress','big','2');
+insert into repairs(REPAIR_DATE,REPAIR_STATUS,REPAIR_TYPE,VEHICLE_ID) values ('11-11-2017','completed','small','1');
+insert into repairs(REPAIR_DATE,REPAIR_STATUS,REPAIR_TYPE,VEHICLE_ID) values ('10-11-2017','in progress','big','2');

@@ -42,7 +42,7 @@ public class RepairServiceImpl implements RepairService  {
     }
 
     @Override
-    public List<RepairCreateForm> repairSearch(String repairSearchText, String repairSearchType) {
+    public List<RepairCreateForm> repairSearch(String repairSearchText) {
         return null;
     }
 
