@@ -159,15 +159,14 @@
             <@spring.bind "UserRegistrationForm.role"/>
 			<label class="col-sm-2 control-label">User Type:</label>
 			<div class="col-sm-10">
-				<label class="radio-inline" value="${UserRegistrationForm.role!""}">
-                                  <input type="radio" checked="checked" name="role" id="userType" value="ADMIN" />Admin
+				<label class="radio-inline">
+                                  <input type="radio" name="role" id="userType" checked="checked" value="ADMIN" />Admin
 				</label>
                                 <label class="radio-inline">
                                   <input type="radio" name="role" id="userType" value="SIMPLE" />User
 				</label> <br />
 			</div>
 		  </div>
-
   <div class="form-group">
               <div class="col-md-12 text-right">
                 <button type="submit" class="btn btn-primary btn-lg">Update User
@@ -176,8 +175,6 @@
 
                 </fieldset>
  </form>
-
-
         </div>
 
 

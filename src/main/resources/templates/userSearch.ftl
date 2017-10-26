@@ -16,6 +16,17 @@
 <#include "/navbar.ftl">
 
    <div class="container">
+   <#if (success??) >
+    <div class="alert alert-success">
+         <strong>Success!</strong> New User has been registered.
+    </div>
+   </#if>
+
+   <#if (error??) >
+    <div class="alert alert-danger">
+         <strong>Error!</strong> User with the specified afm not found.
+    </div>
+   </#if>
        <h1>Admin</h1>
        <div class="row">
          <form  class="form-inline" action="/admin/userSearch" method="post" name="UserSearchForm id="UserSearchForm">

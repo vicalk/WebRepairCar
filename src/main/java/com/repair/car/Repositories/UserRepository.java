@@ -11,8 +11,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-//    Page<User> findAll(Pageable pageable);
-
     List<User> findAll();
 
     User findByEmailAndPassword(String email, String password);
