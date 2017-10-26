@@ -109,12 +109,12 @@ public class RepairController {
 
 
     @RequestMapping(value = "/admin/repairSearch/{id}/edit", method = RequestMethod.POST)
-    public String getRepairToEdit(Model model, @Valid @ModelAttribute(REPAIR_TO_EDIT) RepairCreateForm repairToEdit,
-                              BindingResult bindingResult,
-                              HttpSession session,
-                              RedirectAttributes redirectAttributes) {
+    public String repairEdit(Model model,
+                             @Valid @ModelAttribute(REPAIR_TO_EDIT) RepairCreateForm repairToEdit,
+                             BindingResult bindingResult,
+                             HttpSession session,
+                             RedirectAttributes redirectAttributes) {
 
-        System.err.println("post");
         if (bindingResult.hasErrors()) {
 
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
@@ -126,18 +126,19 @@ public class RepairController {
 
             repairService.repairEdit(repairToEdit);
             model.addAttribute("success", true);
-            System.err.println("succ");
 
 
         } catch (Exception exception) {
 
             model.addAttribute("error", true);
             logger.error("Repair Edit failed: " + exception);
-            System.err.println("err");
         }
-        System.err.println("ret");
         return "repairEdit";
 
     }
-
+    @RequestMapping(value = "/admin/repairSearch/{id}/delete", method = RequestMethod.POST)
+    public String deleteRepair(@PathVariable("id") Long repairId) {
+        repairService.deleteById(repairId);
+        return "redirect:/admin/repairSearch";
+    }
 }
