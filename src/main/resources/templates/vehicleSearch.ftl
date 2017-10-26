@@ -51,6 +51,7 @@
              <th>Car Model</th>
              <th>Year</th>
              <th>Color</th>
+             <th class="col-sm-4"> &emsp;Action</th>
 
 
            </tr>
@@ -67,12 +68,21 @@
              <td>${vehicle.carModel!""}</td>
              <td>${vehicle.year!""}</td>
              <td>${vehicle.color!""}</td>
-             <td><form action="/admin/vehicleSearch/${vehicle.vehicleId}/delete" method="post">
-                       <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
+
+             <td>
+                <form style="float: left;" class="form"  action="/admin/vehicleSearch/${vehicle.vehicleId}/show" method="get">
+                        <input class="btn btn-sm btn-info" type="submit" value="Show"/>&emsp;
                  </form>
-                 <form action="/admin/vehicleSearch/${vehicle.vehicleId}/edit" method="get">
-                                        <input class="btn btn-xs btn-default" type="submit" value="Edit"/>
-                                  </form>
+
+                <form style="float: left;" class="form" action="/admin/vehicleSearch/${vehicle.vehicleId}/edit" method="get">
+                       <input class="btn btn-sm btn-primary" type="submit" value="Edit"/>&emsp;
+                 </form>
+
+                 <form style="float: left;" class="form" action="/admin/vehicleSearch/${vehicle.vehicleId}/delete" method="post">
+                       <input class="btn btn-sm btn-danger" type="submit" value="Delete"/>
+                 </form>
+             </td>
+
 
 
            </tr>

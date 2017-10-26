@@ -28,6 +28,7 @@ public class VehicleController {
     private static final String VEHICLE_SEARCH_FORM = "vehicleSearchForm";
     private static final String VEHICLE_TO_EDIT = "vehicleToEdit";
     private static final String VEHICLE_LIST = "vehicleList";
+    private static final String VEHICLE_DETAILS = "vehicleDetails";
 
     @Autowired
     private VehicleService vehicleService;
@@ -83,7 +84,20 @@ public class VehicleController {
         List<VehicleRegisterForm> vehicleList = vehicleService.vehicleSearch(vehicleSearchForm.getSearchText());
 //
         model.addAttribute(VEHICLE_LIST, vehicleList );
+
         return "vehicleSearch";
+    }
+
+
+    @RequestMapping(value = "/admin/vehicleSearch/{id}/show", method = RequestMethod.GET)
+    public String vehicleShow(Model model, @PathVariable("id") Long vehicleId) {
+
+        VehicleRegisterForm vehicleDetails = vehicleService.findByVehicleId(vehicleId);
+
+        model.addAttribute(VEHICLE_DETAILS,vehicleDetails);
+
+
+        return "vehicleShow";
     }
 
 
