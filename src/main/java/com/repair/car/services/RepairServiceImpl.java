@@ -36,26 +36,34 @@ public class RepairServiceImpl implements RepairService  {
         repairRepository.save(repair);
         LOG.debug("Repair has been created!");
     }
+
     @Override
     public RepairCreateForm findByRepairId(Long repairId){
         return RepairConverter.buildRepairForm(repairRepository.findByRepairId(repairId));
     }
 
     @Override
-    public List<RepairCreateForm> repairSearch(String repairSearchText) {
-        return null;
+    public List<RepairCreateForm> findAllRepairs() {
+
+        List<Repair> rRepairs = repairRepository.findAll();
+
+        return rRepairs
+                .stream()
+                .map(RepairConverter::buildRepairForm)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<RepairCreateForm> findAllRepairs() {
+    public List<RepairCreateForm> repairSearch(String repairSearchText) {
 
-        List<Repair> retrievedRepairs = repairRepository.findAll();
+        List<Repair> retrievedRepairs = repairRepository.findByRepairDateOrVehicle_plateNo(repairSearchText,repairSearchText);
 
         return retrievedRepairs
                 .stream()
                 .map(RepairConverter::buildRepairForm)
                 .collect(Collectors.toList());
     }
+
 
    @Override
     public void repairEdit(RepairCreateForm repairToEdit) {
@@ -72,6 +80,5 @@ public class RepairServiceImpl implements RepairService  {
 
         repairRepository.deleteByRepairId(repairId);
     }
-
 
 }
