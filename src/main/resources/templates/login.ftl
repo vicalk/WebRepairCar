@@ -6,7 +6,14 @@
 <body>
 
 <h2>${message!""}</h2>
-<h2 style="color: red">${errorMessage!""}</h2>
+
+
+<#if (errorMessage??)>
+       <div class="alert alert-danger">
+           <strong>Error!</strong> ${errorMessage}.
+       </div>
+    </#if>
+
 
 <div class="container" style="margin-top:30px">
 <div class="col-md-4">

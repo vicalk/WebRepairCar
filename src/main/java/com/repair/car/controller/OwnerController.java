@@ -61,7 +61,7 @@ public class OwnerController {
         }
 
         redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
-        return "redirect:/admin";
+        return "redirect:/admin/userRegister";
     }
 
     //search Mappings
@@ -100,14 +100,24 @@ public class OwnerController {
     }
 
     @RequestMapping(value="/admin/userUpdate/{afm}", method= RequestMethod.POST)
-    public String userUpdate(@PathVariable String afm,@Valid @ModelAttribute(REGISTER_FORM)
+    public String userUpdate(Model model,@PathVariable String afm,@Valid @ModelAttribute(REGISTER_FORM)
             UserRegistrationForm userRegistrationForm,
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes){
+
+
+        if (bindingResult.hasErrors()) {
+
+            logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
+            model.addAttribute(REGISTER_FORM, userRegistrationForm);
+            return "userUpdate";
+        }
+
         try {
             userService.save(userRegistrationForm);
+            model.addAttribute("success", "User edited Successfully.");
         } catch (Exception exception) {
-            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+            model.addAttribute("error", exception.getMessage());
             logger.error("User registration failed: " + exception);
         }
         return "userUpdate";

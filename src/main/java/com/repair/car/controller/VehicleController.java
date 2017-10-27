@@ -146,7 +146,7 @@ public class VehicleController {
         try {
 
             vehicleService.editVehicle(vehicleToEdit);
-            model.addAttribute("editSuccess", "Vehicle created Successfully.");
+            model.addAttribute("editSuccess", "Vehicle edited Successfully.");
 
         } catch (Exception exception) {
 

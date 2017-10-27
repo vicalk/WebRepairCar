@@ -13,7 +13,21 @@
 <body>
 
 
-<#include "/navbar.ftl">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/user">CAR REPAIR webApp</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/user">Home</a></li>
+
+                </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+
+  </div>
+</nav>
 
    <div class="container">
        <h1>User Repairs</h1>

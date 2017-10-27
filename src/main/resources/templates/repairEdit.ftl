@@ -48,7 +48,7 @@
                      <@spring.bind "repairToEdit.vehiclePlateNo"/>
                      <label class="col-sm-2 control-label">Plate Number:</label>
                      <div class="col-sm-10">
-                         <input  name="vehiclePlateNo" value="${repairToEdit.vehiclePlateNo!""}" id="vehiclePlateNo"  placeholder="Plate Number..." class="form-control"  type="text">
+                         <input  name="vehiclePlateNo" value="${repairToEdit.vehiclePlateNo!""}" id="vehiclePlateNo"  placeholder="Plate Number..." class="form-control"  type="text" readonly>
                          <#list spring.status.errorMessages as error>
                              <span> <h5 style="color:red;">${error}</h5> </span>
                          </#list>
@@ -62,7 +62,7 @@
                      <@spring.bind "repairToEdit.repairDate"/>
                      <label class="col-sm-2 control-label">Service Date:</label>
                      <div class="col-sm-10">
-                         <input  name="repairDate" value="${repairToEdit.repairDate!""}" id="repairDate"  placeholder="Service Date..." class="form-control"  type="date">
+                         <input  name="repairDate" value="${repairToEdit.repairDate!""}" id="repairDate"  placeholder="Service Date..." class="form-control"  type="date" >
                          <#list spring.status.errorMessages as error>
                              <span> <h5 style="color:red;">${error}</h5> </span>
                          </#list>

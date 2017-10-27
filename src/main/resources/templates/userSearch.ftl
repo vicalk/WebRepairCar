@@ -60,7 +60,7 @@
        <p>&nbsp;</p>
        <p>&nbsp;</p>
 
-<#if users??>
+<#if (users??) && (users?size>0)>
        <table class="table" >
          <thead>
            <tr>
