@@ -2,12 +2,12 @@
 
 <head>
   <title>Service Search </title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" type="text/css" href="stylesear.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="/stylesear.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
        <h1>Service Search</h1>
        <div class="row">
          <form  class="form-inline" action="/admin/repairSearch" method="post" name="repairSearchForm id=name="repairSearchForm">
-           <div class="col-sm-4 col-sm-offset-7">
+
            <div class="form-group">
               <@spring.bind "repairSearchForm.searchText"/>
              <input type="text" class="form-control" name="SearchText" id="SearchText" placeholder="Search by Date or plate number...">
@@ -27,16 +27,9 @@
                <button class="btn btn-default btn-primary" type="submit">Search</button>
              </span>
            </div>
-              </div>
+
             </div>
-        <p>&nbsp;</p>
-
-
           </form>
-
-
-
-       <p>&nbsp;</p>
        <p>&nbsp;</p>
 
       <#if (repairList??) && (repairList?size > 0 )>
@@ -50,7 +43,7 @@
                     <th>Status</th>
                     <th>Type</th>
                     <th>Cost</th>
-                    <th class="col-sm-4"> &emsp;Actions</th>
+                    <th> &emsp;Actions</th>
                </tr>
              </thead>
 
@@ -90,3 +83,4 @@
        </#if>
     </div>
 </body>
+ <#include "footer.ftl"/>

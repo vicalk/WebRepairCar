@@ -1,12 +1,20 @@
+<#import "/spring.ftl" as spring/>
 <head>
-<#include "master.ftl"/>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="/style.css">
   <title>Login</title>
 </head>
 
 <body>
 
 <h2>${message!""}</h2>
-
+<h4>
+     Welcome   to   CAR   REPAIR   webApp
+</h4>
 
 <#if (errorMessage??)>
        <div class="alert alert-danger">
@@ -15,8 +23,7 @@
     </#if>
 
 
-<div class="container" style="margin-top:30px">
-<div class="col-md-4">
+<div class="containerl">
 <div class="panel panel-default">
   <div class="panel-heading"><h3 class="panel-title"><strong>Sign In </strong></h3></div>
   <div class="panel-body">
@@ -35,7 +42,8 @@
     </form>
 
       </div>
-    </div>
-    </div>
-
+        </div>
+      </div>
+      </div>
 </body>
+ <#include "footer.ftl"/>
