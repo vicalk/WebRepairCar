@@ -25,6 +25,7 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
     Vehicle save(Vehicle vehicle);
 
+   boolean existsByPlateNo(String plateNo);
 
 }
 

@@ -22,6 +22,10 @@ public interface VehicleService {
 
     void deleteById(Long vehicleId);
 
+     boolean plateNoIsUnique(String plateNo);
+
+    boolean userExists(String afm);
+
 }
 
 

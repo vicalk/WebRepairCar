@@ -35,8 +35,9 @@ public class VehicleServiceImpl implements VehicleService {
         LOG.debug("Vehicle has been registered!");
 
     }
+
     @Override
-    public VehicleRegisterForm findByVehicleId(Long vehicleId){
+    public VehicleRegisterForm findByVehicleId(Long vehicleId) {
 
         return VehicleConverter.buildVehicleForm(vehicleRepository.findByVehicleId(vehicleId));
 
@@ -56,18 +57,17 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public List<VehicleRegisterForm> vehicleSearch(String searchText)  {
+    public List<VehicleRegisterForm> vehicleSearch(String searchText) {
 
 //        Long userId = (userRepository.findByAfm(searchText)).getUserId();
 
-        List<Vehicle> retrievedVehicles = vehicleRepository.findByPlateNoOrUser_afm(searchText,searchText);
+        List<Vehicle> retrievedVehicles = vehicleRepository.findByPlateNoOrUser_afm(searchText, searchText);
 
         return retrievedVehicles
                 .stream()
                 .map(VehicleConverter::buildVehicleForm)
                 .collect(Collectors.toList());
     }
-
 
 
     @Override
@@ -86,7 +86,20 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.deleteByVehicleId(vehicleId);
     }
 
+
+    @Override
+    public boolean plateNoIsUnique(String plateNo) {
+
+        return vehicleRepository.existsByPlateNo(plateNo);
+
+    }
+
+    @Override
+    public boolean userExists(String afm) {
+
+        return userRepository.existsByAfm(afm);
+
+    }
+
 }
-
-
 

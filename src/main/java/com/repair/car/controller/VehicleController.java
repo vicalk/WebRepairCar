@@ -58,18 +58,20 @@ public class VehicleController {
             vehicleService.vehicleRegister(vehicleRegisterForm);
             redirectAttributes.addFlashAttribute("createSuccess", "Vehicle created Successfully.");
 
-        } catch (DataIntegrityViolationException dataException) {
-
-
-            logger.error("Vehicle create failed: " + dataException);
-
-            if ()
-            redirectAttributes.addFlashAttribute("createDataFailure", "Plate number already exists");
-            redirectAttributes.addFlashAttribute("createDataFailure", "Please ensure vehicle owner exists.");
-
         } catch (Exception exception) {
 
             logger.error("Vehicle create failed: " + exception);
+
+            if (vehicleService.plateNoIsUnique((vehicleRegisterForm.getPlateNo()))) {
+
+                redirectAttributes.addFlashAttribute("duplicatePlateFailure", "Plate number already exists");
+            }
+
+            if (!vehicleService.userExists(vehicleRegisterForm.getAfm())) {
+
+                redirectAttributes.addFlashAttribute("ownerFailure", "Please ensure vehicle owner exists.");
+            }
+
             redirectAttributes.addFlashAttribute("createFailure", "Vehicle creation failed.");
 
         }

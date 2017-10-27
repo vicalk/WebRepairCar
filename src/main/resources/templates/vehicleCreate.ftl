@@ -23,9 +23,15 @@
  </div>
 </#if>
 
-<#if (createDataFailure??) >
+<#if (ownerFailure??) >
  <div class="alert alert-danger">
-      <strong>Error!</strong> ${createDataFailure!""}
+      <strong>Error!</strong> ${ownerFailure!""}
+ </div>
+</#if>
+
+<#if (duplicatePlateFailure??) >
+ <div class="alert alert-danger">
+      <strong>Error!</strong> ${duplicatePlateFailure!""}
  </div>
 </#if>
 
