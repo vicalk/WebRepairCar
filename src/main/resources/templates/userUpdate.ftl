@@ -16,6 +16,20 @@
         <body>
 
 <div class="container">
+
+ <#if (success??) >
+  <div class="alert alert-success">
+       <strong>Success!</strong>Owner Has been Edited.
+  </div>
+ </#if>
+
+ <#if (error??) >
+  <div class="alert alert-danger">
+       <strong>Error!</strong>Owner could not been Edited .
+  </div>
+ </#if>
+
+
        <h1>Admin</h1>
        <div class="row">
          <form  class="form-inline" action="/admin/userSearch" method="post" name="UserSearchForm id="UserSearchForm">
