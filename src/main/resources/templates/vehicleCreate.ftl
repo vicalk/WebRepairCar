@@ -17,15 +17,21 @@
 
 <div class="container">
 
-<#if (success??) >
+<#if (createSuccess??) >
  <div class="alert alert-success">
-      <strong>Success!</strong> New vehicle has been registered.
+      <strong>Success!</strong> ${createSuccess!""}
  </div>
 </#if>
 
-<#if (error??) >
+<#if (createDataFailure??) >
  <div class="alert alert-danger">
-      <strong>Error!</strong> User with the specified tax id not found.
+      <strong>Error!</strong> ${createDataFailure!""}
+ </div>
+</#if>
+
+<#if (createFailure??) >
+ <div class="alert alert-danger">
+      <strong>Error!</strong> ${createFailure!""}
  </div>
 </#if>
 

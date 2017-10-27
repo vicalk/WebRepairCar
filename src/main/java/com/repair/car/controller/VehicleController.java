@@ -7,6 +7,7 @@ import com.repair.car.model.VehicleSearchForm;
 import com.repair.car.services.VehicleService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -55,12 +56,21 @@ public class VehicleController {
 
         try {
             vehicleService.vehicleRegister(vehicleRegisterForm);
-            redirectAttributes.addFlashAttribute("success", true);
+            redirectAttributes.addFlashAttribute("createSuccess", "Vehicle created Successfully.");
+
+        } catch (DataIntegrityViolationException dataException) {
+
+
+            logger.error("Vehicle create failed: " + dataException);
+
+            if ()
+            redirectAttributes.addFlashAttribute("createDataFailure", "Plate number already exists");
+            redirectAttributes.addFlashAttribute("createDataFailure", "Please ensure vehicle owner exists.");
 
         } catch (Exception exception) {
 
-            redirectAttributes.addFlashAttribute("error", true);
-            logger.error("Vehicle registration failed: " + exception);
+            logger.error("Vehicle create failed: " + exception);
+            redirectAttributes.addFlashAttribute("createFailure", "Vehicle creation failed.");
 
         }
         return "redirect:/admin/vehicleCreate";
@@ -68,9 +78,9 @@ public class VehicleController {
 
     @RequestMapping(value = "/admin/vehicleSearch", method = RequestMethod.GET)
     public String vehicleSearch(Model model) {
+
         model.addAttribute(VEHICLE_SEARCH_FORM, new VehicleSearchForm());
         model.addAttribute(VEHICLE_LIST, vehicleService.findAllVehicles());
-        System.err.println("get");
 
         return "vehicleSearch";
     }
@@ -90,8 +100,18 @@ public class VehicleController {
     @RequestMapping(value = "/admin/vehicleSearch/{id}/show", method = RequestMethod.GET)
     public String vehicleShow(Model model, @PathVariable("id") Long vehicleId) {
 
-        VehicleRegisterForm vehicleDetails = vehicleService.findByVehicleId(vehicleId);
-        model.addAttribute(VEHICLE_DETAILS, vehicleDetails);
+        try {
+
+            VehicleRegisterForm vehicleDetails = vehicleService.findByVehicleId(vehicleId);
+            model.addAttribute(VEHICLE_DETAILS, vehicleDetails);
+
+        } catch (Exception exception) {
+
+
+            logger.error("Vehicle show failed: " + exception);
+            model.addAttribute("showFailure", "User details could not be displayed.");
+
+        }
 
         return "vehicleShow";
     }

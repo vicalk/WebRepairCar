@@ -21,6 +21,13 @@
 	<h1>Vehicle Details</h1>
 	<br />
 
+    <#if (showFailure??) >
+     <div class="alert alert-danger">
+          <strong>Error!</strong> ${showFailure!""}
+     </div>
+    </#if>
+
+
 	<div class="row">
 		<label class="col-sm-2">OWNER TAX ID:</label>
 		<div class="col-sm-10">${vehicleDetails.afm}</div>
