@@ -17,15 +17,21 @@
 
 <div class="container">
 
-<#if (success??) >
+<#if (editSuccess??) >
  <div class="alert alert-success">
-      <strong>Success!</strong> Vehicle has been edited.
+      <strong>Success!</strong> ${createSuccess!""}
  </div>
 </#if>
 
-<#if (error??) >
+<#if (duplicatePlateFailure??) >
  <div class="alert alert-danger">
-      <strong>Error!</strong> Could not edit vehicle.
+      <strong>Error!</strong> ${duplicatePlateFailure!""}
+ </div>
+</#if>
+
+<#if (editError??) >
+ <div class="alert alert-danger">
+      <strong>Error!</strong> ${editError!""}
  </div>
 </#if>
 

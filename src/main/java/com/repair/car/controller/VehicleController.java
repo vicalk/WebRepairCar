@@ -146,13 +146,18 @@ public class VehicleController {
         try {
 
             vehicleService.editVehicle(vehicleToEdit);
-            model.addAttribute("success", true);
+            model.addAttribute("editSuccess", "Vehicle created Successfully.");
 
         } catch (Exception exception) {
 
-            model.addAttribute("error", true);
+            if (vehicleService.plateNoIsUnique((vehicleToEdit.getPlateNo()))) {
+
+                model.addAttribute("duplicatePlateFailure", "Plate number already exists");
+            }
+
+            model.addAttribute("editError", "Vehicle edit failed.");
             logger.error("Vehicle Edit failed: " + exception);
-            System.err.println("err");
+
         }
 
         return "vehicleEdit";
