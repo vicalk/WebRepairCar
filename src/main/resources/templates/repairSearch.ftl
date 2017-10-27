@@ -50,7 +50,6 @@
                     <th>Status</th>
                     <th>Type</th>
                     <th>Cost</th>
-                    <th>Description</th>
                     <th class="col-sm-4"> &emsp;Actions</th>
                </tr>
              </thead>
@@ -67,7 +66,6 @@
                         <td>${repair.repairStatus!""}</td>
                         <td>${repair.repairType!""}</td>
                         <td>${repair.repairCost!""}</td>
-                        <td>${repair.repairDescription!""}</td>
                         <td>
                             <form style="float: left;" class="form"  action="/admin/repairSearch/${repair.repairId}/show" method="GET">
                                     <input class="btn btn-sm btn-info" type="submit" value="Show"/>&emsp;

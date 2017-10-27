@@ -26,27 +26,27 @@
 
 	<div class="row">
 		<label class="col-sm-2">Service Date:</label>
-		<div class="col-sm-10">${repairDetails.repairDate}</div>
+		<div class="col-sm-10">${repairDetails.repairDate!""}</div>
 	</div>
 
 	<div class="row">
 		<label class="col-sm-2">Service Time:</label>
-		<div class="col-sm-10">${repairDetails.repairTime}</div>
+		<div class="col-sm-10">${repairDetails.repairTime!""}</div>
 	</div>
 
 	<div class="row">
 		<label class="col-sm-2">Status:</label>
-		<div class="col-sm-10">${repairDetails.repairStatus}</div>
+		<div class="col-sm-10">${repairDetails.repairStatus!""}</div>
 	</div>
 
 	<div class="row">
 		<label class="col-sm-2">Type:</label>
-		<div class="col-sm-10">${repairDetails.repairType}</div>
+		<div class="col-sm-10">${repairDetails.repairType!""}</div>
 	</div>
 
 		<div class="row">
     		<label class="col-sm-2">Description:</label>
-    		<div class="col-sm-10">${repairDetails.repairDescription}</div>
+    		<div class="col-sm-10">${repairDetails.repairDescription!""}</div>
     	</div>
 
 </div>
