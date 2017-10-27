@@ -26,6 +26,7 @@ public class OwnerController {
     private static final String REGISTER_FORM = "UserRegistrationForm";
     private static final String SEARCH_FORM = "UserSearchForm";
     private static final String USERLIST = "users";
+    private static final String USER_DETAILS = "userDetails";
 
     @Autowired
     private UserService userService;
@@ -78,6 +79,15 @@ public class OwnerController {
         List<User> userList = userService.findByEmailOrAfm(userSearchForm.getSearchText());
         model.addAttribute(USERLIST, userList);
         return "userSearch";
+    }
+
+    @RequestMapping(value = "/admin/userSearch/{afm}/show", method = RequestMethod.GET)
+    public String userShow(Model model, @PathVariable("afm") String afm) {
+
+        UserRegistrationForm userDetails = userService.findByAfm(afm);
+        model.addAttribute(USER_DETAILS, userDetails);
+
+        return "userShow";
     }
 
     //update Mappings

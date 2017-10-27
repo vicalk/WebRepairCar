@@ -51,7 +51,7 @@
                     <th>Type</th>
                     <th>Cost</th>
                     <th>Description</th>
-                    <th class="col-sm-4"> &emsp;Action</th>
+                    <th class="col-sm-4"> &emsp;Actions</th>
                </tr>
              </thead>
 

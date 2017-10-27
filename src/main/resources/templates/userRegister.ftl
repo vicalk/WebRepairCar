@@ -16,6 +16,20 @@
 <#include "/navbar.ftl">
 
  <div class="container">
+
+ <#if (success??) >
+  <div class="alert alert-success">
+       <strong>Success!</strong> New owner has been registered.
+  </div>
+ </#if>
+
+ <#if (error??) >
+  <div class="alert alert-danger">
+       <strong>Error!</strong> Owner Already exists.
+  </div>
+ </#if>
+
+
  <form class="form-horizontal" action="/admin/userRegister" method="post" id="UserRegistrationForm" name="UserRegistrationForm">
 
 <fieldset>
@@ -31,7 +45,7 @@
    		 <input  name="afm" id="afm"  placeholder="Tax id..." class="form-control"  type="number">
    		    		    <#list spring.status.errorMessages as error>
                          <span> <h5 style="color:red;">${error}</h5> </span>
-                        </#list>
+                      </#list>
 
   	</div>
 

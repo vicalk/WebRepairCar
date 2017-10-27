@@ -86,13 +86,16 @@
              <td>${user.address!""}</td>
              <td>${user.role}</td>
              <td>
-             <form action="/admin/userUpdate/${user.afm}" method="GET">
-                   <input class="btn btn-xs btn-default" type="submit" value="Update"/>
-             </td>
+              <form style="float: left;" class="form"  action="/admin/userSearch/${user.afm}/show" method="GET">
+                      <input class="btn btn-sm btn-info" type="submit" value="Show"/>&emsp;
+               </form>
+
+             <form style="float: left;" class="form"  action="/admin/userUpdate/${user.afm}" method="GET">
+                   <input class="btn btn-sm btn-default" type="submit" value="Edit"/>&emsp;
              </form>
-             <td class="text-center">
-             <form action="/admin/userDelete/${user.afm}" method="POST">
-                   <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
+
+             <form style="float: left;" class="form"  action="/admin/userDelete/${user.afm}" method="POST">
+                   <input class="btn btn-sm btn-danger" type="submit" value="Delete"/>
              </form>
              </td>
 
