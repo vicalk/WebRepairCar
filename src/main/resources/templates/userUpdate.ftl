@@ -58,7 +58,6 @@
  			</div>
  		  </div>  -->
  		  </form>
-
 <!-- /.row -->
  <div class="containerb">
  <form class="form-horizontal" action="/admin/userUpdate/{afm}" method="post" id="UserRegistrationForm" name="UserRegistrationForm">
