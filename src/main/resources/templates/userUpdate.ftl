@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <link rel="stylesheet" type="text/css" href="/styleedit.css">
+     <link rel="stylesheet" type="text/css" href="/styleusup.css">
   </head>
 </head>
 
 <body>
 
 <#include "/navbar.ftl">
-        <body>
+<body>
 
 <div class="container">
 
@@ -34,14 +34,14 @@
        <h1>Admin</h1>
        <div class="row">
          <form  class="form-inline" action="/admin/userSearch" method="post" name="UserSearchForm id="UserSearchForm">
-           <div class="col-sm-4 col-sm-offset-7">
+
            <div class="form-group">
              <input type="text" class="form-control" name="SearchType" id="SearchType" placeholder="Search with AFM or Email...">
              <span style="display: inline;" class="input-group-btn">
                <button class="btn btn-default btn-primary" type="submit">Search</button>
              </span>
            </div>
-              </div>
+
             </div>
     <p>&nbsp;</p>
            <!-- /input-group -->
@@ -59,12 +59,8 @@
  		  </div>  -->
  		  </form>
 
-
-
-       <p>&nbsp;</p>
-       <p>&nbsp;</p>
 <!-- /.row -->
- <div class="container">
+ <div class="containerb">
  <form class="form-horizontal" action="/admin/userUpdate/{afm}" method="post" id="UserRegistrationForm" name="UserRegistrationForm">
 
 <fieldset>
@@ -72,11 +68,8 @@
 <!-- Form Name -->
 <legend>Update new user:</legend>
         <div class="vehicleRegistration">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-8 col-lg-6 col-lg-offset-2">
-        <header><h1>User form</h1>
-        <h4>Please fill all the following fields</h4></header>
+         <h2>User form</h2>
+        <h4>Please fill all the following fields</h4>
 
 <!-- userID input-->
 <div>
@@ -191,7 +184,7 @@
                 </fieldset>
  </form>
         </div>
-
-
+   </div>
+   </div>
 </body>
  <#include "footer.ftl"/>

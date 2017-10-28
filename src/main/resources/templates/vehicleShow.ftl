@@ -55,6 +55,5 @@
 
 </div>
 
-
 </body>
  <#include "footer.ftl"/>

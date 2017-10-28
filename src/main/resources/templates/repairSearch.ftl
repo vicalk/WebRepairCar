@@ -82,5 +82,8 @@
              </div>
        </#if>
     </div>
+<p></p>
+<p></p>
 </body>
- <#include "footer.ftl"/>
+
+<#include "footer.ftl"/>
