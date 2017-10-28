@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,11 +25,19 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<AdminForm> adminSearch()  {
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate now = LocalDate.now();
-        String date = now.format(dtf).toString();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date = LocalDate.now().format(df).toString();
 
-        List<Repair> retrievedRepairs = repairRepository.findByRepairDateOrderByRepairTimeAsc(date);
+        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
+        String time = LocalTime.now().format(tf).toString();
+
+
+        List<Repair> retrievedRepairs = repairRepository.findRepairsOfDay(date,time);
+
+        if (retrievedRepairs.size() > 10){
+
+            retrievedRepairs = retrievedRepairs.subList(0,9);
+        }
 
         return retrievedRepairs
                 .stream()
